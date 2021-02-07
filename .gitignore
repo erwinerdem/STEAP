@@ -1,0 +1,17 @@
+out/
+data/
+!data/CELLECT_output/
+annot/
+esmu/
+gsea/
+envs/
+config/
+gwas/
+ldsc/
+rules/
+*.sh.o*
+CHANGELOG.md
+.gitmodules
+.snakemake/
+README_CELLECT.md
+*__pycache__/
