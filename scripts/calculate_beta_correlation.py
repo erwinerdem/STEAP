@@ -3,8 +3,6 @@ import pandas as pd
 import itertools
 from scipy.stats import pearsonr
 
-df_all = pd.read_hdf('../data/CELLECT_output/data.h5', 'df_all')
-
 def calculate_pearson(dataframe, with_diag=False):
     corr_list = []
     gwas_list = dataframe.columns.values
@@ -19,6 +17,8 @@ def calculate_pearson(dataframe, with_diag=False):
 def get_pthres(corr_df):
     return corr_df[corr_df['corr']<0]['pval'].min()
 
+
+df_all = pd.read_hdf('../data/CELLECT_output/data.h5', 'df_all')
 df_list = []
 for m in METHODS:
     df_method = df_all[(df_all.method==m)]

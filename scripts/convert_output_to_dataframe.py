@@ -3,6 +3,7 @@ import pandas as pd
 from pathlib import Path
 from statsmodels.stats.multitest import multipletests
 
+
 def csv_file(directory):
     file_dict = {}
     for path in Path(directory).rglob('prioritization.csv'):
@@ -36,7 +37,8 @@ def make_df(directory):
     # count the number of annotations/celltypes
     df_all.sort_values(by=['gwas','method'], inplace=True)
     df_all.reset_index(inplace=True, drop=True)
-    return df_all 
+    return df_all
+
 
 def pvalue_correction(dataframe, method='bonferroni'):
     '''
@@ -52,6 +54,7 @@ def pvalue_correction(dataframe, method='bonferroni'):
     .rename(columns={0:f"pvalue_{method}"})
     df_p['annotation'] = dataframe['annotation']
     return pd.merge(dataframe, df_p, on=['gwas','specificity_id','annotation','method'])
+
 
 
 df_all = make_df(CELLECT_OUTDIR)
