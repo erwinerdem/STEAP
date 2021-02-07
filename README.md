@@ -4,5 +4,3 @@ It runs multiple post-processing steps on top of CELLECT output files:
   - GSEA
   - Cell-Type Correlation
   - **WIP**
-
-![Pipeline](pipeline.png)
