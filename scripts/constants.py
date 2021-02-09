@@ -1,14 +1,14 @@
-CELLECT_OUTDIR = '../out/'
+CELLECT_OUTDIR = 'out/'
 METHODS = ['H-MAGMA','LDSC', 'MAGMA']
 PVAL_CORRECTION = 'bonferroni'
 
 
 # GSEA Constants
 GWAS_GROUP_DICT = {'structural':['volume','thickness','area'],
-	           'DTI':['DTI'],
+                   'DTI':['DTI'],
                    'rs-fMRI':['Net'],
                   } # GWAS group name : [(regex) keywords]
-GSEA_OUTDIR = '../gsea/'
+GSEA_OUTDIR = 'gsea/'
 GENE_SET_LIST = [
     'ARCHS4_Tissues',
     'Aging_Perturbations_from_GEO_down',

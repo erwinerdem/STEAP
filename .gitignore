@@ -1,9 +1,6 @@
 out/
 data/
 !data/CELLECT_output/
-annot/
-esmu/
-gsea/
 envs/
 config/
 gwas/
@@ -15,3 +12,4 @@ CHANGELOG.md
 .snakemake/
 README_CELLECT.md
 *__pycache__/
+*.save

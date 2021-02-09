@@ -1,4 +1,4 @@
-from constants import *
+from scripts.constants import *
 import pandas as pd
 from pathlib import Path
 from statsmodels.stats.multitest import multipletests
@@ -55,9 +55,8 @@ def pvalue_correction(dataframe, method='bonferroni'):
     df_p['annotation'] = dataframe['annotation']
     return pd.merge(dataframe, df_p, on=['gwas','specificity_id','annotation','method'])
 
-
-
-df_all = make_df(CELLECT_OUTDIR)
-df_all = pvalue_correction(df_all, method=PVAL_CORRECTION)
-df_all.to_hdf('../data/CELLECT_output/data.h5', key='df', mode='w')
+if __name__ == "__main__":
+    df_all = make_df(CELLECT_OUTDIR)
+    df_all = pvalue_correction(df_all, method=PVAL_CORRECTION)
+    df_all.to_hdf('data/CELLECT_output/data.h5', key='df', mode='w')
 
