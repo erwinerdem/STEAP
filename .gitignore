@@ -13,7 +13,7 @@ CHANGELOG.md
 README_CELLECT.md
 *__pycache__/
 *.save
-*.ipyb_checkpoints/
+*.ipy*_checkpoints/
 scripts/convert_zstat_to_pval.py
 scripts/format_and_map_snake.py
 scripts/get_effector_genes.py
