@@ -1,3 +1,9 @@
+# to allow importing to work correctly (in a dirty way)
+import os,sys,inspect
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0,parentdir) 
+
 import constants
 import pandas as pd
 from pathlib import Path
