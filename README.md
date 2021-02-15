@@ -8,6 +8,9 @@ CELLECT uses MAGMA v1.07b which is known to inflate false positives.
 ***name*** runs multiple post-processing steps on top of CELLECT output files:
   - GSEA
   - Cell-Type Correlation
-  - **WIP**
+  - ES Gene Correlation
 
 ![pipeline](https://github.com/erwinerdem/CELLECT-revised/blob/master/pipeline.png)
+
+
+Notebooks of converting the raw scRNA to ES matrices can be found in the [cellex-notebooks](https://github.com/erwinerdem/cellex-notebooks)
