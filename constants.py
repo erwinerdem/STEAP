@@ -2,13 +2,12 @@
 CELLECT_OUTDIR = 'out/'
 METHODS = ['H-MAGMA','LDSC', 'MAGMA']
 PVAL_CORRECTION = 'bonferroni'
-
+GWAS_GROUP_DICT = {'Structural MRI':['volume','thickness','area'],
+                   'DTI Tracts':['DTI'],
+                   'rs-fMRI Network':['Net'],
+                  } # GWAS group name : [(regex) keywords]
 
 # GSEA Constants
-GWAS_GROUP_DICT = {'structural':['volume','thickness','area'],
-                   'DTI':['DTI'],
-                   'rs-fMRI':['Net'],
-                  } # GWAS group name : [(regex) keywords]
 GENE_SET_LIST = [
     'ARCHS4_Tissues',
     'Aging_Perturbations_from_GEO_down',
