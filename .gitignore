@@ -6,6 +6,7 @@ config/
 gwas/
 ldsc/
 rules/
+!rules/common_func1.smk
 *.sh.o*
 CHANGELOG.md
 .gitmodules
