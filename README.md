@@ -14,11 +14,6 @@ STEAP runs multiple post-processing steps on top of CELLECT output files:
 ![pipeline](https://github.com/erwinerdem/STEAP/blob/master/pipeline.png)
 
 
-Notebooks of converting the raw scRNA to ES matrices can be found in the [cellex-notebooks](https://github.com/erwinerdem/cellex-notebooks)
-
-
-
-
 ## Installation
 **Step 1: Install (mini)conda**  
 The pipeline works in conda enviroments, so you will have to install anaconda or miniconda first if not already on the system.
@@ -49,3 +44,6 @@ The `--recurse-submodules` is needed to clone the [git submodule](https://git-sc
 ...
 ### Munging GWAS
 ...
+### Converting scRNA Data to ES Matrix
+Example notebooks converting the raw scRNA to ES matrices using [CELLEX](https://github.com/perslab/CELLEX) can be found in the [cellex-notebooks](https://github.com/erwinerdem/cellex-notebooks).
+
