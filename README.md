@@ -1,15 +1,11 @@
 # STEAP 
-**S**ingle cell **T**ype **E**nrichment **A**nalysis for **P**henotypes (**STEAP**) is an extension to [CELLECT](https://github.com/perslab/CELLECT). 
-It contains additional post-processing scripts and uses an updated MAGMA version. 
-CELLECT uses MAGMA v1.07b which is known to inflate false positives.
-STEAP updates to MAGMA v1.08 which resolved these issues.
+**S**ingle cell **T**ype **E**nrichment **A**nalysis for **P**henotypes (**STEAP**) uses scRNA-seq data and GWAS summary statistics to determine which cell-types are enriched in the GWAS phenotype. It is an an extension to [CELLECT](https://github.com/perslab/CELLECT) and uses [S-LDSC](https://github.com/bulik/ldsc) ([Finucane et al., 2015](https://www.nature.com/articles/ng.3404)), [MAGMA](https://ctg.cncr.nl/software/magma) [(de Leeuw et al., 2015)](https://doi.org/10.1371/journal.pcbi.1004219) and [H-MAGMA](https://github.com/thewonlab/H-MAGMA) [(Sey et al., 2020)](https://doi.org/10.1038/s41593-020-0603-0) for enrichment analysis.
 
-[de Leeuw, C., Sey, N. Y. A., Posthuma, D., & Won, H. (2020). A response to Yurko et al: H-MAGMA, inheriting a shaky statistical foundation, yields excess false positives. Cold Spring Harbor Laboratory. https://doi.org/10.1101/2020.09.25.310722](https://www.biorxiv.org/content/10.1101/2020.09.25.310722v1)
 
 STEAP runs multiple post-processing steps on top of CELLECT output files:
-  - GSEA
+  - Gene Set Enrichment Analysis (GSEA)
   - Cell-Type Correlation
-  - ES Gene Correlation
+  - Expression Specificity (ES) Gene Correlation
 
 ![pipeline](https://github.com/erwinerdem/STEAP/blob/master/pipeline.png)
 
@@ -23,27 +19,61 @@ bash Miniconda3-latest-Linux-x86_64.sh
 rm Miniconda3-latest-Linux-x86_64.sh
 ```
 
-Create a new conda enviroment
+**Step 2: Clone this repo and run the install script** 
+First clone this repo, and then run the install.sh script.
 ```
-conda create -n steap
+git clone https://github.com/erwinerdem/STEAP.git
+bash STEAP/install.sh
+conda activate steap
 ```
+This script creates the necessary conda environments and clones the CELLECT repo and merges it with STEAP.
 
-
-
-**Step 2: Clone CELLECT repository**  
-Clone the repository: 
-```
-git clone --recurse-submodules https://github.com/perslab/CELLECT.git
-```
-The `--recurse-submodules` is needed to clone the [git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) 'ldsc' ([pascaltimshel/ldsc](https://github.com/pascaltimshel/ldsc)), which is a modfied version of the original ldsc repository.
-(Cloning the repo might take few minutes as the CELLECT data files (> 1-3 GB) will be downloaded. To skip downloading the data files, use `GIT_LFS_SKIP_SMUDGE=1 git clone --recurse-submodules https://github.com/perslab/CELLECT.git` instead.)
 
 ...
 
 ## Getting Started
-...
-### Munging GWAS
-...
-### Converting scRNA Data to ES Matrix
-Example notebooks converting the raw scRNA to ES matrices using [CELLEX](https://github.com/perslab/CELLEX) can be found in the [cellex-notebooks](https://github.com/erwinerdem/cellex-notebooks).
+Any GWAS summary statistic of your interest can be used in this tutorial.
+Here, we will download and use the PGC depression GWAS as an example. Download can take a few minutes.
+```
+wget -O gwas/PGC_UKB_depression.txt https://datashare.is.ed.ac.uk/bitstream/handle/10283/3203/PGC_UKB_depression_genome-wide.txt --no-check-certificate
+```
 
+#### Munging GWAS
+The summary statistic needs to be compatible with the pipeline. This is done by first munging the GWAS using the [`mtag_munge.py`](https://github.com/pascaltimshel/ldsc/blob/d869cfd1e9fe1abc03b65c00b8a672bd530d0617/mtag_munge.py) script from ldsc. This must be done in a special conda environment.
+```
+conda activate munge_ldsc
+```
+Then we can munge the PGC depression GWAS using:
+```
+python2 ldsc/mtag_munge.py \
+--sumstats gwas/PGC_UKB_depression.txt \
+--merge-alleles data/ldsc/w_hm3.snplist \
+--a1 A1 \
+--a2 A2 \
+--snp MarkerName \
+--p P \
+--N-cas 170756 \
+--N-con 329443 \
+--signed-sumstats LogOR,0 \
+--frq Freq \
+--out gwas/PGC_UKB_depression
+```
+Each GWAS has different column names so change the parameters accordingly. More examples can be found in [timshel-2020/src/prep-gwas_munge/README-cmds_munge_sumstats.txt](https://github.com/perslab/timshel-2020/blob/master/src/prep-gwas_munge/README-cmds_munge_sumstats.txt). The [`mtag_munge.py`](https://github.com/pascaltimshel/ldsc/blob/d869cfd1e9fe1abc03b65c00b8a672bd530d0617/mtag_munge.py) script is also well documented.
+The output `.sumstats.gz` file will be used as input for the pipeline.
+Deactivating the munge_ldsc environment can be done simply using 
+`conda deactivate`.
+
+#### Converting scRNA Data to ES Matrix
+Converting the scRNA to ES matrix requires CELLEX. This can be installed as mentioned in the [CELLEX repository](https://github.com/perslab/CELLEX#setup). Example notebooks converting the raw scRNA to ES matrices using CELLEX can be found in the [cellex-notebooks](https://github.com/erwinerdem/cellex-notebooks).
+
+### Running the pipeline
+To run the pipeline a `config.yml` must first be set up. For the PGC depression GWAS we will use the [config.yml](https://github.com/erwinerdem/STEAP/tree/master/config/config_PGC_depression.yml) file. This file can be edited to instead include your own GWAS summary statistics or scRNA-seq data.
+
+To run the enrichment analysis run:
+```
+snakemake --use-conda -j -s cellect-magma.snakefile --configfile config/config.yml
+snakemake --use-conda -j -s cellect-h-magma.snakefile --configfile config/config.yml
+snakemake --use-conda -j -s cellect-ldsc.snakefile --configfile config/config.yml
+```
+
+...

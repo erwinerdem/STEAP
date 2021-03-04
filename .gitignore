@@ -3,6 +3,7 @@ data/
 !data/CELLECT_output/
 envs/
 config/
+!config/config.yml
 gwas/
 ldsc/
 rules/
@@ -11,7 +12,6 @@ rules/
 CHANGELOG.md
 .gitmodules
 .snakemake/
-README_CELLECT.md
 *__pycache__/
 *.save
 *.ipy*_checkpoints/

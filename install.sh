@@ -1,11 +1,10 @@
 #!/bin/sh
-echo -n "Is conda installed? : (y/n)"
-read conda_installed
-
-if [ $conda_installed = "n" ]; then
-   echo 
-else
-    wget "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
-    bash Miniconda3-latest-Linux-x86_64.sh
-    rm Miniconda3-latest-Linux-x86_64.sh
+conda env create -f environment_steap.yml # create conda env needed for running STEAP
+git lfs install 
+git lfs clone --recurse-submodules https://github.com/perslab/CELLECT.git 
+rsync -a --remove-source-files STEAP/* CELLECT
+rm -rf STEAP 
+mv CELLECT/ STEAP/
+cd STEAP
+conda env create -f ldsc/environment_munge_ldsc.yml # create the conda env for GWAS munging
 

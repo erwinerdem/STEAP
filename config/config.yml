@@ -1,0 +1,134 @@
+---
+
+############################################################################################################################
+#################################################### INFORMATION ###########################################################
+############################################################################################################################
+
+# All file paths accept absolute and relative paths
+# Environment variables (including ~) are not processed, so don't use them in this config.
+
+
+############################################################################################################################
+############################################ RUN COMMON VARIABLES ##########################################################
+############################################################################################################################
+
+# Folder where all the outputs are saved (LD scores, prioritization results files, etc.) 
+# CELLECT-LDSC and CELLECT-MAGMA will write the analysis results into <BASE_OUTPUT_DIR>/CELLECT-LDSC and <BASE_OUTPUT_DIR>/CELLECT-MAGMA subdirectories respectively. The directory and its subdirectories will be created if they do not exist.
+BASE_OUTPUT_DIR: CELLECT-PGC_UKB_depression
+# keep the 'CELLECT-' when renaming the output dir
+
+
+### SPECIFICITY_INPUT: list of dictionaries
+# id: identifier for the dataset. Output files will be prefixed with the id. MUST be unique and NO double underscores allowed
+# path: the path to the matrix containing specificity scores for each genomic region, does not need to be unique
+# the files can be uncompressed or compressed (gz/bz2 formats are supported).
+SPECIFICITY_INPUT:
+  - id: mousebrain
+    path: esmu/mousebrain.mu.csv
+  - id: tabula_muris
+    path: esmu/tabula_muris.mu.csv
+  - id: DroNc_Human_Hippocampus
+    path: esmu/GTEx_droncseq_hip_pcf.esmu.csv
+  - id: PsychENCODE_DER-22
+    path: esmu/PsychENCODE_DER-22.esmu.csv
+  - id: GSE101601_Temporal_Cortex
+    path: esmu/GSE101601_Temporal_Cortex.esmu.csv
+  - id: GSE67835_Human_Cortex
+    path: esmu/GSE67835_Human_Cortex.esmu.csv
+  - id: Allen_human_LGN
+    path: esmu/Allen_human_LGN.esmu.csv
+  - id: Allen_human_MTG
+    path: esmu/Allen_human_MTG.esmu.csv
+  - id: Descartes_Human_Cerebrum
+    path: esmu/Descartes_Human_Cerebrum.esmu.csv
+  - id: Descartes_Human_Cerebellum
+    path: esmu/Descartes_Human_Cerebellum.esmu.csv
+
+
+### GWAS_SUMSTATS: list of dictionaries
+# id: identifier for GWAS. MUST be unique and NO double underscores allowed
+# path: filepath for munged GWAS sumstats. Uncompressed / gz or bz2 compressed files allowed.
+GWAS_SUMSTATS:
+  - id: PGC_UKB_depression
+    path: gwas/PGC_UKB_depression.sumstats.gz
+
+
+### HMAGMA_ANNOT: annotation file for H-MAGMA
+HMAGMA_ANNOT:
+  Adult_brain.genes.annot
+
+ANALYSIS_TYPE: # specify what analysis type to run. At least one analysis type needs to be specified.
+  prioritization: True # prioritizes all cell-type annotations in the SPECIFICITY_INPUT datasets
+  conditional: False # performs conditional analysis for selected annotations.
+  heritability: False # [CELLECT-LDSC ONLY] estimates heritability for selected annotations. 
+  heritability_intervals: False # [CELLECT-LDSC ONLY] estimates heritability intervals for selected annotations. 'heritability' must be True when enabling heritability_intervals
+
+WINDOW_DEFINITION: # Window definition for mapping gene specificity values to SNPs
+  WINDOW_SIZE_KB:
+    100
+
+GENE_COORD_FILE: # Path to gene coordinates. First five columns must be: ensembl_gene_id, chromosome, start_position, stop_position, strand. No header allowed
+  data/shared/gene_coordinates.GRCh37.ensembl_v91.txt
+KEEP_ANNOTS: # [CELLECT-LDSC ONLY] If True, for each specificity input a file containing the SNP:ES (and all overlapping genes) mappings will be saved to output also. If you only want this and do not wish to run the rest of CELLECT add "--until make_annot" to the normal snakemake command
+  False
+
+############################################################################################################################
+############################################## CONDITIONAL ANALYSIS ########################################################
+############################################################################################################################
+
+### CONDITIONAL_INPUT: list of dictionaries
+# id: dataset input - must correspond to an id in SPECIFICITY_INPUT.
+# annotations: annotations to condition on
+# NOTE: you can delete or leave these dicts blank if the 'analysis type' is not activated
+CONDITIONAL_INPUT:
+  - id: mousebrain-test
+    annotations: ['ABC']
+  # - id: tabula_muris-test
+  #   annotations: ['XX']
+
+
+############################################################################################################################
+###################################### HERITABILITY ANALYSIS (LDSC ONLY) ###################################################
+############################################################################################################################
+
+### HERITABILITY_INPUT: list of dictionaries
+# id: dataset input - must correspond to an id in SPECIFICITY_INPUT.
+# annotations: annotations to estimate heritability for
+# NOTE: you can delete or leave these dicts blank if the 'analysis type' is not activated
+HERITABILITY_INPUT:
+  - id: mousebrain-test
+    annotations: ['ABC']
+        
+############################################################################################################################
+####################################### EFFECTOR GENE ANALYSIS (MAGMA ONLY) #################################################
+############################################################################################################################
+# NOTE: you can delete or leave these dicts blank or as they are if the effector_genes analysis type is not activated
+N_GENES_MAGMA: 1000 # number of top magma genes to include, sorted by p-value in ascending order
+PERCENTILE_CUTOFF_ESMU: 90 # percentile cutoff for non-zero ESmu genes to include, sorted by ESmu value in descending order
+
+#############################################################################################################################
+##################################################### CONSTANTS #############################################################
+#############################################################################################################################
+
+# You generally do not need to change these variables.
+
+LDSC_CONST:
+  DATA_DIR: # Path to the data used for CELLECT-LDSC (baseline model, gene mapping etc).
+    data/ldsc
+  LDSC_DIR: # Path to the a cloned version of the github repo pascaltimshel/ldsc. This is included as a git submodule.
+    ldsc
+  NUMPY_CORES: # Numpy by default uses all cores available to it. This variable limits the amount of cores numpy can use to 1 so snakemake has full control over multicore processing via ithe '-j' flag.
+    1
+
+
+MAGMA_CONST:
+  DATA_DIR: # Path to the data used for CELLECT-MAGMA (baseline model, gene mapping etc).
+    data/magma
+  ANNOT_DIR: # Path to the annotations used for CELLECT-H-MAGMA.
+    annot/
+  NUMPY_CORES: # Numpy by default uses all cores available to it. This variable limits the amount of cores numpy can use to 1 so snakemake has full control over multicore processing via the '-j' flag.
+    1
+  EXCLUDE_MHC: # Exclude genes located in the MHC region (chr6:27Mb-32Mb) during prioritization. 
+  # We recommend setting this to True, unless you know what you are doing and analysing immune GWAS traits.
+  # CELLECT-LDSC also does not include genetic signal from the MHC region.
+    True
