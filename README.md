@@ -28,9 +28,6 @@ conda activate steap
 ```
 This script creates the necessary conda environments and clones the CELLECT repo and merges it with STEAP.
 
-
-...
-
 ## Getting Started
 Any GWAS summary statistic of your interest can be used in this tutorial.
 Here, we will download and use the PGC depression GWAS as an example. Download can take a few minutes.

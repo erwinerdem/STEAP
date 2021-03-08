@@ -9,14 +9,11 @@ import pandas as pd
 import itertools
 from scipy.stats import pearsonr
 
-def calculate_pearson(dataframe, with_diag=False):
+def calculate_pearson(dataframe):
     corr_list = []
-    gwas_list = dataframe.columns.values
     for x,y in itertools.combinations(dataframe.columns, 2):
         corr, pval = pearsonr(dataframe.loc[:,x].values, dataframe.loc[:,y].values)
         corr_list.append([x,y,corr,pval])
-    if with_diag:
-        corr_list = corr_list + [[gwas, gwas, 1, 0] for gwas in gwas_list]
     corr_df = pd.DataFrame(corr_list, columns=['gwasx','gwasy','corr','pval'])
     return corr_df
 

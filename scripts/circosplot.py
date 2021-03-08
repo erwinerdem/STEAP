@@ -1,8 +1,3 @@
-'''
-slight edit of original code from ponnhide
-https://github.com/ponnhide/pyCircos
-'''
-
 # to allow importing to work correctly (in a dirty way)
 import os,sys,inspect
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
@@ -117,7 +112,7 @@ def plot(corr_df, gwas_group_dict, gwas_name, sign_threshold=len(constants.METHO
     gwas_name: name of the to be analyzed GWAS
     sign_threshold: the significance threshold for the inner chord plot
     '''
-    gwas_group_dict = {k:v for k,v in gwas_group_dict.items() if gwas_name not in v}
+#     gwas_group_dict = {k:v for k,v in gwas_group_dict.items() if gwas_name not in v} 
 
     links, nodes, gwas_links = preprocessing(corr_df, gwas_group_dict, gwas_name, sign_threshold)
     
