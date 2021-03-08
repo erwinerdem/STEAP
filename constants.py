@@ -39,4 +39,4 @@ GENE_SET_LIST = [
                 ]
 TOP_ANNOT = 5 # analyses TOP_ANNOT number of cell-types ranking the highest per GWAS group
 TOP_FREQ = 0.01 # only takes genes within the TOP_FREQ ES value for each cell-type
-OVERWRITE_GSEA_ANALYSIS = False #overwrites old gsea files if True
+OVERWRITE_GSEA_ANALYSIS = False # overwrites old gsea files if True

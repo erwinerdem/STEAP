@@ -66,8 +66,8 @@ Deactivating the munge_ldsc environment can be done simply using
 #### Converting scRNA Data to ES Matrix
 Converting the scRNA to ES matrix requires CELLEX. This can be installed as mentioned in the [CELLEX repository](https://github.com/perslab/CELLEX#setup). Example notebooks converting the raw scRNA to ES matrices using CELLEX can be found in the [cellex-notebooks](https://github.com/erwinerdem/cellex-notebooks).
 
-### Running the pipeline
-To run the pipeline a `config.yml` must first be set up. For the PGC depression GWAS we will use the [config.yml](https://github.com/erwinerdem/STEAP/tree/master/config/config_PGC_depression.yml) file. This file can be edited to instead include your own GWAS summary statistics or scRNA-seq data.
+#### Running the pipeline
+To run the pipeline a `config.yml` must first be set up. For the PGC depression GWAS we will use the [config.yml](https://github.com/erwinerdem/STEAP/tree/master/config/config.yml) file. This file can be edited to instead include your own GWAS summary statistics or scRNA-seq data.
 
 To run the enrichment analysis run:
 ```

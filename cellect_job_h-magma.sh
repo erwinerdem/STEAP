@@ -11,4 +11,4 @@
 #$ -j y
 #$ -V
 
-snakemake --use-conda -j -s cellect-h-magma.snakefile --configfile config/config_all_descartes.yml
+snakemake --use-conda -j -s cellect-h-magma.snakefile --configfile config/config.yml

@@ -10,194 +10,140 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir) 
 
 import constants
-import math
-import collections
+from scripts import calculate_beta_correlation
+from scripts.pyCircos import Gcircle
 import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
-import matplotlib.path    as mpath
 import matplotlib.patches as mpatches
-
-class Gcircle(object):
-    colors = ["#4E79A7","#F2BE2B","#E15759","#76B7B2","#59A14F","#EDC948","#B07AA1","#FF9DA7","#9C755F","#BAB0AC"]
-    cmaps  = [plt.cm.Reds, plt.cm.Blues, plt.cm.Greens, plt.cm.Greys]  
-    def __init__(self):
-        self.locus_dict = collections.OrderedDict() 
-        self.interspace = np.pi / 60 
-        self.bottom      = 500 
-        self.height      = 50 
-        self.facecolor   = "#DDDDDD"
-        self.edgecolor   = "#000000"
-        self.linewidth   = 1.0 
-        self.markersize  = 2.0 
-        self.color_cycle = 0 
-        self.cmap_cycle  = 0
-
-    def add_locus(self, name, length, bottom=None, height=None, facecolor=None, edgecolor=None, linewidth=None, interspace=None):
-        self.locus_dict[name]                 = {}
-        self.locus_dict[name]["length"]       = length
-        self.locus_dict[name]["features"] = [] 
-        
-        if bottom is None:
-            self.locus_dict[name]["bottom"] = self.bottom
-        else:
-            self.locus_dict[name]["bottom"] = bottom
-        
-        if height is None:
-            self.locus_dict[name]["height"] = self.height 
-        else:
-            self.locus_dict[name]["height"] = height
-
-        if facecolor is None: 
-            self.locus_dict[name]["facecolor"] = self.facecolor 
-        else:
-            self.locus_dict[name]["facecolor"] = facecolor
-
-        if edgecolor is None:
-            self.locus_dict[name]["edgecolor"] = self.edgecolor
-        else:
-            self.locus_dict[name]["edgecolor"] = edgecolor
-
-        if interspace is None:
-            self.locus_dict[name]["linewidth"] = self.linewidth
-        else:
-            self.locus_dict[name]["linewidth"] = linewidth
-
-        if interspace is None:
-            self.locus_dict[name]["interspace"] = self.interspace
-        else:
-            self.locus_dict[name]["interspace"] = interspace 
+from matplotlib import cm
+import re
+import pandas as pd
 
 
-        sum_length       = sum(list(map(lambda x:  self.locus_dict[x]["length"], list(self.locus_dict.keys()))))
-        sum_interspace   = sum(list(map(lambda x:  self.locus_dict[x]["interspace"], list(self.locus_dict.keys()))))
-        self.theta_list  = np.linspace(0.0, 2 * np.pi - sum_interspace, sum_length, endpoint=True)
-        s = 0
-        sum_interspace = 0 
-        for key in self.locus_dict.keys():
-            self.locus_dict[key]["positions"] = sum_interspace + self.theta_list[s:s+self.locus_dict[key]["length"]+1]
-            if s+self.locus_dict[key]["length"]+1 > len(self.theta_list):
-                self.locus_dict[key]["positions"] = self.locus_dict[key]["positions"] + self.theta_list[:s+self.locus_dict[key]["length"] + 1- len(self.theta_list)]
-            s = s + self.locus_dict[key]["length"]
-            sum_interspace += self.locus_dict[key]["interspace"]
-            
-    def ax(self):
-        'added function'
-        return self.ax 
+def get_links_and_nodes(corr_df, pivot_corr_df, pattern, sign_threshold):
+    # calculate mean corr across methods
+    links = pivot_corr_df['corr'].mean(axis=1).reset_index().rename(columns={0:'corr'}).copy() 
+    # only get corr if in gwas_group_dict
+    links = links[links[['gwasx','gwasy']].apply(lambda x: x.str.contains(pattern)).all(axis=1)] 
+    nodes = pd.concat([links['gwasx'], links['gwasy']]).drop_duplicates().to_list()
+    sign_index = pivot_corr_df['pval'][
+        pivot_corr_df['pval'] < calculate_beta_correlation.get_pthres(corr_df)
+    ].dropna(thresh=sign_threshold).index # only keep correlations significant in at least 2 methods
+    links.set_index(['gwasx','gwasy'], inplace=True)
+    sign_links = links[links.index.isin(sign_index)].reset_index()
+    return sign_links, nodes
+
+def get_gwas_links(pivot_corr_df, pattern, gwas_name):
+    gwas_links = pivot_corr_df[(pivot_corr_df['gwasx']==gwas_name)
+                               |(pivot_corr_df['gwasy']==gwas_name)].copy()
+    gwas_links = gwas_links[(gwas_links['gwasx'].str.contains(pattern))|
+                            (gwas_links['gwasy'].str.contains(pattern))]
+    gwas_links['gwasx'],gwas_links['gwasy'] = np.where(gwas_links['gwasy']==gwas_name,
+                                                       (gwas_links['gwasx'],gwas_links['gwasy']),
+                                                       (gwas_links['gwasy'],gwas_links['gwasx'])
+                                                      )
+    gwas_links.sort_values('gwasx', inplace=True)
+    return gwas_links
+
+def chord_plot_pandas(gcircle, row, gwas_group_dict, bottom, cmap, norm):
+
+    nodes = []
+    for i in ['x','y']:
+        node = row[f"gwas{i}"]
+        for k,v in gwas_group_dict.items():
+            if bool(re.search('|'.join(v),node)):
+                node = f"{k}, {node}"
+        nodes.append(node)
+    gcircle.chord_plot([nodes[0],0,0,bottom],[nodes[1],0,0,bottom],color=cmap(norm(row['corr'])),alpha=.3)
+
     
-    def node_group_position(self):
-        'added function'
-        pos_dict = {}
-        for k,v in self.locus_dict.items():
-            cluster = k.split(',')[0] # splitting with , only works because of how the nodes were named
-            pos = v['positions']
-            if cluster not in pos_dict.keys():
-                pos_dict[cluster] = [pos]
-            else:
-                 pos_dict[cluster].append(pos)
-        return {k: [min([y for x in v for y in x]), max([y for x in v for y in x])] for k,v in pos_dict.items()}
-    
-    def set_locus(self, figsize=(6, 6), lw=1): 
-        self.figure = plt.figure(figsize=figsize)
-        self.ax     = plt.subplot(111, polar=True)
-        self.ax.set_theta_zero_location("N")
-        self.ax.set_theta_direction(-1)
-        self.ax.set_ylim(0,1000)
-        self.ax.spines['polar'].set_visible(False)
-        self.ax.xaxis.set_ticks([])
-        self.ax.xaxis.set_ticklabels([])
-        self.ax.yaxis.set_ticks([])
-        self.ax.yaxis.set_ticklabels([])  
-                
-        pre_e = 0 
-        for i, key in enumerate(self.locus_dict.keys()):
-            pos       = self.locus_dict[key]["positions"][0] 
-            width     = self.locus_dict[key]["positions"][-1] - self.locus_dict[key]["positions"][0]
-            height    = self.locus_dict[key]["height"]
-            bottom    = self.locus_dict[key]["bottom"]
-            facecolor = self.locus_dict[key]["facecolor"]
-            edgecolor = self.locus_dict[key]["edgecolor"]
-            linewidth = self.locus_dict[key]["linewidth"]
-            self.locus_dict[key]["bar"] = self.ax.bar([pos], [height], bottom=bottom, width=width, facecolor=facecolor, linewidth=linewidth, edgecolor=edgecolor, align="edge")
-    
-    
-    
-    def chord_plot(self, start_list, end_list,  bottom=500, center=0, color="#1F77B4", alpha=0.5):
-        #start_list and end_list is composed of "locus_id", "start", "end". 
-        sstart = self.locus_dict[start_list[0]]["positions"][start_list[1]]
-        send   = self.locus_dict[start_list[0]]["positions"][start_list[2]+1]   
-        if len(start_list) == 4:
-            stop = int(start_list[3]) 
-        else:
-            stop = bottom
+def annotation_layer(gcircle, links, nodes, cmap, norm, bottom=1100, axis_color='k'):
+    step = 0.001
+    theta = np.linspace(0,(2-(2*step))*np.pi, len(nodes))
+    scale = 500
+    original_bottom = bottom
+    width_scale = 5
+    for m in constants.METHODS:
+        corr_values = links[f'corr_{m}'] * scale #scales beta values so its visible
 
-        ostart = self.locus_dict[end_list[0]]["positions"][end_list[1]]
-        oend   = self.locus_dict[end_list[0]]["positions"][end_list[2]+1] 
-        if len(end_list) == 4:
-            etop = int(end_list[3]) 
-        else:
-            etop = bottom
+        gcircle.ax.bar(theta, corr_values, color=cmap(norm(corr_values)),
+#                        edgecolor=axis_color,
+                       edgecolor='none',
+                       alpha=.5,
+#                        alpha=1,
+#                        width=step*np.pi*width_scale,
+                       width = step*15,
+                       bottom=bottom+scale, zorder=9,
+                      )
+        x = np.linspace(0,2*np.pi, len(nodes))
+        y = np.array([bottom+scale]*len(x))
+        gcircle.ax.plot(x, y, alpha=1, color=axis_color, lw=.5, zorder=8)
+        gcircle.ax.plot(x, y-scale, alpha=.75, color=axis_color, lw=.25, zorder=8)
+        gcircle.ax.plot(x, y+scale, alpha=.75, color=axis_color, lw=.25, zorder=8)
+        gcircle.ax.plot(x, y-(0.5*scale), alpha=.75, color=axis_color, lw=.25, zorder=8)
+        gcircle.ax.plot(x, y+(0.5*scale), alpha=.75, color=axis_color, lw=.25, zorder=8)        
+        bottom += 2*scale
+#         width_scale += 1
+    # color the circosplot bars according to the number of significant correlations per method
+    color_methods = ['purple','green','red'] # purple significant in 1 method, green in 2 and red in all 3
+    links_m = links.copy()
+    links_m['color'] = 'white' #'None'
+    for i,c in zip(range(1,len(constants.METHODS)+1),color_methods):
+        links_m.loc[links_m.loc[:,links_m.columns.str.contains('pval')].sum(1)==i,'color'] = c
+    gcircle.ax.bar(theta, y-original_bottom+scale, color=links_m['color'],
+                   edgecolor='none',#links_m['color'],
+                   alpha=.25, width=step*np.pi*5, bottom=original_bottom, zorder=0)
 
-        z1 = stop - stop * math.cos(abs((send-sstart) * 0.5)) 
-        z2 = etop - etop * math.cos(abs((oend-ostart) * 0.5)) 
-        if sstart == ostart: 
-            pass 
-        else:
-            Path      = mpath.Path
-            path_data = [(Path.MOVETO,  (sstart, stop)),
-                         (Path.CURVE3,  (sstart, center)),     
-                         (Path.CURVE3,  (oend,   etop)),
-                         (Path.CURVE3,  ((ostart+oend)*0.5, etop+z2)),
-                         (Path.CURVE3,  (ostart, etop)),
-                         (Path.CURVE3,  (ostart, center)),
-                         (Path.CURVE3,  (send,   stop)),
-                         (Path.CURVE3,  ((sstart+send)*0.5, stop+z1)),
-                         (Path.CURVE3,  (sstart, stop)),
-                        ]
-            codes, verts = list(zip(*path_data)) 
-            path  = mpath.Path(verts, codes)
-            patch = mpatches.PathPatch(path, facecolor=color, alpha=alpha, linewidth=0, zorder=0)
-            self.ax.add_patch(patch)
+def preprocessing(corr_df, gwas_group_dict, gwas_name, sign_threshold):
+    pattern = [v for values in gwas_group_dict.values() for v in values]
+    pattern = "|".join(pattern)
+    pivot_corr_df = corr_df.pivot(index=['gwasx','gwasy'],columns='method')
+    links, nodes = get_links_and_nodes(corr_df, pivot_corr_df, pattern, sign_threshold)
     
-    def bar_plot(self, locus_name, data, bottom=None, height=None, positions=None, facecolor=None, linewidth=0.0, edgecolor="k"): 
-        start = self.locus_dict[locus_name]["positions"][0] 
-        end   = self.locus_dict[locus_name]["positions"][-1]
-        if positions == None:
-            positions = np.linspace(start, end, len(data), endpoint=False)
-        else:
-            pass 
-        
-        if bottom is None:
-            bottom = self.bottom 
-        
-        if height is None:
-            top = bottom + self.height
-        else:
-            top = bottom + height
-        
-        if facecolor is None:
-            facecolor = Gcircle.colors[self.color_cycle % len(Gcircle.colors)] 
-            self.color_cycle += 1
-        
-        width = positions[1] - positions[0] 
-#         max_value = max(data) 
-#         min_value = min(data)
-#         data = np.array(data) - min_value
-#         data = np.array(data * ((top - bottom) / (max_value - min_value)))
-        self.ax.bar(positions, data, bottom=bottom, facecolor=facecolor, width=width, linewidth=linewidth, edgecolor=edgecolor, align="edge")
-#         self.ax.set_ylim(bottom+ylim[0],bottom+ylim[1])
+    # check significance of correlations
+    pivot_corr_df.reset_index(inplace=True)
+    pivot_corr_df['pval'] = pivot_corr_df['pval'] < calculate_beta_correlation.get_pthres(corr_df) # set True if signifiant
+    pivot_corr_df.columns = [' '.join(col).strip().replace(' ','_' ) for col in pivot_corr_df.columns.values]
+    
+    gwas_links = get_gwas_links(pivot_corr_df, pattern, gwas_name)
+    return links, nodes, gwas_links
+    
+def plot(corr_df, gwas_group_dict, gwas_name, sign_threshold=len(constants.METHODS)-2,
+         bottom=1200, ylim=5000, color_map='tab10', figsize=(10,10),
+         save=False, filename=None):
+    '''
+    corr_df: correlation dataframe from calculate_beta_correlation.calculate_celltype_corr
+    gwas_group_dict: dictionary of GWAS groups to compare against
+    gwas_name: name of the to be analyzed GWAS
+    sign_threshold: the significance threshold for the inner chord plot
+    '''
+    gwas_group_dict = {k:v for k,v in gwas_group_dict.items() if gwas_name not in v}
 
-#     def chord_plot_pandas(gcircle, row):
-#         if row[f'pval_{constants.PVAL_CORRECTION}']<=0.05:
-#             dataset_start = []
-#             for i in [1,2]:
-#                 dataset, celltype = row[f'celltype{i}'].split(', ')
-#                 reset_df = df_circos[(df_circos['specificity_id']==dataset)].reset_index().drop('index', axis=1)
-#                 start = reset_df[(reset_df['annotation']==celltype)].index.values
-#                 dataset_start.append([dataset, start])
-#             dataset1, start1 = dataset_start[0]
-#             dataset2, start2 = dataset_start[1]
-#             gcircle.chord_plot([dataset1,start1-1,start1],[dataset2,start2-1,start2], bottom=bottom,
-#                                color=cmap(norm(row['corr'])),alpha=1)
+    links, nodes, gwas_links = preprocessing(corr_df, gwas_group_dict, gwas_name, sign_threshold)
+    
+    plt.style.use('default')
+    cmap = cm.get_cmap('seismic')
+    norm = plt.Normalize(-1, 1)
+    cmap_group = {group_name:cm.get_cmap(color_map)(i) for i,group_name in enumerate(gwas_group_dict.keys())}
 
-
+    # make nodes
+    gcircle = Gcircle()
+    for node in nodes:
+        for k,v in gwas_group_dict.items():
+            if re.search("|".join(v),node):
+                gcircle.add_locus(f"{k}, {node}", 2,
+                                  bottom=bottom,
+                                  linewidth=1, interspace=0, 
+                                  facecolor=cmap_group[k],
+                                  edgecolor=cmap_group[k])
+    gcircle.set_locus(figsize=figsize) #Create figure object
+    gcircle.ax.set_ylim(0,ylim)
+    # make chords inside the circle
+    links.apply(lambda row: chord_plot_pandas(gcircle, row, gwas_group_dict, bottom, cmap, norm), axis=1)
+    # make the barplots around the circle
+    annotation_layer(gcircle, gwas_links, nodes, cmap, norm, bottom=bottom, axis_color='k')
+    # add legend
+    patches = [mpatches.Patch(color=v, label=k) for k,v in cmap_group.items()]
+    gcircle.ax.legend(handles=patches, bbox_to_anchor=(1.2, 1), loc=1, frameon=False)
+    if save:
+        plt.savefig(filename, dpi=150, bbox_inches='tight')
