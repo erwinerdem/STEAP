@@ -13,6 +13,7 @@ STEAP runs multiple post-processing steps on top of CELLECT output files:
 ## Installation
 **Step 1: Install (mini)conda**  
 The pipeline works in conda enviroments, so you will have to install anaconda or miniconda first if not already on the system.
+You can do this by running:
 ```
 wget "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86.sh"
 bash Miniconda3-latest-Linux-x86_64.sh
@@ -20,13 +21,14 @@ rm Miniconda3-latest-Linux-x86_64.sh
 ```
 
 **Step 2: Clone this repo and run the install script** 
-First clone this repo, and then run the install.sh script.
+
+First clone this repo, and then run the install.sh script by running:
 ```
 git clone https://github.com/erwinerdem/STEAP.git
 bash STEAP/install.sh
 conda activate steap
 ```
-This script creates the necessary conda environments and clones the CELLECT repo and merges it with STEAP.
+This will create  the necessary conda environments and clones the CELLECT repo and merges it with STEAP.
 
 ## Getting Started
 Any GWAS summary statistic of your interest can be used in this tutorial.
