@@ -77,5 +77,5 @@ snakemake --use-conda -j -s cellect-h-magma.snakefile --configfile config/config
 snakemake --use-conda -j -s cellect-ldsc.snakefile --configfile config/config.yml
 ```
 
-### Running the post-processing notebook
+#### Running the post-processing notebook
 To use the post-processing scripts just use the [notebook](https://github.com/erwinerdem/STEAP/blob/master/notebooks/depression_example.ipynb) after running the pipeline.
