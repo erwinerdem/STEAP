@@ -65,6 +65,10 @@ Converting the scRNA to ES matrix requires CELLEX. This can be installed as ment
 
 #### Running the pipeline
 To run the pipeline a `config.yml` must first be set up. For the PGC depression GWAS we will use the [config.yml](https://github.com/erwinerdem/STEAP/tree/master/config/config.yml) file. This file can be edited to instead include your own GWAS summary statistics or scRNA-seq data.
+Under `SPECIFICITY_INPUT` you can add the `id` and `path` of your ES matrix file. The `id` is simply the identifier for the dataset and the `path` the path to the file. 
+Similarly, under `GWAS_SUMSTATS` you can add new munged GWAS summary statistics.
+If you want to include a different annotation file for H-MAGMA, you can edit this under `HMAGMA_ANNOT`. The results will be saved in the `BASE_OUTPUT_DIR`.
+For normal use it is recommended to only edit these parameters and leave the rest as is, unless you know what you are doing.
 
 To run the enrichment analysis run:
 ```
@@ -73,4 +77,5 @@ snakemake --use-conda -j -s cellect-h-magma.snakefile --configfile config/config
 snakemake --use-conda -j -s cellect-ldsc.snakefile --configfile config/config.yml
 ```
 
-...
+### Running the post-processing notebook
+To use the post-processing scripts just use the [notebook](https://github.com/erwinerdem/STEAP/blob/master/notebooks/depression_example.ipynb) after running the pipeline.
