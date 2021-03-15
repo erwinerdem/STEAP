@@ -44,15 +44,20 @@ def make_df_sliced(df, gwas_group_dict, sign_threshold):
     return df_sliced
 
 
-def make_df_upset(df, gwas_group_dict, sign_threshold):
+def make_df_upset(df, gwas_group_dict, sign_threshold, sort_categories_by):
     df_sliced = make_df_sliced(df, gwas_group_dict, sign_threshold)
     df_sliced_upset = df_sliced.groupby(['specificity_id','annotation'])['group'].agg(list).reset_index()
     df_sliced_upset['group'] = df_sliced_upset['group'].apply(set)
     df_sliced_upset = df_sliced_upset['group'].value_counts().reset_index()
-    groups = list(df_sliced['group'].unique())
+#     groups = list(df_sliced['group'].unique())
+    groups = list(gwas_group_dict.keys())[::-1]
     for g in groups:
         df_sliced_upset[g] = df_sliced_upset['index'].apply(lambda x : g in x)
     df_sliced_upset.drop(columns='index', inplace=True)
+    if sort_categories_by is None:
+        new_column = groups.copy()
+        new_column.append('group')
+        df_sliced_upset = df_sliced_upset.reindex(columns=new_column)
     df_sliced_upset.set_index(groups, inplace=True)
     return df_sliced_upset 
 
@@ -73,17 +78,20 @@ def get_shared_celltypes(df, gwas_group_dict, sign_threshold,
 def plot_upset(df, gwas_group_dict, sign_threshold=len(constants.METHODS)-1,
                save=False, filename=None,
                show_percentages=False, sort_by='cardinality',
-               with_lines=True,  element_size=46, show_counts='%d'):
+               with_lines=True,  element_size=46, show_counts='%d', sort_categories_by = 'cardinality'):
     gwas_group_dict_copy = add_count_to_group_dict(df, gwas_group_dict)
-    df_sliced_upset = make_df_upset(df, gwas_group_dict_copy, sign_threshold)
+    df_sliced_upset = make_df_upset(df, gwas_group_dict_copy, sign_threshold, sort_categories_by)
     plt.style.use('default')
     upsetplot.plot(df_sliced_upset['group'], show_percentages=show_percentages,
                    sort_by=sort_by, with_lines=with_lines, #cardinality, degree
                    element_size=element_size, 
-                   show_counts=show_counts)
-    plt.show()
+                   show_counts=show_counts,
+                   sort_categories_by=sort_categories_by #cardinality, None
+                  )
     if save:
         plt.savefig(filename, dpi=200, bbox_inches='tight')
+    plt.show()
+
 
 
 if __name__ == "__main__":

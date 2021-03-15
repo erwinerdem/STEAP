@@ -7,6 +7,7 @@ channels:
 dependencies:
   - _libgcc_mutex=0.1=conda_forge
   - _openmp_mutex=4.5=1_gnu
+  - adjusttext=0.7.3.1=py_1
   - aioeasywebdav=2.4.0=py39hf3d152e_1001
   - aiohttp=3.7.4=py39h3811e60_0
   - alabaster=0.7.12=py_0
@@ -28,7 +29,7 @@ dependencies:
   - brotlipy=0.7.0=py39h3811e60_1001
   - bzip2=1.0.8=h7f98852_4
   - c-ares=1.17.1=h36c2ea0_0
-  - ca-certificates=2020.10.14=0
+  - ca-certificates=2020.12.5=ha878542_0
   - cachetools=4.2.1=pyhd8ed1ab_0
   - cairo=1.16.0=h7979940_1007
   - certifi=2020.12.5=py39hf3d152e_1
@@ -150,6 +151,7 @@ dependencies:
   - markupsafe=1.1.1=py39h3811e60_3
   - matplotlib=3.3.4=py39hf3d152e_0
   - matplotlib-base=3.3.4=py39h2fa2bec_0
+  - matplotlib-venn=0.11.6=pyh9f0ad1d_0
   - mock=4.0.3=py39hf3d152e_1
   - multidict=5.1.0=py39h3811e60_1
   - mygene=3.2.1=pyh3252c3a_0
