@@ -1,0 +1,266 @@
+Class,ClusterName,Comment,Description,Developmental_compartment,Location_based_on,MarkerGenes,NCells,Neurotransmitter,Probable_location,Region
+Neurons,ENT9,Marklund cluster #1,Cholinergic enteric neurons,Neural crest,"Vip,Cck",P2rx2 Krt19 Myl1 Adgrg6 Ano2 Gpr149,169,Acetylcholine,Myenteric plexus of small intestine,Enteric nervous system
+Neurons,ENT8,Marklund cluster #3,"Cholinergic enteric neurons, VGLUT2",Neural crest,"Th,Slc6a3,",Ucn3 Phox2a Myl1 AW551984 Etaa1os Kcna5,97,"Glutamate (VGLUT2),Acetylcholine",Myenteric plexus of small intestine,Enteric nervous system
+Neurons,ENT6,Marklund cluster #6,Cholinergic enteric neurons,Neural crest,"Rorb,Tph2",Htr2b Tm4sf4 mt-Nd3 mt-Co3 mt-Co2 Chrnb4,118,Acetylcholine,Myenteric plexus of small intestine,Enteric nervous system
+Neurons,ENT5,Marklund cluster #4,Cholinergic enteric neurons,Neural crest,Based on dissection,Hoxa5 Hspb7 Dmkn Dsc3 Hmx2 E530001K10Rik,259,Acetylcholine,Myenteric plexus of small intestine,Enteric nervous system
+Neurons,ENT4,No corresponding Marklund cluster,Cholinergic enteric neurons,Neural crest,"Tph2,Ifit1,Chodl",Hoxa5 Myc Dmkn Dsc3 mt-Atp6 Casz1,155,Acetylcholine,Myenteric plexus of small intestine,Enteric nervous system
+Neurons,ENT7,Marklund cluster #5,"Cholinergic enteric neurons, VGLUT2",Neural crest,Based on dissection,Cckar Nxph2 Gna14 Pgam1 Tbx3 mt-Nd4l,31,"Glutamate (VGLUT2),Acetylcholine",Myenteric plexus of small intestine,Enteric nervous system
+Neurons,ENT3,Marklund cluster #2,Nitrergic enteric neurons,Neural crest,"Trh,Tph2",Cox8b Anxa11 Ass1 S100a4 Tes Adamts5,155,Nitric oxide,Myenteric plexus of small intestine,Enteric nervous system
+Neurons,ENT2,Marklund cluster #2,Nitrergic enteric neurons,Neural crest,"Tac2,Gal,Cartpt",Cartpt Bglap Ass1 Camp Tes Slc35d3,107,Nitric oxide,Myenteric plexus of small intestine,Enteric nervous system
+Neurons,ENT1,No corresponding Marklund cluster,Nitrergic enteric neurons,Neural crest,"Prkcd,Zic1",Gal Moxd1 Tmem255b Tmc3 Kcnj5 Chrna3,14,Nitric oxide,Myenteric plexus of small intestine,Enteric nervous system
+PeripheralGlia,ENTG1,Foxd3 positive,"Enteric glia, proliferating",Neural crest,"Lefty1,Spink8",Cenpf Hist1h2ap Cks2 Prc1 Top2a Ccna2,163,,Enteric nervous system,Enteric nervous system
+PeripheralGlia,ENTG4,"have some neuronal markers like Camk2b,Nrn1,Klk8. Foxd3 positive",Enteric glia,Neural crest,"Nr2f2, Scml4",Tax1bp3 4930589L23Rik Col20a1 Postn Sumo2 Rps12-ps3,4044,,Enteric nervous system,Enteric nervous system
+PeripheralGlia,ENTG2,nan,Enteric glia,Neural crest,"Coro6,Scn4b",Hspa1a Casp4 Gm12216 Atf3 Socs3 Cxcl1,2160,,Enteric nervous system,Enteric nervous system
+PeripheralGlia,ENTG3,Foxd3 positive,Enteric glia,Neural crest,Dcn,Hspa1a Parp14 Pdlim1 Mmp2 Matn2 Actg1,1135,,Enteric nervous system,Enteric nervous system
+PeripheralGlia,ENTG6,nan,Enteric glia,Neural crest,"Tac1, Ly6g6e",Ifi27l2a Lbp H2-Q7 Scn7a Sostdc1 Sfrp1,811,,Enteric nervous system,Enteric nervous system
+PeripheralGlia,ENTG5,Foxd3 positive,Enteric glia,Neural crest,"Baiap3,Calb2",Fam198b 4930589L23Rik Olfml2a Scn7a Col18a1 Sfrp1,1132,,Enteric nervous system,Enteric nervous system
+PeripheralGlia,ENTG7,Foxd3 positive,Enteric glia,Neural crest,"Tox3,Cartpt",Col12a1 Cpxm2 Ctgf Col9a2 Tbx3os1 Col11a1,1041,,Enteric nervous system,Enteric nervous system
+Vascular,ENMFB,"lack Vtn,Igf2,Gjb2 (neural crest origin is uncertain)",Enteric mesothelial fibroblasts,Neural crest,"Cacng5, Reln",Dpt Spon2 Lum Thbs2 Tcf21 Ms4a4d,49,,Enteric nervous system,Enteric nervous system
+Oligos,MOL3,nan,"Mature oligodendrocytes, spinal cord enriched (high Klk6)",CNS,"Apold1,Cyp1b1",Klk6 Nkx2-9 Cdkn1c Rab37 2700046A07Rik Trf,1849,,Spinal cord-enriched,CNS
+Oligos,MOL2,Possible batch effect,"Mature oligodendrocytes, hindbrain",CNS,Apold1,Hapln2 Dock5 Anln Ugt8a Gjb1 Prr5l,10011,,Pons/medulla (possible batch effect),CNS
+Oligos,MFOL1,Possible batch effect,Myelin forming oligodendrocytes (MFOL),CNS,Vip,Ccp110 Snx33 Hhip Tmem88b Arap2 Ano4,3684,,Pons/medulla (possible batch effect),CNS
+Oligos,MOL1,nan,Mature oligodendrocytes,CNS,"Gal,Th",Opalin Ninj2 Efhd1 Mal Ppp1r14a Mog,8715,,CNS,CNS
+Oligos,MFOL2,nan,Myelin forming oligodendrocytes (MFOL),CNS,"Pvalb,Meis2",2210011C24Rik Wfdc18 Tmem141 Birc2 Fam214a Ctps,2415,,CNS,CNS
+Oligos,NFOL1,nan,Newly formed oligodendrocytes (NFOL),CNS,"Pvalb,Sst,Meis2",Cnksr3 H2-Ab1 Rras2 Il23a Tmem163 Kif19a,1612,,CNS,CNS
+Oligos,NFOL2,Possible batch effect,"Newly formed oligodendrocytes (NFOL), pons/medulla specific",CNS,"Pthlh,Pvalb,C1ql1",Tmem2 Gm26834 Rras2 Itpr2 Sema4d Nckap5,181,,Pons/medulla (possible batch effect),CNS
+Oligos,COP2,Possible batch effect,"Committed oligodendrocytes cells (COP), pons/medulla specific",CNS,"Pvalb,Satb1,Tac1",Tnr Rinl Gpr17 Enpp6 Pdcd4 Vcan,254,,Pons/medulla (possible batch effect),CNS
+Oligos,COP1,nan,Committed oligodendrocytes cells (COP),CNS,"Sst,Npy,Calb1",Neu4 Brca1 Bmp4 Pak4 Lims2 Pycr1,1532,,CNS,CNS
+Neurons,HBSER2,nan,"Serotonergic neurons, hindbrain",Rhombencephalon,"Tac1,Penk",Tph2 Slc17a8 Maob Fev Slc22a3 Hs6st2,109,"Serotonin, Glutamate (VGLUT3)","Nucleus raphe Pons (B5, B6)",Pons
+Neurons,HBSER1,nan,"Serotonergic neurons, hindbrain",Rhombencephalon,"Ntng1,Nefm",Slc6a4 Wfdc12 Slc18a2 Fev C130021I20Rik Cryba2,105,"Serotonin, Glutamate (VGLUT3)","Ventral midbrain/isthmic dorsal raphe (B7), caudal linear nucleus (B8), medial lemniscus (B9), isthmic periaqueductal grey (B4?)",Pons
+Neurons,HBSER3,nan,"Serotonergic neurons, hindbrain",Rhombencephalon,"Sst,Tac1",Gchfr Il1r1 Slc18a2 Fev Slc22a3 Cryba2,87,Serotonin,"Ventral midbrain, rostral pons",Pons
+Neurons,HBSER4,nan,"Serotonergic neurons, hindbrain",Rhombencephalon,"Nos1,Npy,Vip",Trh Pgr15l Slc18a2 Gabre Nkx6-1 Calcr,72,"Serotonin, Glutamate (VGLUT3)","Nucleus raphe medulla (pallidus, oscurus, magnus, B1-3)",Medulla
+Neurons,HBSER5,nan,"Serotonergic neurons, hindbrain",Rhombencephalon,"Nkain4,Col9a2",Tph2 5031425F14Rik Slc18a2 Fev Slc22a3 Calcr,64,Serotonin,"Nucleus raphe pons (pallidus, oscurus, magnus, B1-3)",Pons
+Neurons,TEGLU15,nan,"Excitatory neurons, cerebral cortex",Telencephalon,"Pdgfra,Dcn,Lum",Scube1 Tekt5 Fam19a2 Hrk Plcxd2 Gpr26,186,"Glutamate (VGLUT1,VGLUT2)",Piriform pyramidal,Cortex
+Neurons,TEGLU16,nan,"Excitatory neurons, cerebral cortex",Telencephalon,"Slc47a1,Lypd2",RP23-231J2.1 Dbpht2 Cdkl4 Nwd2 D630023F18Rik Trps1,61,"Glutamate (VGLUT1), Nitric oxide",Piriform pyramidal,Cortex
+Neurons,TEGLU5,nan,"Excitatory neurons, cerebral cortex",Telencephalon,"Pdgfra,Dcn,Lum",Rxfp1 Fermt1 Cbln4 Cemip Ovol2 Igfbp5,126,"Glutamate (VGLUT1,VGLUT2)",Entorhinal superficial layers,Cortex
+Neurons,TEGLU4,nan,"Excitatory neurons, cerebral cortex",Telencephalon,,Fezf2 RP24-134N2.1 Kcng1 Kcnf1 Galnt9 Nos1ap,664,Glutamate (VGLUT1),"Cortex pyramidal layer 5, Cingulate/Retrosplenial area (superficial and deep)",Cortex
+Neurons,TEGLU22,nan,"Excitatory neurons, amygdala",Telencephalon,,Lypd1 Prss23 Kcng1 C1ql3 Myh7 Enc1,958,Glutamate (VGLUT1),Basolateral amygdala,Amygdala
+Neurons,TEGLU23,nan,"Excitatory neurons, hippocampus CA3",Telencephalon,,Lpl Gm26644 Nr4a3 Nptx1 Rnf182 Slc26a4,484,"Glutamate (VGLUT1), Nitric oxide",CA3,Hippocampus
+Neurons,TEGLU24,nan,"Excitatory neurons, hippocampus CA1",Telencephalon,,Spink8 Lefty1 Neurod6 4921539H07Rik Wipf3 Rprml,2037,"Glutamate (VGLUT1), Nitric oxide",CA1,Hippocampus
+Neurons,TEGLU17,nan,"Excitatory neurons, cerebral cortex",Telencephalon,,Trim54 Slc30a3 Lmo3 Nptxr Fam19a1 Kcnj4,784,Glutamate (VGLUT1),Piriform pyramidal,Cortex
+Neurons,TEGLU18,nan,"Excitatory neurons, cerebral cortex",Telencephalon,,Abi3bp 4930426D05Rik Ndst4 Klhl14 Rgs14 Atp2b4,657,Glutamate (VGLUT1),"Anterior olfactory nucleus, deep layer",Cortex
+Neurons,TEGLU19,nan,"Excitatory neurons, cerebral cortex",Telencephalon,,Oxtr Bmp3 Ndst4 C1ql3 Crym Gm10605,89,Glutamate (VGLUT1),Anterior olfactory nucleus and ventral striatum,Cortex
+Neurons,TEGLU2,nan,"Excitatory neurons, cerebral cortex",Telencephalon,"Hexb, Siglech, Nfkbia, Ccl3, Atf3",Cplx3 Nxph3 Hs3st4 Ipcef1 Mpped1 E130012A19Rik,274,Glutamate (VGLUT1),Cortex pyramidal layer 6b,Cortex
+Neurons,TEGLU3,nan,"Excitatory neurons, cerebral cortex",Telencephalon,"Hexb, Siglech, Nfkbia, Ccl3, Atf3",Rprm Rell1 3110035E14Rik Tbr1 Garnl3 Ephb6,2734,Glutamate (VGLUT1),Cortex pyramidal layer 6,Cortex
+Neurons,TEGLU14,nan,"Excitatory neurons, cerebral cortex",Telencephalon,"Pdgfra,Dcn,Lum",Cbln1 Ntsr1 Htr1a Nwd2 Gsg1l Satb1,35,Glutamate (VGLUT1),Subiculum,Cortex
+Neurons,TEGLU13,nan,"Excitatory neurons, cerebral cortex",Telencephalon,"Bmx,Gkn3,Sema3g",Wfs1 RP24-134N2.1 Vwc2l Lhx2 Prkcg Sorcs3,127,"Glutamate (VGLUT1,VGLUT2), Nitric oxide",Subiculum,Cortex
+Neurons,TEGLU21,nan,"Excitatory neurons, hippocampus CA1",Telencephalon,,Nov 4833422C13Rik Baiap2l1 6330403A02Rik Gda Sv2b,104,"Glutamate (VGLUT1), Nitric oxide","CA1 (posterior),subiculum,entorhinal",Hippocampus
+Neurons,TEGLU10,nan,"Excitatory neurons, cerebral cortex",Telencephalon,"Cldn5,Slc38a5,Serpine1,Cd82",Hs3st2 Vipr1 Pde1a Satb2 Slc17a7 Sv2b,866,Glutamate (VGLUT1),Cortical pyramidal layer 5,Cortex
+Neurons,TEGLU11,nan,"Excitatory neurons, cerebral cortex",Telencephalon,"Mrc1, Pf4",Igfbp6 C130074G19Rik Rasl10a Satb2 Ovol2 Lingo1,1464,Glutamate (VGLUT1),Cortical pyramidal (poor markers),Cortex
+Neurons,TEGLU20,nan,"Excitatory neurons, cerebral cortex",Telencephalon,"Mrc1, Ccl7, Cxcl2",Sulf1 Prss12 1110032F04Rik Cnih3 Ptpru Atp2b4,55,Glutamate (VGLUT1),Cortex pyramidal layer 6,Cortex
+Neurons,TEGLU12,nan,"Excitatory neurons, cerebral cortex",Telencephalon,"Cldn5,Slc38a5",Nr4a2 Col24a1 Oprk1 B3gat2 Kcnv1 Stk32c,386,"Glutamate (VGLUT1,VGLUT2)","Lateral cortex layer 6: gustatory, barrel field, auditory",Cortex
+Neurons,TEGLU9,nan,"Excitatory neurons, cerebral cortex",Telencephalon,"Pth1r,Pdgfrb,Serpine1,Cd82",Dkkl1 Galntl6 Pkib Satb2 Nrep Stx1a,202,Glutamate (VGLUT1),"Cingulate/Retrosplenial area, layer 5",Cortex
+Neurons,TEGLU8,nan,"Excitatory neurons, cerebral cortex",Telencephalon,"Pth1r,Pdgfrb",Krt12 Tcap A830036E02Rik Tnnc1 Ovol2 Stx1a,3071,Glutamate (VGLUT1),Cortical pyramidal layer 4,Cortex
+Neurons,TEGLU7,nan,"Excitatory neurons, cerebral cortex",Telencephalon,"Acta2,Tagln",A830009L08Rik Gm12371 Lamp5 Calb1 Dact2 Cacng3,2435,Glutamate (VGLUT1),Cortical pyramidal layer 2/3,Cortex
+Neurons,TEINH10,nan,"R-LM border Cck interneurons, cortex/hippocampus",Telencephalon,"Ntrk2low,Ntrk3,Ret,fam19a1",Yjefn3 Hdhd3 Npas1 Cck Trp53i11 Necab2,581,"GABA, Glutamate (VGLUT3)","Hippocampus (sr/slm),Cortex","Hippocampus,Cortex"
+Neurons,TEINH11,nan,"R-LM border Cck interneurons, cortex/hippocampus",Telencephalon,"Ntrk1,Calca,Kit,Fam19a1high",Col19a1 Slc17a8 Adarb2 Cadps2 Kctd12 Syt6,660,"GABA,Glutamate (VGLUT3), Nitric oxide","Hippocampus (sr/slm),Cortex","Hippocampus,Cortex"
+Neurons,TEINH12,nan,"Non-border Cck interneurons, cortex/hippocampus",Telencephalon,"Ntrk2,Necab2,Cacna1h",Krt73 Stk32b 5330429C05Rik Egln3 Dlx6os1 Wnt5a,280,"GABA,Glutamate (VGLUT3)","Hippocampus,Cortex","Hippocampus,Cortex"
+Neurons,TEINH9,nan,"Non-border Cck interneurons, hippocampus",Telencephalon,"Pvalb,Ntrk3,Spp1high,Cntnap2high",Vip Fam181b Gm8797 Egln3 Usp28 Kcnip1,162,GABA,Hippocampus,Hippocampus
+Neurons,OBINH5,Likely van Gehuchten cells,"External plexiform layer interneuron, olfactory bulb",Telencephalon,,Crh Tcap Pgam2 Pde1c Nxph1 Pygm,56,GABA,"Olfactory bulb, outer plexiform layer",Olfactory bulb
+Neurons,TEINH5,nan,"Interneuron-selective interneurons, cortex/hippocampus",Telencephalon,"Ntrk1,Kit,Calca,Tac1,Gfra3,Sstr2,",Vip Tiam1 Myl1 Vwc2 Dlx6os1 Prox1os,449,"GABA, Nitric oxide","Hippocampus,Cortex","Hippocampus,Cortex"
+Neurons,TEINH6,nan,"Interneuron-selective interneurons, cortex/hippocampus",Telencephalon,"TrpM8,ASIC1,Tac1,Gfra3",Tac2 Epha7 Npas1 Rgs12 Nr2f2 March1,145,GABA,"Hippocampus,Cortex","Hippocampus,Cortex"
+Neurons,TEINH7,nan,"Interneuron-selective interneurons, hippocampus",Telencephalon,"Ntrk1,Tac1,Gfra3,lmod1",Htr3a Mns1 Npas1 Qpct Usp28 Stmn1,68,GABA,Hippocampus,Hippocampus
+Neurons,TEINH8,nan,"Interneuron-selective interneurons, hippocampus",Telencephalon,"Ntrk1,Calca,Kit,Gfra3,Tac1",Vip Ccne1 Myl1 Cidea Usp28 Pcdh8,57,GABA,Hippocampus,Hippocampus
+Neurons,TEINH4,nan,"Interneuron-selective interneurons, cortex/hippocampus",Telencephalon,"Ntrk1,Calca,Kit,Gfra3,Tac1,Traf3ip3,,Itk",Vip Gm17750 Cxcl14 Adra1b Dlx6os1 Kcnip1,645,GABA,"Hippocampus,Cortex","Hippocampus,Cortex"
+Neurons,TEINH20,"May also be located to the hilus of the dentate gyrus, based on Slc18a2","Inhibitory interneurons, hippocampus",Telencephalon,"Mrgprd,Gfra2,Runx1,Prkcq,Ret",Cyp26b1 Stk32b Chrm2 Tcerg1l Nell1 Grik1,139,GABA,Hippocampus (sr/slm),Hippocampus
+Neurons,TEINH13,nan,"Trilaminar cells, hippocampus",Telencephalon,"Zfp521,Ret,Gfra2,Asic1,Slc17a8",Ibsp Cnr1 Ntng1 Rgs8 Arx Unc5d,163,"GABA, Glutamate (VGLUT3)",Hippocampus,Hippocampus
+Neurons,TEINH14,nan,"CGE-derived neurogliaform cells Cxcl14+, cortex/hippocampus",Telencephalon,"Mrgprd,Gfra2,Runx1,Prkcq,Ret,P2rx3",Cplx3 Teddm3 Reln Gad2 Parm1 Kcnip1,422,GABA,"Hippocampus,Cortex","Hippocampus,Cortex"
+Neurons,TEINH16,nan,"Ivy and MGE-derived neurogliaform cells, cortex/hippocampus",Telencephalon,"Mrgpra3,Gfra1,Ret,Calca,P2rx3",Lhx6 Pde11a Hapln1 Ngf Kcns3 Vstm2a,644,"GABA, Nitric oxide","Hippocampus,Cortex","Hippocampus,Cortex"
+Neurons,TEINH15,nan,"CGE-derived neurogliaform cells, cortex/hippocampus",Telencephalon,"Mrgpra3,Gfra1,Ret",Npy Ptchd2 Pnoc Gad2 Resp18 Arl4c,1069,"GABA, Nitric oxide","Hippocampus,Cortex","Hippocampus,Cortex"
+Neurons,TEINH19,nan,"Hippocamposeptal projection, cortex/hippocampus",Telencephalon,"Neu4,Bmp4",Sst Ccna1 Elfn1 Lypd6 Lypd6b Rab3b,1040,GABA,"Hippocampus (so),Cortex","Hippocampus,Cortex"
+Neurons,TEINH21,nan,"Sleep-active, long-range projection interneurons, cortex/hippocampus",Telencephalon,"Sst,Nppb,,Nts,IL31RA,Osmr,P2rx3",Crhbp Tacr1 Chodl Gm11744 Cygb Klf5,385,"GABA, Nitric oxide","Hippocampus,Cortex","Hippocampus,Cortex"
+Neurons,HYPEP7,nan,"Pmch neurons, hypothalamus",Diencephalon,"Fst,Gfra3",Pmch Nkx2-1 Otx1 Klhl13 Fam46a Gstm6,13,Glutamate (VGLUT2),Lateral hypothalamic area,Hypothalamus
+Neurons,HYPEP6,nan,"Orexin-producing neurons, hypothalamus",Diencephalon,"Lypd1,Vdr",Hcrt Pdyn Trhr Plagl1 Pcsk1 Nptx2,32,Nitric oxide,Dorsomedial nucleus of the hypothalamus,Hypothalamus
+Neurons,DEINH8,nan,"Inhibitory neurons, hypothalamus",Diencephalon,"Prkcd,Socs2",Six6 Rgs16 Pkib Scg2 Rab26os B630019K06Rik,120,GABA,"Suprachiasmatic nucleus, Medial preoptic nucleus",Hypothalamus
+Neurons,MBDOP1,"Th but very low Slc6a3, neither VGLUT1,2 or 3; no Gad1 or Gad2","Dopaminergic neurons, periaqueductal grey",Mesencephalon,"Nmu,Calcb",En1 Npw Ret D930028M14Rik C130021I20Rik Pou2f2,57,Dopamine,"Ventral midbrain, periaqueductal grey",Midbrain ventral
+Neurons,MBDOP2,nan,"Dopaminergic neurons, ventral midbrain (SNc, VTA)",Mesencephalon,"Cck,Ucn3",Slc6a3 Chrna6 Chrnb3 Ddc Aldh1a1 Chrna4,63,Dopamine,Ventral tegmental area and subtantia nigra,Midbrain ventral
+Neurons,MEGLU14,https://www.ncbi.nlm.nih.gov/pubmed/18925658,Glutamatergic projection neurons of the raphe nucleus,Mesencephalon,Bmp4,Cartpt Ucn Chodl Gm15469 Sdc1 Foxa2,47,Glutamate (VGLUT3),Dorsal raphe nucleus,Midbrain dorsal
+Neurons,MEGLU11,nan,"Excitatory neurons, midbrain",Mesencephalon,"Slc17a7,Ramp3",En1 Sema3f Ndst4 Inadl Plcxd2 Mab21l1,249,Glutamate (VGLUT1),Inferior colliculus,Midbrain dorsal
+Neurons,MEGLU10,Poor markers,"Excitatory neurons, midbrain",Mesencephalon,"Calca,Cbln1",En1 Ngb Ndst4 AW551984 Zfhx4 Mab21l1,419,"Glutamate (VGLUT1), Nitric oxide",Inferior colliculus,Midbrain dorsal
+Neurons,MEGLU9,nan,"Excitatory neurons, midbrain",Mesencephalon,"Doc2b,Slc30a3",Tcf7l2 Zfp239 Cbln2 AW551984 Zfhx4 Usp29,243,"Glutamate (VGLUT1), Nitric oxide",Mantle of inferior colliculus,Midbrain dorsal
+Neurons,MEGLU8,Poor markers,"Excitatory neurons, midbrain",Mesencephalon,"Lypd6b,Inhba",Lhx9 Tfap2d Adcyap1 Fam84a Tmem91 Runx1t1,305,"Glutamate (VGLUT1), Nitric oxide",Inferior colliculus,Midbrain dorsal
+Neurons,MEGLU7,Poor markers,"Excitatory neurons, midbrain",Mesencephalon,Spatial mapping,Tcf7l2 Coro6 Tpbg Vstm2b Plk5 Hapln4,138,Glutamate (VGLUT1),Inferior colliculus,Midbrain dorsal
+Neurons,MEGLU6,nan,"Excitatory neurons, midbrain",Mesencephalon,"Tac2,Pou4f1",Npnt Gpc3 Tmem132c Kcnd3 Tpd52l1 Scn3a,143,Glutamate (VGLUT1),"Superior colliculus, sensory related, deep layer",Midbrain dorsal
+Neurons,DEGLU5,"doi:10.1007/s00429-011-0348-3 Very similar to Thalamus cluster, changed","Excitatory neurons, midbrain",Mesencephalon,"Lhfp,Gabrr2",Tcf7l2 Cabp7 Htr2c Gm13205 Gm13629 Chrna4,426,Glutamate (VGLUT1),Anterior pretectal nucleus,Midbrain dorsal
+Neurons,MEGLU2,nan,"Excitatory neurons, midbrain",Mesencephalon,"Tnnt1,Tnni3",Tac1 Trim66 Hap1 Cd83 Rasgrf2 Gm28050,336,Glutamate (VGLUT1),Periaqueductal grey,Midbrain dorsal
+Neurons,MEGLU3,nan,"Excitatory neurons, midbrain",Mesencephalon,"Cbln4,Hopx",Cartpt Pou4f2 Foxp2 Ctxn2 Rnd1 Nptx2,137,Glutamate (VGLUT1),Periaqueductal grey,Midbrain dorsal
+Neurons,MEGLU1,Should split in two clusters(other side has Cbln1),"Excitatory neurons, midbrain",Mesencephalon,"Otx2,Sox14",Syt2 Oscp1 Vamp1 Cd83 Scn1a Nova1,263,Glutamate (VGLUT1),"Superior colliculus, red nucleus",Midbrain dorsal
+Neurons,MEGLU5,nan,"Excitatory neurons, midbrain",Mesencephalon,"Ndnf,Lhx5,Trp73",Barhl1 Myh8 Rorb Col25a1 Cdh7 Gabrg1,281,Glutamate (VGLUT1),"Superior colliculus, sensory related",Midbrain dorsal
+Neurons,MEGLU4,nan,"Excitatory neurons, midbrain",Mesencephalon,"Hmcn1,Sorcs1",Barhl1 Kcnab1 Sorcs1 Col25a1 Cpne9 Pcdh8,136,"Glutamate (VGLUT1), Nitric oxide","Superior colliculus, sensory related",Midbrain dorsal
+Neurons,DEGLU4,nan,"Excitatory neurons, thalamus",Diencephalon,Spatial mapping,Cbln1 Megf11 Cbln4 Wnt4 Lypd6b Rhbdl3,101,Glutamate (VGLUT2),Parafascicular nucleus,Thalamus
+Neurons,DEGLU3,nan,"Excitatory neurons, thalamus",Diencephalon,"Th,Penk",Slc17a6 Gbx2 Foxp2 Necab1 Cpne7 Rab3c,1113,Glutamate (VGLUT2),Paraventricular nucleus of the thalamus,Thalamus
+Neurons,OBNBL1,nan,"Neuroblasts, olfactory",Telencephalon,"Nts,Dlk1,Esr1",Doc2g Ms4a15 Cdhr1 Shisa3 Atp6ap1l Tbx21,139,Glutamate (VGLUT1),"Main olfactory bulb mitral layer, Main olfactory bulb outer plexiform layer",Olfactory bulb
+Neurons,MBCHO1,"Low Chat,Slc5a7 (but see https://www.ncbi.nlm.nih.gov/pubmed/3708316)","Cholinergic neurons, midbrain red nucleus",Mesencephalon,"Foxp2,Ano2",Evx1os Gm2694 Drd5 Bnc2 Evx1 Pou3f2,62,Acetylcholine,Red nucleus,Midbrain ventral
+Neurons,HBGLU9,nan,"Excitatory neurons, hindbrain",Rhombencephalon,"Gal,Nell2,Necab2",Kcng4 Htr1b Glra1 Scn4b Kcnab3 Ank1,97,Glutamate (VGLUT2),Spinal nucleus of the trigeminal ,Medulla
+Neurons,SCGLU1,correspond to Glut14 in C1 data.,"Excitatory neurons, spinal cord",Spinal cord,,Hoxc10 Mab21l2 Glra1 Tlx3 Lhfpl5 Vstm2l,52,Glutamate (VGLUT2),Dorsal horn lamina 4-6,Spinal cord
+Neurons,HBGLU10,nan,"Excitatory neurons, hindbrain",Rhombencephalon,"Npy,Ttn",Ebf2 Zmym1 Ebf1 Tshz3 Tunar Ccdc184,80,Glutamate (VGLUT2),Nucleus of the solitary tract,Medulla
+Neurons,SCGLU10,correspond to Glut1 in C1 data. Might include some Glut4.,"Excitatory neurons, spinal cord",Spinal cord,"Tcf7l2,Cbln2",Nts Pla2g5 Glra1 C1ql3 Resp18 Vstm2l,68,Glutamate (VGLUT2),Dorsal horn lamina 2-4,Spinal cord
+Neurons,HBGLU2,nan,"Excitatory neurons, hindbrain",Rhombencephalon,"Fibcd1,Meis1",Slc17a6 Prlr Gprasp2 AW551984 Rab9b Elavl2,200,"Glutamate (VGLUT2), Nitric oxide",Nucleus of the solitary tract,Medulla
+Neurons,HBGLU3,nan,"Excitatory neurons, hindbrain",Rhombencephalon,"Cck,Tfap2b",Gpr101 Hoxc4 Ebf1 AW551984 Rab9b Hotairm1,107,"Glutamate (VGLUT2), Nitric oxide",Nucleus of the solitary tract,Medulla
+Neurons,HBNOR,nan,Noradrenergic neurons of the medulla,Rhombencephalon,"Agrp,Enc1,Ptk2b",Afp Prlh Phox2b Casr Gch1 Cd24a,23,"Noradrenaline, Nitric oxide",A1-2 noradrenergic cell groups,Medulla
+Neurons,HBGLU1,nan,"Excitatory neurons, hindbrain",Rhombencephalon,"Chat,Bnc2,Evx1",Pou4f1 Htr5b Rims4 Gpr88 Gjd2 Gabrg1,52,"Glutamate (VGLUT2, VGLUT3)",Inferior olivary complex,Medulla
+Neurons,DEGLU2,nan,"Excitatory neurons, hypothalamus",Diencephalon,Spatial mapping,Shox2 Aldh3b2 Ramp3 Rasl11a Cfap221 Prkch,257,"Glutamate (VGLUT1,VGLUT2)",Subparafascicular nucleus,Hypothalamus
+Neurons,DEGLU1,nan,"Excitatory neurons, thalamus",Diencephalon,"Vip,Ndnf",Synpo2 Adamts15 Prkcd Ptpn3 Ptpn4 Vav3,1058,"Glutamate (VGLUT1,VGLUT2)",Posterior thalamus,Thalamus
+Neurons,MSN1,nan,"D1 medium spiny neurons, striatum",Telencephalon,"Pdgfra,Cspg4",Drd1 Ido1 Ppp1r1b Rgs9 Syndig1l Nexn,869,GABA,Striatum dorsal,Striatum dorsal
+Neurons,MSN2,nan,"D2 medium spiny neurons, striatum",Telencephalon,"Npy,Plp1",Adora2a Ido1 Penk Gpr88 Gpr6 Rasd2,1094,GABA,Striatum dorsal,Striatum dorsal
+Neurons,MSN3,nan,"D2 medium spiny neurons, striatum",Telencephalon,Gdf10,Adora2a Gpr83 Penk Gpr88 Gpr6 Pde10a,1247,GABA,Striatum ventral,Striatum ventral
+Neurons,MSN5,nan,"Patch D1/D2 neurons, striatum",Telencephalon,"Agt,Gfap",Drd1 Lrpprc Foxp2 Gpr88 Rxrg Jsrp1,372,GABA,Striatum ventral,Striatum ventral
+Neurons,MSN4,nan,"D1 medium spiny neurons, striatum",Telencephalon,Myoc,Drd1 Dclk3 Mhrt Rgs9 Rem2 Pde10a,1584,GABA,Striatum ventral,Striatum ventral
+Neurons,MSN6,"contain markers similar to RGL, might be involve in neurogenesis","Matrix D1 neurons, striatum",Telencephalon,"Agt,Gfap",Tac1 Wnt2 Isl1 Rgs9 Pcp4l1 Gpr26,525,GABA,Striatum ventral,Striatum ventral
+Astrocytes,OEC,nan,Olfactory ensheathing cells,Neural crest,"Adora2a,Penk and dissection region",Prss56 Mgst1 Clca3a1 Fabp7 Ccdc80 Alx3,2031,,Olfactory bulb,Olfactory bulb
+Neurons,DETPH,Tph1,"Neuroblast-like, habenula",Diencephalon,"Islr,Islr2",Pde6g Platr17 1700042O10Rik Sag Gnb3 Rbp3,7,,Medial habenula,Thalamus
+Astrocytes,RGDG,nan,Dentate gyrus radial glia-like cells,Telencephalon,,E330013P04Rik Hopx Thrsp Hes5 E130114P18Rik Pantr1,327,,Dentate gyrus subgranular zone,Dentate gyrus
+Astrocytes,RGSZ,nan,Subventricular zone radial glia-like cells,Telencephalon,"Cdk1,Pbk",2810459M11Rik Gm14964 Mlc1 Riiad1 E130114P18Rik Slc1a3,756,,"Striatum, rostral migragtory stream, olfactory bulb","Striatum dorsal,Striatum ventral"
+Oligos,OPC,nan,Oligodendrocytes precursor cells,CNS,"Drd1,Tac1 and dissection region",Pdgfra C1ql1 Sapcd2 Emid1 Lhfpl3 Tmem100,820,,CNS,CNS
+Neurons,SZNBL,nan,Neuronal intermidate progenitor cells,Telencephalon,"Riiad1,Urah",2810417H13Rik Cdca7 Rrm2 Ube2c Top2a Lockd,971,,"Sub ventricular zone, Dentate gyrus","Striatum dorsal, Striatum ventral, Dentate gyrus"
+Ependymal,EPMB,"Gfap high, no Aqp4,Gja1,Foxj1","Ependymal cells, midbrain",Mesencephalon,Crabp1,Tnnt3 Cfap126 Mlf1 4933407L21Rik Calml4 Enkur,69,,Dorsal midbrain pia,Midbrain dorsal
+Ependymal,HYPEN,nan,"Hypendymal cell, subcommissural organ",CNS,Wnt10a,Spp2 Sspo Wfdc2 Spdef Fam216b Gm12144,111,,Subcommissural organ,Subcommissural organ
+Neurons,OBDOP2,Confusing stainings in Allen ,"Dopaminergic neurons, olfactory nulb",Telencephalon,,Scgn Cpne6 Synpr Isoc1 Pcp4l1 Dcx,281,"GABA,Dopamine",Olfactory bulb,Olfactory bulb
+Neurons,OBINH2,nan,"Inner horizontal cell, olfactory bulb",Telencephalon,,Shisa8 Fam184a Inpp5j Lgr5 Kank3 Syt6,1800,GABA,"Olfactory bulb, mitral cell layer",Olfactory bulb
+Neurons,OBINH3,nan,"Inhibitory neurons, olfactory bulb",Telencephalon,Sspo,Gpsm1 Col6a1 Meis2 Kcnh3 Pcp4l1 Myo16,786,GABA,Accessory olfactory bulb granular layer,Olfactory bulb
+Neurons,OBINH1,nan,"Inhibitory neurons, olfactory bulb",Telencephalon,,Sp9 Ccsap Gng4 Pbx3 Tshz1 Dcx,353,GABA,Main and accessory olfactory bulb granular layer,Olfactory bulb
+Neurons,OBINH4,nan,"Inhibitory neurons, olfactory bulb",Telencephalon,,Prok2 Trdn Inhba Ppp1r17 Kcnip2 A830018L16Rik,465,GABA,"Olfactory bulb, inner granular layer",Olfactory bulb
+Neurons,OBNBL2,nan,"Neuroblasts, olfactory bulb",Telencephalon,"Penk,Foxp2,Rprm,Gabrq",Ly6g6e Eomes Nmb Casp1 Tmem132d 6430710C18Rik,225,Glutamate (VGLUT2),"Main olfactory bulb mitral layer, Main olfactory bulb outer plexiform layer",Olfactory bulb
+Neurons,TEGLU6,nan,"Excitatory neurons, cerebral cortex",Telencephalon,"Pth1r,Pdgfrb",Tshz2 Ddit4l Neurod6 Dkk3 Hlf March1,598,"Glutamate (VGLUT1,VGLUT2)","Cingulate/Retrosplenial area, layer 2",Cortex
+Neurons,TEGLU1,nan,"Excitatory neurons, cerebral cortex",Telencephalon,"Hexb, Siglech",Myl4 Cpne4 Olfm3 Gm11549 Plcxd2 Neto2,402,"Glutamate (VGLUT1, VGLUT3)","Cingulate/Retrosplenial area, layer 6",Cortex
+Neurons,DGGRC2,nan,"Granule neurons, dentate gyrus",Telencephalon,"Mpz,Prx",C1ql2 Nr3c2 Rasl10a Tubgcp2 Ahcyl2 Rab40b,3385,Glutamate (VGLUT1),Dentate gyrus,Dentate gyrus
+Neurons,DGGRC1,nan,"Granule neuroblasts, dentate gyrus",Telencephalon,,Bhlhe22 Tmem114 Ntf3 Islr2 Gabra5 Prox1os,983,Glutamate (VGLUT1),Dentate gyrus,Dentate gyrus
+Neurons,DGNBL1,nan,"Granule neuroblasts, dentate gyrus",Telencephalon,"Mfge8,Gfap",Igfbpl1 Mfap4 Sox11 Mdk Emx1 Rcor2,159,,Dentate gyrus,Dentate gyrus
+Neurons,DGNBL2,nan,"Granule neuroblasts, dentate gyrus",Telencephalon,"Mfge8,Gfap",Igfbpl1 Rerg Sox11 Tubb2b Syce2 Ttc28,1445,,Dentate gyrus,Dentate gyrus
+Neurons,OBNBL3,nan,"Neuroblasts, olfactory bulb",Telencephalon,"Tfap2c,Riiad1",Igfbpl1 Tiam2 Dlx2 Dlx1 Dlx6os1 Dcx,2240,GABA,Olfactory bulb,Olfactory bulb
+Neurons,HYPEP3,should be split to Th/GABA and Glut,"Peptidergic neurons, hypothalamus",Diencephalon,"Eomes, Doc2g",Fezf1 Baiap3 Hap1 A730017C20Rik Myh7 Nrsn2,152,"Glutamate (VGLUT2), Nitric oxide",Ventromedial hypothalamic nucleus,Hypothalamus
+Neurons,HYPEP2,nan,"Peptidergic neurons, hypothalamus",Diencephalon,,Ucn3 Baiap3 Pkib Tmie Fam46a Pnmal1,43,Nitric oxide,Paraventricular hypothalamic nucleus,Hypothalamus
+Neurons,HYPEP1,nan,"Peptidergic neurons, hypothalamus",Diencephalon,,Trh Ngb Peg10 Gabre Resp18 Nrsn2,191,Glutamate (VGLUT2),Lateral hypothalamic area,Hypothalamus
+Neurons,CBNBL2,nan,"Neuroblasts, cerebellum",Rhombencephalon,"Unc3, Trh",Neurod1 Mia Pax6 Ppp1r14c Nrep Nfib,293,,Cerabellum,Cerebellum
+Neurons,CBGRC,Almost half are clearly Calb2-negative,"Granule neurons, cerebellum",Rhombencephalon,"Rln3,Calb1",Cbln3 Gabra6 Pax6 Grm4 Nrep Adcy1,4193,Glutamate (VGLUT1),Cerebellum,Cerebellum
+Neurons,CR,nan,"Cajal-Retzius cells, hippocampus",Telencephalon,"Rorb,Npl",Ndnf Nhlh2 Trp73 Ankrd35 Lhx5 Ramp1,222,Glutamate (VGLUT2),Dentate gyrus molecular layer,Dentate gyrus
+Neurons,CBNBL1,nan,"Neuroblasts, cerebellum",Rhombencephalon,"Trh, Asb4",Sln Lmx1a Pkib Inadl Trpc3 Ank1,163,Glutamate (VGLUT2),"Hindbrain (pons, medulla cerabellum)","Pons,Medullae,Cerebellum"
+Neurons,SEPNBL,nan,"Neuroblasts, septum",Telencephalon,"Gal,Npnt,Fezf1",Sln Sost Ctxn3 Adgrd1 Fzd7 Eps8,117,Glutamate (VGLUT1),Triangular nucleus of septum,Pallidum
+Neurons,OBNBL5,nan,"Inhibitory neurons, olfactory bulb",Telencephalon,,Nppa Dlx5 Calb2 Apold1 Nxph1 Nrsn1,871,GABA,"Main olfactory bulb, glomerular layer and Accessory olfactory bulb, granular layer",Olfactory bulb
+Neurons,OBNBL4,nan,"Inhibitory neurons, olfactory bulb",Telencephalon,Klk6,Nppa Nccrp1 Htr1f Id2 Nxph1 Nol4,208,GABA,"Main olfactory bulb, glomerular layer",Olfactory bulb
+Neurons,DECHO2,nan,"Cholinergic neurons, habenula",Diencephalon,"Kcnd3,Prex2",Gm5741 Gng8 Lrrc55 Nwd2 Ccdc155 Syt9,207,"Acetylcholine,Glutamate (VGLUT1,VGLUT3)",Habenula,Thalamus
+Neurons,HYPEP5,nan,"Vasopressin-producing cells, hypothalamus",Diencephalon,"Lgi2,Hapln1",Avp H2-DMb2 Sim1 Angpt1 Pcsk1 Fkbp11,173,Glutamate (VGLUT2),Paraventricular hypothalamic nucleus magnocellular division and/or Diagonal band nucleus,Hypothalamus
+Neurons,DEINH7,nan,"Inhibitory neurons, hypothalamus",Diencephalon,"Ntn1,Thrsp",Avp Rgs16 Pkib Rasd1 Gadd45g B630019K06Rik,182,GABA,"Suprachiasmatic nucleus, Medial preoptic nucleus",Hypothalamus
+Neurons,HYPEP4,nan,"Oxytocin-producing cells, hypothalamus",Diencephalon,"Pvalb,Crabp1",Oxt Fam183b Sim1 Nog Caprin2 Fkbp11,98,Nitric oxide,Dorsomedial nucleus of the hypothalamus. magnocellular neurosecretory cells.,Hypothalamus
+Neurons,HBGLU8,merge with 10,"Excitatory neurons, hindbrain",Rhombencephalon,"Gal,Adam33",Spp1 Cyp2s1 Nefh Gm26673 Cpne9 Cdh23,11,"Glutamate (VGLUT1,VGLUT2), Nitric oxide",Tegmental reticular nucleus,Pons
+Neurons,HBGLU6,nan,"Excitatory neurons, hindbrain",Rhombencephalon,"Lypd1,Krt17,Calca",Irx2 Hoxc5 Esrrg Rnf152 Sgcg Efr3a,252,"Glutamate (VGLUT1,VGLUT2), Nitric oxide",Pontine gray,Pons
+Neurons,HBGLU7,nan,"Excitatory neurons, hindbrain",Rhombencephalon,"Gal,Rspo3",Irx2 Mreg Esrrg Rnf152 Ucma Efr3a,275,"Glutamate (VGLUT1,VGLUT2), Nitric oxide",Tegmental reticular nucleus,Pons
+Neurons,HBGLU5,nan,"Excitatory neurons, hindbrain",Rhombencephalon,"Tac1,Frzb,Chrm3",Irx2 Ly6d Fcmr Fat2 Irx1 Acaa1b,130,"Glutamate (VGLUT1), Nitric oxide","Pontine reticular nucleus, caudal part",Pons
+Neurons,HBGLU4,nan,"Excitatory neurons, hindbrain",Rhombencephalon,"Pvalb,P2yr1,Cplx1 (Crabp1 negative)",Gpx2 Olfm2 Klhl1 Hoxb3 Kctd9 Ipo8,7,"Glutamate (VGLUT2), Nitric oxide",Medial vestibular nucleus and Nucleus prepositus,Medulla
+Neurons,HBCHO2,"Low Chat,Slc5a7","Cholinergic neurons, hindbrain",Rhombencephalon,"Adamts5,Nr2f1,Lix1",Gpx2 Defa24 AF529169 Hoxb3 Fam131c Zdbf2,22,"Acetylcholine, Glutamate (VGLUT2), Nitric oxide","Medial pontine nuclei, reticulotegmental nuclei",Pons
+Neurons,HBCHO1,nan,"Cholinergic neurons, hindbrain",Rhombencephalon,"Npy,Ecel1,Gpr101",St8sia6 Adgrg2 Mdga1 Lama1 Spint1 Vwa2,10,"Acetylcholine,Glutamate (VGLUT2)",Medulla (several nuclei),Medulla
+Neurons,HBCHO3,nan,Afferent nuclei of cranial nerves VI-XII,Rhombencephalon,"Sst,Pdyn,Shox2",Slc5a7 Tbx20 Adcyap1 AW551984 Tmem26 Scn9a,72,"Acetylcholine, Nitric oxide",Afferent nuclei of cranial nerves VI-XII,Medulla
+Neurons,HBADR,nan,Adrenergic cell groups of the medulla,Rhombencephalon,"Agrp,Enc1,Ptk2b",Npff Tfap2b Chodl AW551984 Pnmt Mgat4c,40,"Adrenaline, Glutamate (VGLUT3)","Nucleus of the solitary tract, adrenergic cell groups C1-3",Medulla
+Neurons,HBCHO4,nan,Afferent nuclei of cranial nerves III-V,Rhombencephalon,"Homer2,Rgs6",Slc5a7 Irx4 Slc18a3 Slc10a4 Cygb Fgfr1,52,"Acetylcholine, Nitric oxide",Afferent nuclei of cranial nerves III-V,Pons
+Neurons,TECHO,nan,"Cholinergic interneurons, telencephalon",Telencephalon,"TrpM8,Asic1,Tac1",Slc5a7 Slc17a8 Chat Slc10a4 Gm2990 Tpbgl,121,"Acetylcholine, Glutamate (VGLUT3), Nitric oxide","Striatum,Amygdala","Striatum dorsal, Striatum ventral,Amygdala"
+Neurons,DECHO1,nan,"Cholinergic neurons, septal nucleus, Meissnert and diagonal band",Diencephalon,"TrpM8,Tac1,Asic1,Gfra3,Cidea,Nkd1",Lhx8 Cox6a2 Slc18a3 Ngfr Slc7a14 Pld5,114,"Acetylcholine, Glutamate (VGLUT3), Nitric oxide","Medial septal nuclues, diagonal band nucleus and nucleus basalis of Meissnert",Hypothalamus
+Neurons,SCINH1,"correspond to Gaba14,15 in C1 data.","Inhibitory neurons, spinal cord",Spinal cord,"Oxt,Sim1",Crabp1 Tnfrsf13c Sall3 Gm5 Kcnab3 Nfatc1,18,"GABA, Glycine (GLYT2)","Dorsal horn, lamina 2-3,6",Spinal cord
+Neurons,HBINH8,nan,"Inhibitory neurons, hindbrain",Rhombencephalon,Gnrh1,Slc6a5 Lingo4 Sall3 Hoxb3 Hcn1 Hs6st2,11,"GABA, Glycine (GLYT1,GLYT2)",Spinal nucleus of the trigeminal ,Medulla
+Neurons,HBINH7,nan,"Inhibitory neurons, hindbrain",Rhombencephalon,"Pkd1l2,Pkd2l1",Slc6a5 Stac2 Vamp1 Steap2 Sgpp2 Hapln4,25,"GABA, Glycine (GLYT1,GLYT2)",Superior olivary complex,Pons
+Neurons,HBINH5,nan,"Inhibitory neurons, hindbrain",Rhombencephalon,"Trh,Prkcg",Slc6a5 Pgr Glra1 Ankrd34b Ppargc1a Iglon5,480,"GABA, Glycine (GLYT1,GLYT2)",Gigantocellular reticular nucleus,Medulla
+Neurons,CBINH2,nan,"Granular layer interneurons, cerebellum",Rhombencephalon,"Avp,Gal,Nog",Slc6a5 Grm2 Lgi2 Steap2 Nrg1 Cdh4,17,"GABA, Glycine (GLYT2)","Cerebellum, granular layer",Cerebellum
+Neurons,CBPC,nan,Purkinje cells,Rhombencephalon,"Npy,Aasb4",Pcp2 Slc1a6 Car8 Ppp1r17 Atp2a3 Itpr1,84,GABA,"Cerebellum, border of granular layer and molecular layer",Cerebellum
+Neurons,CBINH1,nan,"Molecular layer interneurons, cerebellum",Rhombencephalon,"Ppp1r17,Rora,Rorb,Rasl11b,Vip",Pvalb Cnpy1 Clmp Ntn1 Trim67 Grid2,662,"GABA, Nitric oxide","Cerebellum, molecular layer",Cerebellum
+Neurons,MEINH1,nan,"Inhibitory neurons, midbrain",Mesencephalon,"Ppp1r17,Rora,Rorb,Rasl11b",Pvalb Il22 Kit Sla Hcn1 Eml5,43,"GABA, Nitric oxide","VTA, Substantia nigra, central nucleus raphe",Midbrain ventral
+Neurons,TEINH17,nan,"Axo-axonic, cortex/hippocampus",Telencephalon,"Tmem2,Itpr2",Pthlh Cox6a2 Igfbp4 Erbb4 Nxph1 Kcnc1,675,GABA,"Hippocampus,Cortex","Hippocampus,Cortex"
+Neurons,TEINH18,nan,"Basket and bistratified cells, cortex/hippocampus",Telencephalon,"Neu4,Bmp4",Rbp4 Cox6a2 Cort Kcnc2 Nxph1 Ifitm10,547,"GABA, Nitric oxide","Hippocampus,Cortex","Hippocampus,Cortex"
+Neurons,DEINH2,nan,"Inhibitory neurons, thalamus",Diencephalon,"Tmem2,Itpr2",Six3 Gm2115 Esrrg Gad1 Ubash3b AI593442,167,GABA,Reticular nucleus of the thalamus,Thalamus
+Neurons,DEINH1,nan,"Inhibitory neurons, thalamus",Diencephalon,,Six3 St8sia4 Esrrg Lancl3 Fign AI593442,339,GABA,Reticular nucleus of the thalamus (Sst low),Thalamus
+Neurons,DEINH6,nan,"Peptidergic neurons, hypothalamus",Diencephalon,"Pcp2,Col18a1",Otp Cited1 Asb4 Tmie Mboat7 Celf6,12,GABA,"Arcuate hypothalamic nucleus (probably, Npy, Agrp cells)",Hypothalamus
+Neurons,MEINH13,nan,"Inhibitory neurons, midbrain",Mesencephalon,"Tac2, Nmu",Pax5 Gabrq Asb4 AW551984 Vgf Nrsn2,70,GABA,"Ventral/caudal midbrain (SN, VTA, reticular nucleus)",Midbrain ventral
+Neurons,MEINH8,Mixed cluster should be split in two,"Inhibitory neurons, midbrain",Mesencephalon,"Tac1,Penk,Lamp5",Pax7 Gm27199 Asic4 Sphkap A330102I10Rik Kcnip1,71,GABA,"Superior colliculus superficial grey layer; Erdinger-Westphal nucleus, periaqueductal grey, nucleus of the optic tract",Midbrain dorsal
+Neurons,MEINH14,nan,"Inhibitory neurons, midbrain",Mesencephalon,"Calb2,Cbln1",Rln3 Gpx3 Gata3 Nnat Pcdh11x Plcxd3,21,GABA,"Midbrain reticular nucleus, Darkschewitz nucleus,",Midbrain ventral
+Neurons,DEINH4,nan,"Inhibitory neurons, thalamus",Diencephalon,"Ctgf,Ly6g6e",Lhx8 Rmst Dgkk Ppp1r17 RP23-366O14.4 Hpcal1,57,"GABA, Nitric oxide",Paraventricular nucleus of the thalamus (best fit) but do not fit with Nmu expression,Thalamus
+Neurons,DEINH5,nan,"Peptidergic neurons, hypothalamus",Diencephalon,"Reln,Doc2g,Slc17a7",Nts Dlk1 Dgkk AW551984 Zcchc12 Nrsn2,308,GABA,"Medial preoptic nucleus, Bed nuclei of the stria terminalis anterior division",Hypothalamus
+Neurons,TEINH2,nan,"Inhibitory neurons, septal nucleus",Telencephalon,"Nos1,Npy,Vip,Chat,Neurod6",A230065H16Rik Zic1 Cacna2d2 Arhgap6 Dgkg Atp2b4,1339,GABA,Septal nucleus,"Striatum dorsal, Striatum ventral"
+Neurons,TEINH1,nan,"Inhibitory neurons, pallidum",Telencephalon,"Reln,Npff,Nmur2",Lhx8 Gbx1 Elfn1 Gad2 Vat1l Nrsn2,576,GABA,Medial septal nucleus and Magnocellular nucleus,Pallidum
+Neurons,HBINH4,should be very posterior in medulla because of Hox genes,"Inhibitory neurons, hindbrain",Rhombencephalon,"Elavl4,Gal,Meis2",Ebf3 Sema3a Esrrg Hoxa3 Tmtc4 Vav3,75,"GABA, Glycine (GLYT1,GLYT2)",Paragigantocellular reticular nucleus,Medulla
+Neurons,HBINH3,should be very posterior in medulla because of Hox genes,"Inhibitory neurons, hindbrain",Rhombencephalon,"Ecel1,Elavl4,Bcl11b,Chrna4",Hoxb5 Nhlh2 Zic4 Abhd11os Hoxb4 Rbms3,127,"GABA, Glycine (GLYT1,GLYT2)",Paragigantocellular reticular nucleus,Medulla
+Neurons,HBINH1,nan,"Inhibitory neurons, hindbrain",Rhombencephalon,"Qrfpr,Cadps2",Chrna2 Nos1 Sv2c Egfr Cacng5 Pdzd2,13,"GABA, Nitric oxide","Pons, interpeduncular and tegmental nuclei in rh1",Pons
+Neurons,SCINH11,nan,"Central canal neurons, spinal cord",Spinal cord,"Slc5a6,Inhbb",Pkd2l1 Pdzk1ip1 Pkd1l2 Espn Crct1 Abcc3,50,GABA,Spinal Cord central canal,Spinal cord
+Neurons,MEINH3,nan,"Inhibitory neurons, midbrain",Mesencephalon,"Pvalb,Maf,Lmo1",Tal1 Trim66 Gata3 Gad2 Vgf Amn,258,GABA,"Dorsal midbrain, medial geniculate nucleus, anteroventral midbrain",Midbrain dorsal
+Neurons,MEINH4,nan,"Inhibitory neurons, midbrain",Mesencephalon,Th,Lhx1os Emx2 Gata3 Gad2 Asic1 Amn,162,"GABA, Nitric oxide",Anterior pretectal nucleus,Midbrain dorsal
+Neurons,DEINH3,nan,"Inhibitory neurons, hypothalamus",Diencephalon,"Ucn3, Cck,Cpne4",Syt2 Nfatc2 Smim17 Slc32a1 Tmem130 Nova1,323,GABA,Subthalamic nucleus,Hypothalamus
+Neurons,MEINH2,Magnocellular because they are huge,"Inhibitory neurons, midbrain",Mesencephalon,"Rorb, Cck,Cpne4",Syt2 Nrtn Smim17 Slc32a1 Kcnab3 Ccdc184,461,GABA,Midbrain,"Midbrain dorsal,Midbrain ventral"
+Neurons,MEINH7,nan,"Inhibitory neurons, midbrain",Mesencephalon,"Tac1,Biap3",Pax7 Tfap2b Cdhr1 Rnf152 Zfhx4 Amn,69,GABA,Superior colliculus,Midbrain dorsal
+Neurons,MEINH5,nan,"Inhibitory neurons, midbrain",Mesencephalon,"Ngb,Tac1",Tnnt1 Tnni3 Gata3 Lhx1 Uncx Cox6b2,154,GABA,Superior colliculus (sparse),Midbrain dorsal
+Neurons,MEINH12,No good stainings in ABA,"Inhibitory neurons, midbrain",Mesencephalon,Spatial mapping,Lhx1os Galnt14 Lmo1 Col25a1 Ralyl Nhs,49,GABA,Superior colliculus,Midbrain dorsal
+Neurons,MEINH11,nan,"Inhibitory neurons, midbrain",Mesencephalon,"Ret,Cbln1",Sox14 Dmbx1 Chrnb3 Rpp25 Unc13c Pcbp3,101,"GABA, Nitric oxide",Superior colliculus superficial gray layer,Midbrain dorsal
+Neurons,MEINH9,nan,"Inhibitory neurons, midbrain",Mesencephalon,Tac2,Otx2 Rd3l Cbln4 Lypd6 Tmem108 Pdzd2,400,GABA,Dorsal midbrain scattered,Midbrain dorsal
+Neurons,MEINH10,nan,"Inhibitory neurons, midbrain",Mesencephalon,C1ql2,Otx2 Gabrr2 Cdhr1 Rpp25 Igsf3 Pcbp3,792,"GABA, Nitric oxide",Superior colliculus superficial grey layer,Midbrain dorsal
+Neurons,MEINH6,nan,"Inhibitory neurons, midbrain",Mesencephalon,"Tac1,Biap3",Fibcd1 Mgarp Lmo1 Vwc2 Npffr1 Ccdc184,47,GABA,Superior colliculus,Midbrain dorsal
+Neurons,HBINH6,nan,"Inhibitory neurons, hindbrain",Rhombencephalon,"Pvalb,Syt2,Kcna1 (Cplx1 negative)",Nxph4 Tmem72 Gpr139 Igf1 Nkx6-1 Plcxd3,62,"GABA, Glycine (GLYT1)",Koelliker-Fuse subnucleus,Pons
+Neurons,HBINH2,nan,"Inhibitory neurons, hindbrain",Rhombencephalon,"Zic1,Hoxa5",Irs4 Tfap2b Cbln4 Amigo2 1700003F12Rik Glra2,22,"GABA, Glycine (GLYT1), Nitric oxide",Nucleus of the solitary tract,Medulla
+Neurons,SCGLU8,correspond to Glut2 in C1 data.,"Excitatory neurons, spinal cord",Spinal cord,"Scn4b,Nefh",Pcp2 Lbx1 Hoxb6 Relt Tunar Khdrbs2,15,Glutamate (VGLUT2),Dorsal horn lamina 2-5,Spinal cord
+Neurons,SCGLU9,correspond to Glut3 in C1 data.,"Excitatory neurons, spinal cord",Spinal cord,"Slc5a6,Slc30a3",Nts Pde11a Prrxl1 Tlx3 Cpne8 Ccdc184,154,Glutamate (VGLUT2),Dorsal horn lamina 3,Spinal cord
+Neurons,SCGLU7,correspond to subpopulation of Glut2 in C1 data.,"Excitatory neurons, spinal cord",Spinal cord,Pax6,Ucn3 Nppc Glra1 Rapsn Pde4d Chgb,30,Glutamate (VGLUT2),Dorsal horn lamina 2-5,Spinal cord
+Neurons,SCGLU2,correspond to Glut13 in C1 data.,"Excitatory neurons, spinal cord",Spinal cord,,Hoxb8 Card10 Hoxa7 Hoxa10 Doc2a C1qtnf4,133,Glutamate (VGLUT2),Dorsal horn lamina 4-6,Spinal cord
+Neurons,SCGLU3,correspond to Glut12 in C1 data. Break to have only Cadps2>0 cells.,"Excitatory neurons, spinal cord",Spinal cord,"Itpr1,Pdzd2",Hoxc8 RP24-236C17.2 Hoxc9 Hoxa10 Ap1s2 Pnck,62,Glutamate (VGLUT2),Dorsal horn lamina 1-3,Spinal cord
+Neurons,SCGLU4,"correspond to Glut10,11 in C1 data. Lamp5 high is Glut11.","Excitatory neurons, spinal cord",Spinal cord,"Sst,Dcn,Epyc,Postn",Hoxb8 Vsig8 Hoxa9 Hoxa10 D630023F18Rik Otof,180,"Glutamate (VGLUT2), Nitric oxide",Dorsal horn lamina 2-3,Spinal cord
+Neurons,SCGLU6,"correstpond to Glut8,9 in C1 data. Npff is Glut9 and Nmur2 is Glut8.","Excitatory neurons, spinal cord",Spinal cord,"Gbx1,Elfn1,Bcl11b",Grp Mrap2 Hoxa7 Tlx3 Spint2 Car12,140,Glutamate (VGLUT2),Dorsal horn lamina 1-2,Spinal cord
+Neurons,SCGLU5,"correspond to Glut5,6,7 in C1 data. Mylk is Glut6 and Nmu (high) is Glut6-7.","Excitatory neurons, spinal cord",Spinal cord,"Pax5,En1",Nmu Hoxb7 Hoxb6 Tlx3 Hoxb2 F2rl2,252,Glutamate (VGLUT2),"Dorsal horn, lamina 2-3",Spinal cord
+Neurons,SCINH5,correspond to Gaba13 in C1 data.,"Inhibitory neurons, spinal cord",Spinal cord,"Gpx2,Insrr",Serpinb1b Gbx1 Hoxb6 Gm5 P2ry1 Syt10,44,"GABA, Glycine (GLYT2)","Dorsal horn, lamina 2-6",Spinal cord
+Neurons,SCINH6,correspond to Gaba9 in C1 data.,"Inhibitory neurons, spinal cord",Spinal cord,"Ly6d,Il11ra1",Hoxb8 Pcsk5 Hoxb6 Frzb Hoxb2 Vsnl1,87,GABA,"Dorsal horn, lamina 2-4",Spinal cord
+Neurons,SCINH7,correspond to Gaba8 in C1 data.,"Inhibitory neurons, spinal cord",Spinal cord,"Reln,Sgcg",Krt17 Nrl Hoxb6 Lhx1 Slc16a11 Plpp4,71,GABA,"Dorsal horn, lamina 2-6",Spinal cord
+Neurons,HBINH9,should be very posterior in medulla because of Hox genes,"Inhibitory neurons, hindbrain",Rhombencephalon,"Postn,Vip",Pax2 Nyap2 Hoxb6 Tmem255a Unc13c Fstl5,98,"GABA, Glycine (GLYT1,GLYT2)",Paragigantocellular reticular nucleus,Medulla
+Neurons,SCINH2,correspond to Gaba13 (most similar but not sure since Cplx1 negative) in C1 data.,"Inhibitory neurons, spinal cord",Spinal cord,"Synpr,Calb2",Hoxb8 Kcnk3 Glra1 Hoxc6 Hoxb2 C1qtnf4,117,"GABA, Glycine (GLYT2)","Dorsal horn, lamina 2-6",Spinal cord
+Neurons,SCINH4,correspond to Gaba10 in C1 data. Might be proken to Eya2 and Adamts5.,"Inhibitory neurons, spinal cord",Spinal cord,Cabp7,Hoxb8 Kcnmb2 Hoxb6 Lhx1 Nxph1 Kcnip1,37,GABA,"Dorsal horn, lamina 3-6",Spinal cord
+Neurons,SCINH3,correspond to Gaba5-7in C1 data. Might be proken to Trh and Gpr101.,"Inhibitory neurons, spinal cord",Spinal cord,"Chat,Slc5a7",Serpinb1b Pax8 Glra1 Rspo1 Plch1 Cd24a,66,"GABA, Glycine (GLYT2)","Dorsal horn, lamina 2-6",Spinal cord
+Neurons,SCINH10,correspond to Gaba2 in C1 data.,"Inhibitory neurons, spinal cord",Spinal cord,Rorb,Hoxb9 Tacr3 Pnoc Aard 1500009L16Rik Eepd1,65,"GABA, Glycine (GLYT2), Nitric oxide","Dorsal horn, lamina 2-6",Spinal cord
+Neurons,SCINH9,correspond to Gaba2-3 in C1 data. Probably a mix of Gaba2 and 3.,"Inhibitory neurons, spinal cord",Spinal cord,,Serpinb1b Hoxb5os Skor1 Sstr2 Lgals9 Eepd1,84,GABA,"Dorsal horn, lamina 2-6",Spinal cord
+Neurons,SCINH8,correspond to Gaba3 in C1 data.,"Inhibitory neurons, spinal cord",Spinal cord,"Igfbp5,Hapln1",Serpinb1b Rspo3 Hoxb6 B3gat2 Fam159b Adsl,87,GABA,"Dorsal horn, lamina 2-6",Spinal cord
+Neurons,TEINH3,nan,"Inhibitory neurons, telencephalon",Telencephalon,"Nos1,Npy,Vip",Ecel1 Tmem215 Peg10 Amigo2 Adra2a Thsd7b,145,GABA,Bed nuclei of the stria terminalis posterior division ,Pallidum
+Neurons,OBDOP1,http://www.sciencedirect.com/science/article/pii/0306452295005676,"Dopaminergic periglomerular interneuron, olfactory bulb",Telencephalon,,Trh Th Pax6 Lgr5 Syndig1l 9330158H04Rik,371,"GABA,Dopamine","Olfactory bulb, periglomerular layer",Olfactory bulb
+Neurons,HYPEP8,nan,"Peptidergic neurons, hypothalamus",Diencephalon,Crabp1,Gnrh1 Gng8 Smim22 Acbd7 Fam92b A930003A15Rik,15,Glutamate (VGLUT2),Anteroventral periventricular continue along midline to Medial septal nucleus,Hypothalamus
+Vascular,ABC,"Have Dcn,Gjb2,Ptgds. Lack Vtn,Cldn5,Lum,Col1a1 (neural crest origin is uncertain)",Vascular leptomeningeal cells,Neural crest,"Penk, Fign",Mgp Slc47a1 Dapl1 Lypd2 Thbd Foxc2,137,,Pia/meninges surface,CNS
+Vascular,VLMC2,"Enriched in Crapbp2,Slc13a3,Ptgds,Slc13a4,Aldh1a2 (neural crest origin is uncertain)",Vascular leptomeningeal cells,Neural crest,"Rxfp1, Cbln4",Slc6a13 Ptgds Gjb2 Slc22a6 Aldh1a2 Slc6a20a,662,,Olfactory bulb-enriched,CNS
+Vascular,VLMC1,"Enriched in Lama1,Msc,Clo13a1,Col15a1 (neural crest origin is uncertain)",Vascular leptomeningeal cells,Neural crest,"Fn1, Htr1a",Dcn Fam180a Nupr1 Tbx18 Col1a1 Colec12,702,,CNS,CNS
+Vascular,VSMCA,nan,"Vascular smooth muscle cells, arterial",Mesoderm,"Gucy1a3,Stard8",Acta2 Mustn1 Tagln Myh11 Map3k7cl Pln,1221,,CNS,CNS
+Vascular,PER3,merge with 5,Pericytes,Mesoderm,"Matn4,Cxcl14",Kcnj8 Anpep Vtn Cox4i2 P2ry14 Gper1,298,,CNS,CNS
+Vascular,VECA,"Have low Lum,Dcn,Igf2,Pdgfra. Might be mixed with VSM+VLMC.","Vascular endothelial cells, arterial",Mesoderm,"Fn1, Htr1a",Igf2 Sema3g Gkn3 Tbx18 Notch3 Prelp,109,,CNS,CNS
+Vascular,PER2,nan,"Pericytes, possibly mixed with VENC",Mesoderm,"Galntl6,Nrep",Ecscr Tbxa2r Cd93 Ctla2a Apln Abcc9,488,,CNS,CNS
+Vascular,PER1,merge with 5,Pericytes,Mesoderm,"Rorb,Thsd7a,Tmem145",Higd1b Degs2 Ndufa4l2 Rgs5 Flt1 Slco1a4,4725,,CNS,CNS
+Vascular,VECV,nan,"Vascular endothelial cells, venous",Mesoderm,"Synpr,Oprk1",Ly6c1 Scgb3a1 Cldn5 Ly6a Pltp Pglyrp1,2780,,CNS,CNS
+Vascular,VECC,Serpine1 is Plasminogen activator inhibitor-1,"Vascular endothelial cells, capillary",Mesoderm,"Sulf2,Deptor",Ecscr Gadd45a Meox1 Ctla2a Apln Adm,1025,,CNS,CNS
+Immune,MGL1,nan,Microglia,Mesoderm,"Col12a1,Stard5,Myl4",P2ry12 Ccr6 Gpr34 Trem2 Ctss Cd53,2270,,CNS,CNS
+Immune,MGL2,nan,"Microglia, activated",Mesoderm,"Syt6,Foxp2",Tmem119 Casp8 Selplg Csf1r Ctss Cx3cr1,1820,,CNS,CNS
+Immune,MGL3,nan,"Microglia, activated",Mesoderm,"Cplx3,Tle4",Ccl4 Tnf Ccl3 Ccrl2 Bcl2a1b Cd14,1335,,CNS,CNS
+Immune,PVM2,nan,"Perivascular macrophages, activated",Mesoderm,"Bmp3,Sulf1",Pf4 Cxcl2 Lyz2 Ccl7 Mrc1 Cd209f,639,,CNS,CNS
+Immune,PVM1,nan,Perivascular macrophages,Mesoderm,"Hs3st2,Penk",Pf4 Cd74 Lyz2 Ms4a7 Ccl24 F13a1,1390,,CNS,CNS
+PeripheralGlia,SCHW,"Probably making myelin, Pllp,Utg8a",Schwann cells,Neural crest,Prox1,Mpz Ncmap Prx Cldn19 Fam178b Sbspon,47,,Dorsal root ganglion,Dorsal root ganglion
+PeripheralGlia,SATG2,nan,Satellite glia,Neural crest,"Fxyd7,Igfbpl1",Fbln2 Ceacam10 Tyrp1 Prss35 Dhh Fbln5,654,,"Dorsal root ganglion,Sympathetic ganglion","Dorsal root ganglion,Sympathetic ganglion"
+PeripheralGlia,SATG1,nan,"Satellite glia, proliferating",Neural crest,"Nrp2,Cd109",Cdc20 Tex40 Cdk1 Pbk Birc5 Fam64a,30,,Dorsal root ganglion,Dorsal root ganglion
+Astrocytes,ACBG,nan,Bergmann glia,Rhombencephalon,"Adora2a,Penk and dissection region",Gdf10 Timp4 Id4 A2m Dao Slc1a3,921,,Cerebellum,Cerebellum
+Astrocytes,ACOB,nan,Olfactory astrocytes,Telencephalon,"Tph1,Fabp7",Islr Slc6a11 Gldc Slc13a3 Igfbp2 Slc1a3,1438,,Olfactory bulb periglomerular layer,Olfactory bulb
+Astrocytes,ACTE1,nan,"Telencephalon astrocytes, fibrous",Telencephalon,"Emx1,Tac2",Fam107a Cbs Mlc1 Ntsr2 Clu 2900052N01Rik,2974,,Telencephalon,Telencephalon
+Astrocytes,ACTE2,nan,"Telencephalon astrocytes, protoplasmic",Telencephalon,"Gal,Prox1",Ppp1r3g Gm11627 Mfge8 Cldn10 S1pr1 Fjx1,3973,,Telencephalon,Telencephalon
+Astrocytes,ACNT1,nan,"Non-telencephalon astrocytes, protoplasmic","Diencephalon,Mesencephalon,Rhombencephalon,Spinal cord","Gng2,Tnnt1",Slc7a10 Mfsd2a Fgfr3 Cldn10 Gjb6 Htra1,6642,,Non-telencephalon,"Hypothalamus,Thalamus,Midbrain dorsal,Midbrain ventral,Pons,Medulla,Spinal cord"
+Astrocytes,ACNT2,nan,"Non-telencephalon astrocytes, fibrous","Diencephalon,Mesencephalon,Rhombencephalon,Spinal cord","Foxp2,Tshz1Rbp1,Casz1",Agt Apoc1 Igsf1 Itih3 Slc25a18 Sfxn5,2568,,Non-telencephalon,"Hypothalamus,Thalamus,Midbrain dorsal,Midbrain ventral,Pons,Medulla,Spinal cord"
+Astrocytes,ACMB,nan,Dorsal midbrain Myoc-expressing astrocyte-like,Mesencephalon,"Drd1,Tac1 and dissection region",Myoc Gfap Slc36a2 Aqp4 C4b Padi2,861,,Dorsal midbrain,Midbrain dorsal
+Ependymal,EPEN,nan,Ependymal cells,CNS,"Amigo2,Id3",Ccdc153 Krt15 Tmem212 Hdc 2410004P03Rik Nuf2,774,,Brain,Brain
+Ependymal,EPSC,"low Aqp4, many immidate early genes","Ependymal cells, spinal cord",CNS,Ntng1,1500015O10Rik Slc26a3 1700012B09Rik Dynlrb2 Rsph1 1700007K13Rik,414,,Spinal cord,Spinal cord
+Ependymal,CHOR,nan,Chorid plexus epithelial cells,CNS,"Cartpt,Id2,Kcnip2",Ttr Folr1 Clic6 Kl Slc4a5 Kcne2,458,,"Medulla,Thalamus","Medulla,Thalamus"
+Neurons,SYNOR3,correspont to NA3 in Furlan et al 2016.,"Noradrenergic neurons, sympathetic",Neural crest,"Pmch, Cartp",Slc6a2 Arhgap36 Sctr Tspan8 Gpat2 Hcrtr1,409,Noradrenaline,Sympathetic ganglion,Sympathetic ganglion
+Neurons,SYNOR2,correspont to NA1 in Furlan et al 2016.,"Noradrenergic neurons, sympathetic",Neural crest,Hcrt,Dbh Pi16 Hand1 Arg1 Fst Hand2,62,Noradrenaline,Sympathetic ganglion,Sympathetic ganglion
+Neurons,SYNOR1,correspont to NA2 in Furlan et al 2016.,Noradrenergic erector muscle neurons,Neural crest,"Slc17a8,Sncg",Dbh Procr Ntrk1 Htr3b Gnb3 Tlx2,97,Noradrenaline,Sympathetic ganglion,Sympathetic ganglion
+Neurons,SYNOR4,"correspont to NA4,5 in Furlan et al 2016.",Noradrenergic erector muscle neurons,Neural crest,"Dbh,Pirt",Slc6a2 Fbp2 Ntrk1 Edn3 Gnb3 Chrna3,182,Noradrenaline,Sympathetic ganglion,Sympathetic ganglion
+Neurons,SYNOR5,"correspont to NA4,5 in Furlan et al 2016.",Noradrenergic erector muscle neurons,Neural crest,"Pnmt,Npy,Tfap2b",Areg Ltk Omp Htr3b Colq Chrna3,46,Noradrenaline,Sympathetic ganglion,Sympathetic ganglion
+Neurons,SYCHO2,correspont to Ach2 in Furlan et al 2016.,"Cholinergic neurons, sympathetic",Neural crest,"Chat,Prph",Areg C1qtnf7 Slc18a3 Htr3b Fam89a Chrna3,75,"Acetylcholine, Noradrenaline",Sympathetic ganglion,Sympathetic ganglion
+Neurons,SYCHO1,correspont to Ach1 in Furlan et al 2016.,"Cholinergic neurons, sympathetic",Neural crest,"Ngb,Chat",Vip Cited1 Slc18a3 Dkk1 Gm2990 Hand2,15,"Acetylcholine, Noradrenaline",Sympathetic ganglion,Sympathetic ganglion
+Neurons,PSPEP1,nan,"Peptidergicv (PEP2), DRG",Neural crest,"Slc17a8,Cxcl14",Calca Asic3 Ptgir Pou4f3 Gm13425 Stbd1,78,"Glutamate (VGLUT2), Nitric oxide",Dorsal root ganglion,Dorsal root ganglion
+Neurons,PSPEP3,Express Slc5a7 (choline transporter),"Peptidergic (PEP1..4), DRG",Neural crest,"Vip,Crh,Pcp4",Calca Traf3ip3 Prdm12 Itk Fam150b Stac,92,Glutamate (VGLUT2),Dorsal root ganglion,Dorsal root ganglion
+Neurons,PSPEP2,Express Slc5a7 (choline transporter),"Peptidergic (PEP1.3), DRG",Neural crest,"Calb2,Vip,Penk",Calca Gm13582 Ptgir Pou4f3 Fam150b Fstl1,102,"Glutamate (VGLUT2),Acetylcholine, Nitric oxide",Dorsal root ganglion,Dorsal root ganglion
+Neurons,PSPEP4,nan,"Peptidergic (PEP1.1), DRG",Neural crest,"Calb2,Vip,Nos1",Calca 6030408B16Rik Samsn1 Pou4f3 Timeless Socs1,117,Glutamate (VGLUT2),Dorsal root ganglion,Dorsal root ganglion
+Neurons,PSPEP5,Express Slc5a7 (choline transporter),"Peptidergic (PEP1.2), DRG",Neural crest,"Calb2,Vip,Penk-low",Trpv1 Fam169b Aqp1 Pirt Kcns3 Socs1,30,Glutamate (VGLUT2),Dorsal root ganglion,Dorsal root ganglion
+Neurons,PSPEP6,nan,"Peptidergic (TrpM8), DRG",Neural crest,"Calb2,Penk",Gfra3 Angpt4 Runx1 Prph Gcnt2 Frat2,54,Glutamate (VGLUT2),Dorsal root ganglion,Dorsal root ganglion
+Neurons,PSPEP7,nan,"Peptidergic (TrpM8), DRG",Neural crest,"Chat,Cxcl14,Crabp1",Rarres1 Gpsm3 Prdm12 Prph Gcnt2 Fkbp1b,64,Glutamate (VGLUT2),Dorsal root ganglion,Dorsal root ganglion
+Neurons,PSPEP8,nan,"Peptidergic (TrpM8), DRG",Neural crest,"Ngfr,Chat",Rarres1 Slc34a2 Tmem54 Plcd4 Gcnt2 Six1,28,Glutamate (VGLUT2),Dorsal root ganglion,Dorsal root ganglion
+Neurons,PSNF2,nan,"Neurofilament (NF4/5), DRG",Neural crest,"Cck,Lmo1",Nefm Palm3 Nefh D930028M14Rik Clec2l Hebp2,57,"Glutamate (VGLUT1,VGLUT2)",Dorsal root ganglion,Dorsal root ganglion
+Neurons,PSNF3,nan,"Neurofilament (NF2/3), DRG",Neural crest,"Slc17a8,Cxcl14",Trappc3l Ptgfr Ahnak2 D930028M14Rik Avil Hebp2,31,"Glutamate (VGLUT1,VGLUT2)",Dorsal root ganglion,Dorsal root ganglion
+Neurons,PSNF1,nan,"Neurofilament (NF1), DRG",Neural crest,"Cck,Lmo1",Ppm1j Tbx3os2 Ahnak2 Tusc5 Htr1d Bcam,38,"Glutamate (VGLUT1,VGLUT2)",Dorsal root ganglion,Dorsal root ganglion
+Neurons,PSNP1,nan,"Non-peptidergic (TH), DRG",Neural crest,"Ntng1,Chrm2",Fam19a4 Fbp2 Piezo2 Tlx3 Paqr5 Cdk15,282,"Glutamate (VGLUT2,VGLUT3)",Dorsal root ganglion,Dorsal root ganglion
+Neurons,PSNP3,nan,"Non-peptidergic (NP1.2), DRG",Neural crest,"Cacna2d1,Cxcl14 but not Lhx6,Nos1",Mrgprd 9530053A07Rik Lpar3 Tmem45b Ppp1r1c Cd55,270,Glutamate (VGLUT2),Dorsal root ganglion,Dorsal root ganglion
+Neurons,PSNP2,nan,"Non-peptidergic (NP1.1), DRG",Neural crest,,Gm7271 Chrna6 Ctxn3 Kcnmb1 Ppp1r1c Lgals3,72,Glutamate (VGLUT2),Dorsal root ganglion,Dorsal root ganglion
+Neurons,PSNP5,nan,"Non-peptidergic (NP2.2), DRG",Neural crest,"Cacna2d1,Lhx6,Nos1",Mrgpra3 Cpb1 Isl2 Scn10a Scn11a Stac,88,Glutamate (VGLUT2),Dorsal root ganglion,Dorsal root ganglion
+Neurons,PSNP4,nan,"Non-peptidergic (NP2.1), DRG",Neural crest,"Cacna2d1 but not Lhx6,Nos1",Mrgpra3 Otoa Calcb Krt27 Acpp Cd55,45,Glutamate (VGLUT2),Dorsal root ganglion,Dorsal root ganglion
+Neurons,PSNP6,nan,"Non-peptidergic (NP3), DRG",Neural crest,"Sst,Chodl,Nos1",Nppb Tmem233 Il31ra Ada Gm525 9230105E05Rik,132,Glutamate (VGLUT2),Dorsal root ganglion,Dorsal root ganglion

@@ -1,0 +1,65 @@
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--ref-ld-chr eur_w_ld_chr/ \
+--out /home/eerdem/notebooks/CELLECT-Analyser/out/genetic_correlation/gc/Net100_Pair29_39_ukb_phase1to3_dti441_dec21_2019_pheno294 \
+--rg /home/eerdem/CELLECT/gwas/BIG-S2_rs-fMRI/ukb_phase1to3_fmri_edge_dec21_2019_pheno942.sumstats.gz,/home/eerdem/CELLECT/gwas/BIG-S2_DTI2020_munged/ukb_phase1to3_dti441_dec21_2019_pheno294.sumstats.gz \
+--w-ld-chr eur_w_ld_chr/ 
+
+Beginning analysis at Tue Dec  8 16:00:42 2020
+Reading summary statistics from /home/eerdem/CELLECT/gwas/BIG-S2_rs-fMRI/ukb_phase1to3_fmri_edge_dec21_2019_pheno942.sumstats.gz ...
+Read summary statistics for 1149479 SNPs.
+Reading reference panel LD Score from eur_w_ld_chr/[1-22] ...
+Read reference panel LD Scores for 1290028 SNPs.
+Removing partitioned LD Scores with zero variance.
+Reading regression weight LD Score from eur_w_ld_chr/[1-22] ...
+Read regression weight LD Scores for 1290028 SNPs.
+After merging with reference panel LD, 1142539 SNPs remain.
+After merging with regression SNP LD, 1142539 SNPs remain.
+Computing rg for phenotype 2/2
+Reading summary statistics from /home/eerdem/CELLECT/gwas/BIG-S2_DTI2020_munged/ukb_phase1to3_dti441_dec21_2019_pheno294.sumstats.gz ...
+Read summary statistics for 1149074 SNPs.
+After merging with summary statistics, 1141611 SNPs remain.
+1141611 SNPs with valid alleles.
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.1737 (0.0248)
+Lambda GC: 1.0879
+Mean Chi^2: 1.1069
+Intercept: 0.989 (0.0086)
+Ratio < 0 (usually indicates GC correction).
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.2465 (0.0298)
+Lambda GC: 1.1235
+Mean Chi^2: 1.1804
+Intercept: 1.0278 (0.0088)
+Ratio: 0.1542 (0.0487)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: -0.0093 (0.0134)
+Mean z1*z2: -0.0062
+Intercept: 0.0015 (0.0051)
+
+Genetic Correlation
+-------------------
+Genetic Correlation: -0.0452 (0.0654)
+Z-score: -0.6903
+P: 0.49
+
+
+Summary of Genetic Correlation Results
+p1                                                                                                    p2      rg      se       z     p  h2_obs  h2_obs_se  h2_int  h2_int_se  gcov_int  gcov_int_se
+/home/eerdem/CELLECT/gwas/BIG-S2_rs-fMRI/ukb_phase1to3_fmri_edge_dec21_2019_pheno942.sumstats.gz  /home/eerdem/CELLECT/gwas/BIG-S2_DTI2020_munged/ukb_phase1to3_dti441_dec21_2019_pheno294.sumstats.gz -0.0452  0.0654 -0.6903  0.49  0.2465     0.0298  1.0278     0.0088    0.0015       0.0051
+
+Analysis finished at Tue Dec  8 16:01:05 2020
+Total time elapsed: 22.91s

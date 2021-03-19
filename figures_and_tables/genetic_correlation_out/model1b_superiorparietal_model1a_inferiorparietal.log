@@ -1,0 +1,65 @@
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--ref-ld-chr eur_w_ld_chr/ \
+--out /home/eerdem/notebooks/CELLECT-Analyser/out/genetic_correlation/gc/model1b_superiorparietal_model1a_inferiorparietal \
+--rg /home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1b_superiorparietal_SAMPLESIZE.sumstats.gz,/home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1a_inferiorparietal_SAMPLESIZE.sumstats.gz \
+--w-ld-chr eur_w_ld_chr/ 
+
+Beginning analysis at Tue Dec  8 19:24:12 2020
+Reading summary statistics from /home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1b_superiorparietal_SAMPLESIZE.sumstats.gz ...
+Read summary statistics for 1186453 SNPs.
+Reading reference panel LD Score from eur_w_ld_chr/[1-22] ...
+Read reference panel LD Scores for 1290028 SNPs.
+Removing partitioned LD Scores with zero variance.
+Reading regression weight LD Score from eur_w_ld_chr/[1-22] ...
+Read regression weight LD Scores for 1290028 SNPs.
+After merging with reference panel LD, 1170095 SNPs remain.
+After merging with regression SNP LD, 1170095 SNPs remain.
+Computing rg for phenotype 2/2
+Reading summary statistics from /home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1a_inferiorparietal_SAMPLESIZE.sumstats.gz ...
+Read summary statistics for 1191335 SNPs.
+After merging with summary statistics, 1169795 SNPs remain.
+1169795 SNPs with valid alleles.
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.126 (0.0222)
+Lambda GC: 1.0413
+Mean Chi^2: 1.0498
+Intercept: 0.9958 (0.0064)
+Ratio < 0 (usually indicates GC correction).
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.262 (0.031)
+Lambda GC: 1.0704
+Mean Chi^2: 1.0892
+Intercept: 0.9971 (0.0066)
+Ratio < 0 (usually indicates GC correction).
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: -0.0035 (0.0164)
+Mean z1*z2: -0.0697
+Intercept: -0.0685 (0.0044)
+
+Genetic Correlation
+-------------------
+Genetic Correlation: -0.0194 (0.0906)
+Z-score: -0.2142
+P: 0.8304
+
+
+Summary of Genetic Correlation Results
+p1                                                                                            p2      rg      se       z       p  h2_obs  h2_obs_se  h2_int  h2_int_se  gcov_int  gcov_int_se
+/home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1b_superiorparietal_SAMPLESIZE.sumstats.gz  /home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1a_inferiorparietal_SAMPLESIZE.sumstats.gz -0.0194  0.0906 -0.2142  0.8304   0.262      0.031  0.9971     0.0066   -0.0685       0.0044
+
+Analysis finished at Tue Dec  8 19:24:39 2020
+Total time elapsed: 27.25s

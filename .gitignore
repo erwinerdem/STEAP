@@ -28,3 +28,5 @@ scripts/parse_results.py
 scripts/prioritize_annotations_snake.py
 scripts/run_gwas_conditional_snake.py
 scripts/split_ldscores_snake.py
+figures_and_tables/scatter_plots/
+

@@ -1,0 +1,65 @@
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--ref-ld-chr eur_w_ld_chr/ \
+--out /home/eerdem/notebooks/CELLECT-Analyser/out/genetic_correlation/gc/InstantCoffee_2019_model1b_paracentral \
+--rg /home/eerdem/CELLECT/gwas/InstantCoffee_2019/InstantCoffee_2019.sumstats.gz,/home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1b_paracentral_SAMPLESIZE.sumstats.gz \
+--w-ld-chr eur_w_ld_chr/ 
+
+Beginning analysis at Tue Dec  8 18:51:57 2020
+Reading summary statistics from /home/eerdem/CELLECT/gwas/InstantCoffee_2019/InstantCoffee_2019.sumstats.gz ...
+Read summary statistics for 1163209 SNPs.
+Reading reference panel LD Score from eur_w_ld_chr/[1-22] ...
+Read reference panel LD Scores for 1290028 SNPs.
+Removing partitioned LD Scores with zero variance.
+Reading regression weight LD Score from eur_w_ld_chr/[1-22] ...
+Read regression weight LD Scores for 1290028 SNPs.
+After merging with reference panel LD, 1137441 SNPs remain.
+After merging with regression SNP LD, 1137441 SNPs remain.
+Computing rg for phenotype 2/2
+Reading summary statistics from /home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1b_paracentral_SAMPLESIZE.sumstats.gz ...
+Read summary statistics for 1186455 SNPs.
+After merging with summary statistics, 1126838 SNPs remain.
+1126838 SNPs with valid alleles.
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0126 (0.0009)
+Lambda GC: 1.2097
+Mean Chi^2: 1.235
+Intercept: 1.0416 (0.0078)
+Ratio: 0.1771 (0.0332)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0466 (0.0198)
+Lambda GC: 1.0327
+Mean Chi^2: 1.0372
+Intercept: 1.0171 (0.0058)
+Ratio: 0.4591 (0.1572)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0001 (0.0019)
+Mean z1*z2: -0.0033
+Intercept: -0.0036 (0.0039)
+
+Genetic Correlation
+-------------------
+Genetic Correlation: 0.0045 (0.0767)
+Z-score: 0.0588
+P: 0.9531
+
+
+Summary of Genetic Correlation Results
+p1                                                                                       p2      rg      se       z       p  h2_obs  h2_obs_se  h2_int  h2_int_se  gcov_int  gcov_int_se
+/home/eerdem/CELLECT/gwas/InstantCoffee_2019/InstantCoffee_2019.sumstats.gz  /home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1b_paracentral_SAMPLESIZE.sumstats.gz  0.0045  0.0767  0.0588  0.9531  0.0466     0.0198  1.0171     0.0058   -0.0036       0.0039
+
+Analysis finished at Tue Dec  8 18:52:21 2020
+Total time elapsed: 23.85s

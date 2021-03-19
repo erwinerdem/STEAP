@@ -1,0 +1,65 @@
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--ref-ld-chr eur_w_ld_chr/ \
+--out /home/eerdem/notebooks/CELLECT-Analyser/out/genetic_correlation/gc/BIP_PGC3_fixed_thalamus_MEGAMETA_Z1.TBL \
+--rg /home/eerdem/CELLECT-revised/gwas/BIP_PGC3/BIP_PGC3.sumstats.gz,/home/eerdem/CELLECT/gwas/subcortical_2017/fixed_thalamus_MEGAMETA_Z1.TBL.sumstats.gz \
+--w-ld-chr eur_w_ld_chr/ 
+
+Beginning analysis at Tue Dec  8 18:39:12 2020
+Reading summary statistics from /home/eerdem/CELLECT-revised/gwas/BIP_PGC3/BIP_PGC3.sumstats.gz ...
+Read summary statistics for 1122331 SNPs.
+Reading reference panel LD Score from eur_w_ld_chr/[1-22] ...
+Read reference panel LD Scores for 1290028 SNPs.
+Removing partitioned LD Scores with zero variance.
+Reading regression weight LD Score from eur_w_ld_chr/[1-22] ...
+Read regression weight LD Scores for 1290028 SNPs.
+After merging with reference panel LD, 1117606 SNPs remain.
+After merging with regression SNP LD, 1117606 SNPs remain.
+Computing rg for phenotype 2/2
+Reading summary statistics from /home/eerdem/CELLECT/gwas/subcortical_2017/fixed_thalamus_MEGAMETA_Z1.TBL.sumstats.gz ...
+Read summary statistics for 1161466 SNPs.
+After merging with summary statistics, 1113109 SNPs remain.
+1113109 SNPs with valid alleles.
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0697 (0.0029)
+Lambda GC: 1.4688
+Mean Chi^2: 1.6124
+Intercept: 1.0344 (0.0112)
+Ratio: 0.0562 (0.0183)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.157 (0.0219)
+Lambda GC: 1.0689
+Mean Chi^2: 1.0754
+Intercept: 0.9945 (0.0076)
+Ratio < 0 (usually indicates GC correction).
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: -0.0066 (0.0053)
+Mean z1*z2: -0.0134
+Intercept: -0.0017 (0.0061)
+
+Genetic Correlation
+-------------------
+Genetic Correlation: -0.0636 (0.0508)
+Z-score: -1.2515
+P: 0.2108
+
+
+Summary of Genetic Correlation Results
+p1                                                                                     p2      rg      se       z       p  h2_obs  h2_obs_se  h2_int  h2_int_se  gcov_int  gcov_int_se
+/home/eerdem/CELLECT-revised/gwas/BIP_PGC3/BIP_PGC3.sumstats.gz  /home/eerdem/CELLECT/gwas/subcortical_2017/fixed_thalamus_MEGAMETA_Z1.TBL.sumstats.gz -0.0636  0.0508 -1.2515  0.2108   0.157     0.0219  0.9945     0.0076   -0.0017       0.0061
+
+Analysis finished at Tue Dec  8 18:39:35 2020
+Total time elapsed: 22.66s

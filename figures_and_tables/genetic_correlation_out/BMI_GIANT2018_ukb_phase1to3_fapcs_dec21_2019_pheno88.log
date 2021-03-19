@@ -1,0 +1,47 @@
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--ref-ld-chr eur_w_ld_chr/ \
+--out /home/eerdem/notebooks/CELLECT-Analyser/out/genetic_correlation/gc/BMI_GIANT2018_ukb_phase1to3_fapcs_dec21_2019_pheno88 \
+--rg /home/eerdem/CELLECT/example/BMI_GIANT2018.sumstats.gz,/home/eerdem/CELLECT/gwas/BIG-S2_DTI2020_munged/ukb_phase1to3_fapcs_dec21_2019_pheno88.sumstats.gz \
+--w-ld-chr eur_w_ld_chr/ 
+
+Beginning analysis at Tue Dec  8 16:05:57 2020
+Reading summary statistics from /home/eerdem/CELLECT/example/BMI_GIANT2018.sumstats.gz ...
+Read summary statistics for 2120723 SNPs.
+Reading reference panel LD Score from eur_w_ld_chr/[1-22] ...
+Read reference panel LD Scores for 1290028 SNPs.
+Removing partitioned LD Scores with zero variance.
+Reading regression weight LD Score from eur_w_ld_chr/[1-22] ...
+Read regression weight LD Scores for 1290028 SNPs.
+After merging with reference panel LD, 1073068 SNPs remain.
+After merging with regression SNP LD, 1073068 SNPs remain.
+Computing rg for phenotype 2/2
+Reading summary statistics from /home/eerdem/CELLECT/gwas/BIG-S2_DTI2020_munged/ukb_phase1to3_fapcs_dec21_2019_pheno88.sumstats.gz ...
+Read summary statistics for 1149074 SNPs.
+After merging with summary statistics, 1044261 SNPs remain.
+1044257 SNPs with valid alleles.
+ERROR computing rg for phenotype 2/2, from file /home/eerdem/CELLECT/gwas/BIG-S2_DTI2020_munged/ukb_phase1to3_fapcs_dec21_2019_pheno88.sumstats.gz.
+Traceback (most recent call last):
+  File "/home/eerdem/CELLECT-revised/ldsc/ldscore/sumstats.py", line 419, in estimate_rg
+    loop = _read_other_sumstats(args, log, p2, sumstats, ref_ld_cnames)
+  File "/home/eerdem/CELLECT-revised/ldsc/ldscore/sumstats.py", line 451, in _read_other_sumstats
+    loop['Z2'] = _align_alleles(loop.Z2, alleles)
+  File "/home/eerdem/CELLECT-revised/ldsc/ldscore/sumstats.py", line 527, in _align_alleles
+    raise KeyError(msg)
+KeyError: 'Incompatible alleles in .sumstats files: ACTC. Did you forget to use --merge-alleles with munge_sumstats.py?'
+
+
+
+Summary of Genetic Correlation Results
+p1                                                                                                  p2  rg  se   z   p h2_obs h2_obs_se h2_int h2_int_se gcov_int gcov_int_se
+/home/eerdem/CELLECT/example/BMI_GIANT2018.sumstats.gz  /home/eerdem/CELLECT/gwas/BIG-S2_DTI2020_munged/ukb_phase1to3_fapcs_dec21_2019_pheno88.sumstats.gz  NA  NA  NA  NA     NA        NA     NA        NA       NA          NA
+
+Analysis finished at Tue Dec  8 16:06:20 2020
+Total time elapsed: 22.53s

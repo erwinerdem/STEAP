@@ -1,0 +1,65 @@
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--ref-ld-chr eur_w_ld_chr/ \
+--out /home/eerdem/notebooks/CELLECT-Analyser/out/genetic_correlation/gc/model1d_caudalanteriorcingulate_model1d_lateraloccipital \
+--rg /home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1d_caudalanteriorcingulate_SAMPLESIZE.sumstats.gz,/home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1d_lateraloccipital_SAMPLESIZE.sumstats.gz \
+--w-ld-chr eur_w_ld_chr/ 
+
+Beginning analysis at Tue Dec  8 18:19:42 2020
+Reading summary statistics from /home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1d_caudalanteriorcingulate_SAMPLESIZE.sumstats.gz ...
+Read summary statistics for 1186227 SNPs.
+Reading reference panel LD Score from eur_w_ld_chr/[1-22] ...
+Read reference panel LD Scores for 1290028 SNPs.
+Removing partitioned LD Scores with zero variance.
+Reading regression weight LD Score from eur_w_ld_chr/[1-22] ...
+Read regression weight LD Scores for 1290028 SNPs.
+After merging with reference panel LD, 1173397 SNPs remain.
+After merging with regression SNP LD, 1173397 SNPs remain.
+Computing rg for phenotype 2/2
+Reading summary statistics from /home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1d_lateraloccipital_SAMPLESIZE.sumstats.gz ...
+Read summary statistics for 1186146 SNPs.
+After merging with summary statistics, 1173349 SNPs remain.
+1173349 SNPs with valid alleles.
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.1457 (0.0229)
+Lambda GC: 1.0587
+Mean Chi^2: 1.0694
+Intercept: 1.0039 (0.0069)
+Ratio: 0.0559 (0.0989)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.1588 (0.0241)
+Lambda GC: 1.0572
+Mean Chi^2: 1.0731
+Intercept: 1.0037 (0.0068)
+Ratio: 0.05 (0.0926)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: -0.0122 (0.0162)
+Mean z1*z2: -0.0511
+Intercept: -0.0457 (0.0049)
+
+Genetic Correlation
+-------------------
+Genetic Correlation: -0.0805 (0.1066)
+Z-score: -0.7554
+P: 0.45
+
+
+Summary of Genetic Correlation Results
+p1                                                                                            p2      rg      se       z     p  h2_obs  h2_obs_se  h2_int  h2_int_se  gcov_int  gcov_int_se
+/home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1d_caudalanteriorcingulate_SAMPLESIZE.sumstats.gz  /home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1d_lateraloccipital_SAMPLESIZE.sumstats.gz -0.0805  0.1066 -0.7554  0.45  0.1588     0.0241  1.0037     0.0068   -0.0457       0.0049
+
+Analysis finished at Tue Dec  8 18:20:03 2020
+Total time elapsed: 20.51s

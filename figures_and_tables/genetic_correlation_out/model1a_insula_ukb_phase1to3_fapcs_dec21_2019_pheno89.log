@@ -1,0 +1,47 @@
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--ref-ld-chr eur_w_ld_chr/ \
+--out /home/eerdem/notebooks/CELLECT-Analyser/out/genetic_correlation/gc/model1a_insula_ukb_phase1to3_fapcs_dec21_2019_pheno89 \
+--rg /home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1a_insula_SAMPLESIZE.sumstats.gz,/home/eerdem/CELLECT/gwas/BIG-S2_DTI2020_munged/ukb_phase1to3_fapcs_dec21_2019_pheno89.sumstats.gz \
+--w-ld-chr eur_w_ld_chr/ 
+
+Beginning analysis at Tue Dec  8 17:09:57 2020
+Reading summary statistics from /home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1a_insula_SAMPLESIZE.sumstats.gz ...
+Read summary statistics for 1189470 SNPs.
+Reading reference panel LD Score from eur_w_ld_chr/[1-22] ...
+Read reference panel LD Scores for 1290028 SNPs.
+Removing partitioned LD Scores with zero variance.
+Reading regression weight LD Score from eur_w_ld_chr/[1-22] ...
+Read regression weight LD Scores for 1290028 SNPs.
+After merging with reference panel LD, 1172167 SNPs remain.
+After merging with regression SNP LD, 1172167 SNPs remain.
+Computing rg for phenotype 2/2
+Reading summary statistics from /home/eerdem/CELLECT/gwas/BIG-S2_DTI2020_munged/ukb_phase1to3_fapcs_dec21_2019_pheno89.sumstats.gz ...
+Read summary statistics for 1149074 SNPs.
+After merging with summary statistics, 1133475 SNPs remain.
+1133475 SNPs with valid alleles.
+ERROR computing rg for phenotype 2/2, from file /home/eerdem/CELLECT/gwas/BIG-S2_DTI2020_munged/ukb_phase1to3_fapcs_dec21_2019_pheno89.sumstats.gz.
+Traceback (most recent call last):
+  File "/home/eerdem/CELLECT-revised/ldsc/ldscore/sumstats.py", line 420, in estimate_rg
+    rghat = _rg(loop, args, log, M_annot, ref_ld_cnames, w_ld_cname, i)
+  File "/home/eerdem/CELLECT-revised/ldsc/ldscore/sumstats.py", line 547, in _rg
+    intercept_gencov=intercepts[2], n_blocks=n_blocks, twostep=args.two_step)
+  File "/home/eerdem/CELLECT-revised/ldsc/ldscore/regressions.py", line 705, in __init__
+    np.multiply(hsq1.tot_delete_values, hsq2.tot_delete_values))
+FloatingPointError: invalid value encountered in sqrt
+
+
+
+Summary of Genetic Correlation Results
+p1                                                                                                  p2  rg  se   z   p h2_obs h2_obs_se h2_int h2_int_se gcov_int gcov_int_se
+/home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1a_insula_SAMPLESIZE.sumstats.gz  /home/eerdem/CELLECT/gwas/BIG-S2_DTI2020_munged/ukb_phase1to3_fapcs_dec21_2019_pheno89.sumstats.gz  NA  NA  NA  NA     NA        NA     NA        NA       NA          NA
+
+Analysis finished at Tue Dec  8 17:10:19 2020
+Total time elapsed: 22.09s

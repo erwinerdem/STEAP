@@ -1,0 +1,65 @@
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--ref-ld-chr eur_w_ld_chr/ \
+--out /home/eerdem/notebooks/CELLECT-Analyser/out/genetic_correlation/gc/model1b_rostralanteriorcingulate_Net_Edge_ICA6 \
+--rg /home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1b_rostralanteriorcingulate_SAMPLESIZE.sumstats.gz,/home/eerdem/CELLECT/gwas/BIG-S2_rs-fMRI/ukb_phase1to3_fmri_edge_dec21_2019_pheno1701.sumstats.gz \
+--w-ld-chr eur_w_ld_chr/ 
+
+Beginning analysis at Tue Dec  8 19:32:12 2020
+Reading summary statistics from /home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1b_rostralanteriorcingulate_SAMPLESIZE.sumstats.gz ...
+Read summary statistics for 1186455 SNPs.
+Reading reference panel LD Score from eur_w_ld_chr/[1-22] ...
+Read reference panel LD Scores for 1290028 SNPs.
+Removing partitioned LD Scores with zero variance.
+Reading regression weight LD Score from eur_w_ld_chr/[1-22] ...
+Read regression weight LD Scores for 1290028 SNPs.
+After merging with reference panel LD, 1170096 SNPs remain.
+After merging with regression SNP LD, 1170096 SNPs remain.
+Computing rg for phenotype 2/2
+Reading summary statistics from /home/eerdem/CELLECT/gwas/BIG-S2_rs-fMRI/ukb_phase1to3_fmri_edge_dec21_2019_pheno1701.sumstats.gz ...
+Read summary statistics for 1149479 SNPs.
+After merging with summary statistics, 1132625 SNPs remain.
+1132625 SNPs with valid alleles.
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.1212 (0.022)
+Lambda GC: 1.0398
+Mean Chi^2: 1.0403
+Intercept: 0.9877 (0.0058)
+Ratio < 0 (usually indicates GC correction).
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.3651 (0.0251)
+Lambda GC: 1.1882
+Mean Chi^2: 1.2358
+Intercept: 0.9972 (0.0098)
+Ratio < 0 (usually indicates GC correction).
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0052 (0.0159)
+Mean z1*z2: 0.0151
+Intercept: 0.0139 (0.0052)
+
+Genetic Correlation
+-------------------
+Genetic Correlation: 0.0248 (0.0753)
+Z-score: 0.3286
+P: 0.7425
+
+
+Summary of Genetic Correlation Results
+p1                                                                                                 p2      rg      se       z       p  h2_obs  h2_obs_se  h2_int  h2_int_se  gcov_int  gcov_int_se
+/home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1b_rostralanteriorcingulate_SAMPLESIZE.sumstats.gz  /home/eerdem/CELLECT/gwas/BIG-S2_rs-fMRI/ukb_phase1to3_fmri_edge_dec21_2019_pheno1701.sumstats.gz  0.0248  0.0753  0.3286  0.7425  0.3651     0.0251  0.9972     0.0098    0.0139       0.0052
+
+Analysis finished at Tue Dec  8 19:32:33 2020
+Total time elapsed: 21.16s

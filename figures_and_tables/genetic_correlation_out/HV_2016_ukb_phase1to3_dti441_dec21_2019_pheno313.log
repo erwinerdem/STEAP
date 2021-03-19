@@ -1,0 +1,65 @@
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--ref-ld-chr eur_w_ld_chr/ \
+--out /home/eerdem/notebooks/CELLECT-Analyser/out/genetic_correlation/gc/HV_2016_ukb_phase1to3_dti441_dec21_2019_pheno313 \
+--rg /home/eerdem/CELLECT/gwas/HV_2016/CHARGE-ENIGMA-HV-METAANALYSIS.sumstats.gz,/home/eerdem/CELLECT/gwas/BIG-S2_DTI2020_munged/ukb_phase1to3_dti441_dec21_2019_pheno313.sumstats.gz \
+--w-ld-chr eur_w_ld_chr/ 
+
+Beginning analysis at Tue Dec  8 17:19:42 2020
+Reading summary statistics from /home/eerdem/CELLECT/gwas/HV_2016/CHARGE-ENIGMA-HV-METAANALYSIS.sumstats.gz ...
+Read summary statistics for 1170668 SNPs.
+Reading reference panel LD Score from eur_w_ld_chr/[1-22] ...
+Read reference panel LD Scores for 1290028 SNPs.
+Removing partitioned LD Scores with zero variance.
+Reading regression weight LD Score from eur_w_ld_chr/[1-22] ...
+Read regression weight LD Scores for 1290028 SNPs.
+After merging with reference panel LD, 1161016 SNPs remain.
+After merging with regression SNP LD, 1161016 SNPs remain.
+Computing rg for phenotype 2/2
+Reading summary statistics from /home/eerdem/CELLECT/gwas/BIG-S2_DTI2020_munged/ukb_phase1to3_dti441_dec21_2019_pheno313.sumstats.gz ...
+Read summary statistics for 1149073 SNPs.
+After merging with summary statistics, 1126311 SNPs remain.
+1126311 SNPs with valid alleles.
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.1468 (0.025)
+Lambda GC: 1.0597
+Mean Chi^2: 1.0814
+Intercept: 1.0022 (0.0078)
+Ratio: 0.0269 (0.0957)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.1766 (0.0221)
+Lambda GC: 1.0798
+Mean Chi^2: 1.1221
+Intercept: 1.0146 (0.0087)
+Ratio: 0.1199 (0.0709)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0191 (0.0147)
+Mean z1*z2: 0.0064
+Intercept: -0.0045 (0.0053)
+
+Genetic Correlation
+-------------------
+Genetic Correlation: 0.1189 (0.0912)
+Z-score: 1.3029
+P: 0.1926
+
+
+Summary of Genetic Correlation Results
+p1                                                                                                    p2      rg      se       z       p  h2_obs  h2_obs_se  h2_int  h2_int_se  gcov_int  gcov_int_se
+/home/eerdem/CELLECT/gwas/HV_2016/CHARGE-ENIGMA-HV-METAANALYSIS.sumstats.gz  /home/eerdem/CELLECT/gwas/BIG-S2_DTI2020_munged/ukb_phase1to3_dti441_dec21_2019_pheno313.sumstats.gz  0.1189  0.0912  1.3029  0.1926  0.1766     0.0221  1.0146     0.0087   -0.0045       0.0053
+
+Analysis finished at Tue Dec  8 17:20:06 2020
+Total time elapsed: 23.51s

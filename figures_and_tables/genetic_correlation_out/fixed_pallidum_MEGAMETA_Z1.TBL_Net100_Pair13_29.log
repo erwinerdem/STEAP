@@ -1,0 +1,65 @@
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--ref-ld-chr eur_w_ld_chr/ \
+--out /home/eerdem/notebooks/CELLECT-Analyser/out/genetic_correlation/gc/fixed_pallidum_MEGAMETA_Z1.TBL_Net100_Pair13_29 \
+--rg /home/eerdem/CELLECT/gwas/subcortical_2017/fixed_pallidum_MEGAMETA_Z1.TBL.sumstats.gz,/home/eerdem/CELLECT/gwas/BIG-S2_rs-fMRI/ukb_phase1to3_fmri_edge_dec21_2019_pheno601.sumstats.gz \
+--w-ld-chr eur_w_ld_chr/ 
+
+Beginning analysis at Tue Dec  8 18:59:12 2020
+Reading summary statistics from /home/eerdem/CELLECT/gwas/subcortical_2017/fixed_pallidum_MEGAMETA_Z1.TBL.sumstats.gz ...
+Read summary statistics for 1161388 SNPs.
+Reading reference panel LD Score from eur_w_ld_chr/[1-22] ...
+Read reference panel LD Scores for 1290028 SNPs.
+Removing partitioned LD Scores with zero variance.
+Reading regression weight LD Score from eur_w_ld_chr/[1-22] ...
+Read regression weight LD Scores for 1290028 SNPs.
+After merging with reference panel LD, 1156363 SNPs remain.
+After merging with regression SNP LD, 1156363 SNPs remain.
+Computing rg for phenotype 2/2
+Reading summary statistics from /home/eerdem/CELLECT/gwas/BIG-S2_rs-fMRI/ukb_phase1to3_fmri_edge_dec21_2019_pheno601.sumstats.gz ...
+Read summary statistics for 1149479 SNPs.
+After merging with summary statistics, 1125161 SNPs remain.
+1125161 SNPs with valid alleles.
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.1431 (0.0248)
+Lambda GC: 1.05
+Mean Chi^2: 1.0647
+Intercept: 0.9904 (0.0072)
+Ratio < 0 (usually indicates GC correction).
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.1335 (0.0203)
+Lambda GC: 1.0767
+Mean Chi^2: 1.096
+Intercept: 1.0076 (0.0079)
+Ratio: 0.0795 (0.0827)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0113 (0.0128)
+Mean z1*z2: 0.0004
+Intercept: -0.0062 (0.0048)
+
+Genetic Correlation
+-------------------
+Genetic Correlation: 0.082 (0.093)
+Z-score: 0.8819
+P: 0.3778
+
+
+Summary of Genetic Correlation Results
+p1                                                                                                p2     rg     se       z       p  h2_obs  h2_obs_se  h2_int  h2_int_se  gcov_int  gcov_int_se
+/home/eerdem/CELLECT/gwas/subcortical_2017/fixed_pallidum_MEGAMETA_Z1.TBL.sumstats.gz  /home/eerdem/CELLECT/gwas/BIG-S2_rs-fMRI/ukb_phase1to3_fmri_edge_dec21_2019_pheno601.sumstats.gz  0.082  0.093  0.8819  0.3778  0.1335     0.0203  1.0076     0.0079   -0.0062       0.0048
+
+Analysis finished at Tue Dec  8 18:59:31 2020
+Total time elapsed: 18.64s

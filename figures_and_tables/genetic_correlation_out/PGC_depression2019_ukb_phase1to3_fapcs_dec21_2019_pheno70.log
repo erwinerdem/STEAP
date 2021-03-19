@@ -1,0 +1,65 @@
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--ref-ld-chr eur_w_ld_chr/ \
+--out /home/eerdem/notebooks/CELLECT-Analyser/out/genetic_correlation/gc/PGC_depression2019_ukb_phase1to3_fapcs_dec21_2019_pheno70 \
+--rg /home/eerdem/CELLECT/gwas/PGC_depression2019/PGC_UKB_depression2019.sumstats.gz,/home/eerdem/CELLECT/gwas/BIG-S2_DTI2020_munged/ukb_phase1to3_fapcs_dec21_2019_pheno70.sumstats.gz \
+--w-ld-chr eur_w_ld_chr/ 
+
+Beginning analysis at Tue Dec  8 18:01:42 2020
+Reading summary statistics from /home/eerdem/CELLECT/gwas/PGC_depression2019/PGC_UKB_depression2019.sumstats.gz ...
+Read summary statistics for 1163585 SNPs.
+Reading reference panel LD Score from eur_w_ld_chr/[1-22] ...
+Read reference panel LD Scores for 1290028 SNPs.
+Removing partitioned LD Scores with zero variance.
+Reading regression weight LD Score from eur_w_ld_chr/[1-22] ...
+Read regression weight LD Scores for 1290028 SNPs.
+After merging with reference panel LD, 1156949 SNPs remain.
+After merging with regression SNP LD, 1156949 SNPs remain.
+Computing rg for phenotype 2/2
+Reading summary statistics from /home/eerdem/CELLECT/gwas/BIG-S2_DTI2020_munged/ukb_phase1to3_fapcs_dec21_2019_pheno70.sumstats.gz ...
+Read summary statistics for 1149074 SNPs.
+After merging with summary statistics, 1135184 SNPs remain.
+1135184 SNPs with valid alleles.
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0611 (0.0025)
+Lambda GC: 1.4594
+Mean Chi^2: 1.5984
+Intercept: 0.9981 (0.0102)
+Ratio < 0 (usually indicates GC correction).
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.1567 (0.0174)
+Lambda GC: 1.0862
+Mean Chi^2: 1.1003
+Intercept: 1.0025 (0.0069)
+Ratio: 0.0248 (0.0684)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0017 (0.004)
+Mean z1*z2: 0.0086
+Intercept: 0.0043 (0.0051)
+
+Genetic Correlation
+-------------------
+Genetic Correlation: 0.0172 (0.0409)
+Z-score: 0.4194
+P: 0.675
+
+
+Summary of Genetic Correlation Results
+p1                                                                                                  p2      rg      se       z      p  h2_obs  h2_obs_se  h2_int  h2_int_se  gcov_int  gcov_int_se
+/home/eerdem/CELLECT/gwas/PGC_depression2019/PGC_UKB_depression2019.sumstats.gz  /home/eerdem/CELLECT/gwas/BIG-S2_DTI2020_munged/ukb_phase1to3_fapcs_dec21_2019_pheno70.sumstats.gz  0.0172  0.0409  0.4194  0.675  0.1567     0.0174  1.0025     0.0069    0.0043       0.0051
+
+Analysis finished at Tue Dec  8 18:02:06 2020
+Total time elapsed: 23.91s

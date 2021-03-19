@@ -1,0 +1,65 @@
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--ref-ld-chr eur_w_ld_chr/ \
+--out /home/eerdem/notebooks/CELLECT-Analyser/out/genetic_correlation/gc/model1a_paracentral_Net100_Pair34_48 \
+--rg /home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1a_paracentral_SAMPLESIZE.sumstats.gz,/home/eerdem/CELLECT/gwas/BIG-S2_rs-fMRI/ukb_phase1to3_fmri_edge_dec21_2019_pheno1325.sumstats.gz \
+--w-ld-chr eur_w_ld_chr/ 
+
+Beginning analysis at Tue Dec  8 20:21:12 2020
+Reading summary statistics from /home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1a_paracentral_SAMPLESIZE.sumstats.gz ...
+Read summary statistics for 1191333 SNPs.
+Reading reference panel LD Score from eur_w_ld_chr/[1-22] ...
+Read reference panel LD Scores for 1290028 SNPs.
+Removing partitioned LD Scores with zero variance.
+Reading regression weight LD Score from eur_w_ld_chr/[1-22] ...
+Read regression weight LD Scores for 1290028 SNPs.
+After merging with reference panel LD, 1174089 SNPs remain.
+After merging with regression SNP LD, 1174089 SNPs remain.
+Computing rg for phenotype 2/2
+Reading summary statistics from /home/eerdem/CELLECT/gwas/BIG-S2_rs-fMRI/ukb_phase1to3_fmri_edge_dec21_2019_pheno1325.sumstats.gz ...
+Read summary statistics for 1149479 SNPs.
+After merging with summary statistics, 1135270 SNPs remain.
+1135270 SNPs with valid alleles.
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.1967 (0.029)
+Lambda GC: 1.0611
+Mean Chi^2: 1.0682
+Intercept: 0.9957 (0.0069)
+Ratio < 0 (usually indicates GC correction).
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0848 (0.0154)
+Lambda GC: 1.0484
+Mean Chi^2: 1.056
+Intercept: 1.0003 (0.0069)
+Ratio: 0.0048 (0.124)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: -0.0208 (0.0172)
+Mean z1*z2: -0.0088
+Intercept: 0.0018 (0.0056)
+
+Genetic Correlation
+-------------------
+Genetic Correlation: -0.1612 (0.1361)
+Z-score: -1.1844
+P: 0.2362
+
+
+Summary of Genetic Correlation Results
+p1                                                                                                 p2      rg      se       z       p  h2_obs  h2_obs_se  h2_int  h2_int_se  gcov_int  gcov_int_se
+/home/eerdem/CELLECT/cortical_ROI_CHARGE2020/model1a_paracentral_SAMPLESIZE.sumstats.gz  /home/eerdem/CELLECT/gwas/BIG-S2_rs-fMRI/ukb_phase1to3_fmri_edge_dec21_2019_pheno1325.sumstats.gz -0.1612  0.1361 -1.1844  0.2362  0.0848     0.0154  1.0003     0.0069    0.0018       0.0056
+
+Analysis finished at Tue Dec  8 20:21:33 2020
+Total time elapsed: 21.17s
