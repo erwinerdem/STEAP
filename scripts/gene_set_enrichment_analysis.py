@@ -81,6 +81,21 @@ def get_top_genes(annot_list):
             celltype_genes_dict[celltype] = gene_list
     return celltype_genes_dict
 
+def summarize_gsea(gsea_dict, save_to_excel=False, filename=None):
+    df_list = []
+    for k,v in gsea_dict.items():
+        df = v.copy()
+        df['Celltype'] = k
+        df_list.append(df)
+    gsea_df = pd.concat(df_list)
+    gsea_grouped_df = gsea_df.groupby(['Gene_set','Term'])['Celltype'].agg(list).reset_index()
+    gsea_grouped_df['Celltype_count'] = gsea_grouped_df['Celltype'].apply(lambda x: len(x))
+    gsea_grouped_df['Celltype'] = gsea_grouped_df['Celltype'].apply(lambda x : '; '.join(x))
+    gsea_grouped_df.sort_values('Celltype_count', ascending=False, inplace=True)
+    if save_to_excel:         
+        gsea_grouped_df.to_excel(filename, index=False)
+    return gsea_grouped_df
+
 def gsea(df, gwas_group_dict):
     print(f"Performing GSEA...\n")
     for name, param_list in gwas_group_dict.items():
