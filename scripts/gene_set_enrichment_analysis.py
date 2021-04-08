@@ -13,7 +13,7 @@ from pathlib import Path
 def get_annot_list(df, name, param_list, rank):
     param = '|'.join(param_list)
     df_gsea = pd.concat([df[(df['gwas'].str.contains(param))][['gwas','specificity_id','annotation']],
-                       (df[(df['gwas'].str.contains(param))][f'pvalue_{constants.PVAL_CORRECTION}'] <= 0.05).astype(int)
+                       (df[(df['gwas'].str.contains(param))][f'pvalue_{constants.PVAL_CORRECTION}']<=0.05).astype(int)
                        ], axis=1).rename(columns={f'pvalue_{constants.PVAL_CORRECTION}':'count'}).groupby(['gwas','specificity_id','annotation']).sum()
     n_gwas = df_gsea.index.unique(level='gwas').shape[0]
     # only use count==1 if multiple gwases are used in analysis
@@ -40,7 +40,8 @@ def get_annot_list(df, name, param_list, rank):
     print(f"Top {rank} ranked cell-types (N={len(annot_list)}) in {name} GWAS:")
     for row in df_gsea.iterrows():
         a = row[1]
-        print(f"{a[4]}. {a[0]}: {a[1]} (N={a[2]}, freq={a[3]:.2})")
+#         print(f"{a[4]}. {a[0]}: {a[1]} (N={a[2]}, freq={a[3]:.2})")
+        print(f"{a[4]}. {a[0]}: {a[1]} (N={a[2]})")
     print()
 #     top_cell_df = df_gsea[['specificity_id','annotation','freq','rank']].copy()
 #     top_cell_df['cell-type'] = (df_gsea['specificity_id']+': '+df_gsea['annotation'])
@@ -82,7 +83,7 @@ def get_top_genes(annot_list):
             celltype_genes_dict[celltype] = gene_list
     return celltype_genes_dict
 
-def summarize_gsea(gsea_dict, min_count=0, save_to_excel=False, filename=None):
+def summarize_gsea(gsea_dict, correct_pval=True, min_count=0, save_to_excel=False, filename='summarize_gsea.xlsx'):
     total = len(gsea_dict)
     df_list = []
     for k,v in gsea_dict.items():
@@ -90,6 +91,8 @@ def summarize_gsea(gsea_dict, min_count=0, save_to_excel=False, filename=None):
         df['Celltype'] = k
         df_list.append(df)
     gsea_df = pd.concat(df_list)
+    if correct_pval:
+        gsea_df = gsea_df[(gsea_df['Adjusted P-value']<=0.05/total)] # Bonferroni correction
     gsea_grouped_df = gsea_df.groupby(['Gene_set','Term'])['Celltype'].agg(list).reset_index()
     gsea_grouped_df[f'Celltype_count (total={total})'] = gsea_grouped_df['Celltype'].apply(lambda x: len(x))
     gsea_grouped_df.sort_values(f'Celltype_count (total={total})', ascending=False, inplace=True)
@@ -130,7 +133,7 @@ def gsea(df, gwas_group_dict, rank=constants.TOP_ANNOT):
                                              outdir=None,
                                              organism='Human',
                                             )
-                        df = enr.results[enr.results['Adjusted P-value']<0.05]
+                        df = enr.results[enr.results['Adjusted P-value']<=0.05]
                         df_list.append(df)
                     except Exception as e:
                         print(e)

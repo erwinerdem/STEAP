@@ -79,5 +79,11 @@ snakemake --use-conda -j -s cellect-h-magma.snakefile --configfile config/config
 snakemake --use-conda -j -s cellect-ldsc.snakefile --configfile config/config.yml
 ```
 
+To instead run it on a Sun Grid Engine (SGE) cluster use:
+```
+qsub SGE_cluster_h-magma.sh
+qsub SGE_cluster_ldsc.sh
+qsub SGE_cluster_magma.sh
+```
 #### Running the post-processing notebook
 To use the post-processing scripts just use the [notebook](https://github.com/erwinerdem/STEAP/blob/master/notebooks/depression_example.ipynb) after running the pipeline.

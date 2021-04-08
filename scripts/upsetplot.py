@@ -63,7 +63,7 @@ def make_df_upset(df, gwas_group_dict, sign_threshold, sort_categories_by):
 
 
 def get_shared_celltypes(df, gwas_group_dict, sign_threshold,
-                         save_to_excel=False, filename=None):
+                         save_to_excel=False, filename='upsetplot.xlsx'):
     df_sliced = make_df_sliced(df, gwas_group_dict, sign_threshold)
     df_sliced = df_sliced.groupby(['specificity_id','annotation'])[['group','gwas']].agg(set).reset_index()
     df_sliced['gwas'] = df_sliced['gwas'].apply(lambda x : ', '.join(list(x)))
@@ -76,9 +76,31 @@ def get_shared_celltypes(df, gwas_group_dict, sign_threshold,
     return df_sliced
 
 def plot_upset(df, gwas_group_dict, sign_threshold=len(constants.METHODS)-1,
-               save=False, filename=None,
+               save=False, filename='upsetplot.png',
                show_percentages=False, sort_by='cardinality',
                with_lines=True,  element_size=46, show_counts='%d', sort_categories_by = 'cardinality'):
+    '''
+    sort_by : {'cardinality', 'degree'}
+        If 'cardinality', subset are listed from largest to smallest.
+        If 'degree', they are listed in order of the number of categories
+        intersected.
+    sort_categories_by : {'cardinality', None}
+        Whether to sort the categories by total cardinality, or leave them
+        in the provided order.
+    with_lines : bool
+        Whether to show lines joining dots in the matrix, to mark multiple
+        categories being intersected.
+    element_size : float or None
+        Side length in pt. If None, size is estimated to fit figure
+    show_counts : bool or str, 
+        Whether to label the intersection size bars with the cardinality
+        of the intersection. When a string, this formats the number.
+        For example, '%d' is equivalent to True.
+    show_percentages : bool,
+        Whether to label the intersection size bars with the percentage
+        of the intersection relative to the total dataset.
+        This may be applied with or without show_counts.
+    '''
     gwas_group_dict_copy = add_count_to_group_dict(df, gwas_group_dict)
     df_sliced_upset = make_df_upset(df, gwas_group_dict_copy, sign_threshold, sort_categories_by)
     plt.style.use('default')

@@ -34,6 +34,7 @@ def calculate_celltype_corr(dataframe):
 
     
 if __name__ == "__main__":
+    print("Calculating Cell Type Correlation...")
     df_all = pd.read_hdf('data/CELLECT_output/data.h5', 'df_all')
     corr_df = calculate_celltype_corr(df_all)
     corr_df.to_hdf('data/CELLECT_output/data.h5', key='corr_df')

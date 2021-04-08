@@ -7,15 +7,15 @@ sys.path.insert(0,parentdir)
 import constants
 import pandas as pd
 import itertools
-from scipy.stats import kendalltau
+from scipy.stats import kendalltau, spearmanr
 from pathlib import Path
 
-def calculate_kendalltau(dataframe):
+def calculate_spearmanr(dataframe):
     corr_list = []
     for x,y in itertools.combinations(dataframe.columns, 2):
         corr_frame = dataframe.loc[:,[x,y]].fillna(0).copy()
         corr_frame = corr_frame[(corr_frame>0).all(1)]
-        corr, pval = kendalltau(corr_frame.iloc[:,0].values, corr_frame.iloc[:,1].values)
+        corr, pval = spearmanr(corr_frame.iloc[:,0].values, corr_frame.iloc[:,1].values)
         corr_list.append([x,y,corr, pval])
     corr_df = pd.DataFrame(corr_list, columns=['celltypex','celltypey','corr','pval'])
     return corr_df
@@ -27,7 +27,6 @@ def correct_pval_correlation(corr_df):
     corrected_df['pval_bonferroni'] = corrected_df['pval'] * n_test
     corrected_df.loc[corrected_df['pval_bonferroni'] > 1, 'pval_bonferroni'] = 1
     return corrected_df
-
     
 def calculate_es_corr(datasets):
     df_list = []
@@ -43,7 +42,7 @@ def calculate_es_corr(datasets):
         df_list.append(df_esmu)
     merged_es_df = pd.concat(df_list, join='outer', axis=1)
     merged_es_df.sort_index(axis=1, inplace=True)
-    es_corr_df = calculate_kendalltau(merged_es_df.fillna(0))
+    es_corr_df = calculate_spearmanr(merged_es_df.fillna(0))
     es_corr_df = correct_pval_correlation(es_corr_df)
     return es_corr_df
 
