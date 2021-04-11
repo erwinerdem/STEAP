@@ -8,9 +8,8 @@ import constants
 import pandas as pd
 from pathlib import Path
 from statsmodels.stats.multitest import multipletests
-from typing import Dict
 
-def find_csv_file(directory: str) -> Dict[str, Dict[str, str]]:
+def find_csv_file(directory: str) -> dict[str, dict[str, str]]:
     """
     Finds the priorirization.csv file in the input directory and uses the direcoty names
     to determine which method was used. This information is sacved in a dictionary as:
@@ -19,7 +18,7 @@ def find_csv_file(directory: str) -> Dict[str, Dict[str, str]]:
     file_dict = {}
     for path in Path(directory).rglob('prioritization.csv'):
         full_path = str(path)
-        (name, method,__, __) = path.parts[-4:]
+        (name, method, __, __) = path.parts[-4:]
         name = name[8:] # 'CELLECT-' is 8 long
         method = method[8:]
         if name not in file_dict:
@@ -59,7 +58,7 @@ def make_df(directory: str) -> pd.DataFrame:
         df_list_1.extend(df_list_2)
     
     df_all = pd.concat(df_list_1, ignore_index=True)
-    # count the number of methods used (MAGMA/H-MAGMA/LDSC)
+    # count the number of methods used (MAGMA/H-MAGMA/LDSC) though this is not really used at the moment
     df_all = df_all.merge(df_all.groupby(['gwas','specificity_id','annotation']).size()\
                             .to_frame('n_methods'), on=['gwas','specificity_id','annotation'], how='left')
     # count the number of annotations/celltypes
@@ -108,5 +107,5 @@ def pvalue_correction(
 if __name__ == "__main__":
     df_all = make_df(constants.CELLECT_OUTDIR)
     df_all = pvalue_correction(df_all, method=constants.PVAL_CORRECTION)
-    df_all.to_hdf('data/data.h5', key='df', mode='w')
+    df_all.to_hdf('data/data.h5', key='df_all', mode='w')
 
