@@ -31,7 +31,7 @@ def get_annot_list(
     else:
         min_count = 1 # if multiple gwas, cell type should be included in at least 2
         min_count = 0
-    
+
     original_shape = df[(df['gwas'].str.contains(param))].shape
     df_gsea = df_gsea[df_gsea['count']>=2] # only get if significant in >2 methods
     df_gsea['count'] = 1 # reset count to 1
@@ -46,14 +46,14 @@ def get_annot_list(
         df_gsea = df_gsea[(df_gsea['rank']<=rank)&
                           (df_gsea['count']>min_count)
                          ]
-    
+
     annot_list = df_gsea[['specificity_id','annotation']].values.tolist()
     print(f"Top {rank} ranked cell-types (N={len(annot_list)}) in {name} GWAS:")
     for row in df_gsea.iterrows():
         a = row[1]
 #         print(f"{a[4]}. {a[0]}: {a[1]} (N={a[2]}, freq={a[3]:.2})")
         print(f"{a[4]}. {a[0]}: {a[1]} (N={a[2]})")
-    
+
     print()
 #     top_cell_df = df_gsea[['specificity_id','annotation','freq','rank']].copy()
 #     top_cell_df['cell-type'] = (df_gsea['specificity_id']+': '+df_gsea['annotation'])
@@ -97,7 +97,7 @@ def get_top_genes(annot_list: list[list[str]]) -> dict[str, list[str]]:
             ginfo = mg.querymany(genes, scopes='ensembl.gene')
             gene_list = [g['symbol'] for g in ginfo if 'symbol' in g]
             celltype_genes_dict[celltype] = gene_list
-    
+
     return celltype_genes_dict
 
 def summarize_gsea(
@@ -109,7 +109,7 @@ def summarize_gsea(
 ) -> pd.DataFrame:
     """
     Summarizes the gsea analysis by counting which term occurs the most often in the enriched cellypes.
-    
+
     Parameters
     ----------
     gsea_dict : dict[str, pd.DataFrame]
@@ -124,7 +124,7 @@ def summarize_gsea(
         Whether to save to an excel file (default False).
     filename : str
         Filename (and path) of the saved file.
-        
+
     Returns
     -------
     dataframe : pd.DataFrame
@@ -136,55 +136,55 @@ def summarize_gsea(
         df = v.copy()
         df['Celltype'] = k
         df_list.append(df)
-    
+
     gsea_df = pd.concat(df_list)
     if correct_pval:
         gsea_df = gsea_df[(gsea_df['Adjusted P-value']<=0.05/total)] # Bonferroni correction
-    
+
     gsea_grouped_df = gsea_df.groupby(['Gene_set','Term'])['Celltype'].agg(list).reset_index()
     gsea_grouped_df[f'Celltype_count (total={total})'] = gsea_grouped_df['Celltype'].apply(lambda x: len(x))
     gsea_grouped_df.sort_values(f'Celltype_count (total={total})', ascending=False, inplace=True)
     gsea_grouped_df['Celltype'] = gsea_grouped_df['Celltype'].apply(lambda x : '; '.join(x))
     gsea_grouped_df = gsea_grouped_df[gsea_grouped_df[f'Celltype_count (total={total})']>min_count]
-    if save_to_excel:         
+    if save_to_excel:
         gsea_grouped_df.to_excel(filename, index=False)
-    
+
     return gsea_grouped_df
 
-def gsea( 
+def gsea(
     df: pd.DataFrame,
     gwas_group_dict: dict[str, list[str]],
     rank: Union[int, None] = constants.TOP_ANNOT
 ) -> dict[str, pd.DataFrame]:
     '''
     Performs gene-set enrichment analysis (GSEA) on enriched cell types.
-    
+
     Parameters
     ----------
     df : pd.DataFrame
         The input pandas dataframe contains information about the phenotype,
-        celltypes, method and enrichment (beta) values with corresponding p-values. 
+        celltypes, method and enrichment (beta) values with corresponding p-values.
     gwas_group_dict : dict[str, list[str]]
         Dictionary with the phenotype group name as key and (regex) keywords
         of the phenotypes in a list as values.
     rank : int or None
-        The minimum rank a cell type should have to be analysed. 
-        For example rank=5 means that only cell types ranked in the top 5 most 
+        The minimum rank a cell type should have to be analysed.
+        For example rank=5 means that only cell types ranked in the top 5 most
         occuring enriched cell types will be analysed.
         If rank=None, then all cell types will be analysed.
-    
+
     Returns
     -------
     gsea_dict : dict[str, pd.DataFrame]
         Dictionary where the keys are the analysed cell types and the values
-        are a pandas dataframe containing significant gene-sets (terms) associated to 
+        are a pandas dataframe containing significant gene-sets (terms) associated to
         the genes specific for the celltype.
     '''
     print(f"Performing GSEA...\n")
     for name, param_list in gwas_group_dict.items():
         annot_list = get_annot_list(df, name, param_list, rank)
         celltype_genes_dict = get_top_genes(annot_list)
- 
+
         print('\nRunning Enrichr...')
         gsea_dict = {}
         gsea_dir = 'gsea'
@@ -215,8 +215,9 @@ def gsea(
                     print('Writing to file...')
                 except ValueError:
                     continue
-    
+
     return gsea_dict
+
 
 if __name__ == "__main__":
     df_all = pd.read_hdf('data/data.h5', 'df_all')

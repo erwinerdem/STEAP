@@ -32,21 +32,21 @@ def correct_pval_correlation(corr_df: pd.DataFrame) -> pd.DataFrame:
     n_test = corrected_df.shape[0]
     corrected_df['pval_bonferroni'] = corrected_df['pval'] * n_test
     corrected_df.loc[corrected_df['pval_bonferroni'] > 1, 'pval_bonferroni'] = 1
-    
+
     return corrected_df
- 
-    
+
+
 def calculate_es_corr(datasets: list[str]) -> pd.DataFrame:
     """
-    Calculates the expression specificity (ES) gene correlation between all celltypes in 
+    Calculates the expression specificity (ES) gene correlation between all celltypes in
     the input datasets.
-    
+
     Parameters
     ----------
     datasets : list[str]
         List of the names of datasets. These names shouls correspong to the .csv file in the esmu
         directory.
-      
+
     Returns
     -------
     es_corr_df : pd.DataFrame
@@ -63,15 +63,15 @@ def calculate_es_corr(datasets: list[str]) -> pd.DataFrame:
             print('file not found')
         df_esmu.columns = [f'{dataset}, {ct}' for ct in df_esmu.columns]
         df_list.append(df_esmu)
-   
+
     merged_es_df = pd.concat(df_list, join='outer', axis=1)
     merged_es_df.sort_index(axis=1, inplace=True)
     es_corr_df = calculate_spearmanr(merged_es_df.fillna(0))
     es_corr_df = correct_pval_correlation(es_corr_df)
-    
+
     return es_corr_df
 
-    
+
 if __name__ == "__main__":
     df_all = pd.read_hdf('data/CELLECT_output/data.h5', 'df_all')
     datasets = df_all['specificity_id'].unique().tolist()

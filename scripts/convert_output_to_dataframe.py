@@ -2,7 +2,7 @@
 import os,sys,inspect
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
-sys.path.insert(0,parentdir) 
+sys.path.insert(0,parentdir)
 
 import constants
 import pandas as pd
@@ -24,22 +24,22 @@ def find_csv_file(directory: str) -> dict[str, dict[str, str]]:
         if name not in file_dict:
             file_dict[name] = {}
         file_dict[name].update({method:full_path})
-    
+
     return file_dict
 
 
 def make_df(directory: str) -> pd.DataFrame:
     """
     Converts the prioritization.csv files in the directories to a pandas dataframe.
-    
+
     Parameters
     ----------
     directory : str
-        The output directory of CELLECT. 
+        The output directory of CELLECT.
         There should be three subdirectories inside this directory.
-        These subdirecories start with the name "CELLECT-" and 
+        These subdirecories start with the name "CELLECT-" and
         end with the method used (H-MAGMA, LDSC or MAGMA)
-    
+
     Returns
     -------
     dataframe : pd.DataFrame
@@ -56,7 +56,7 @@ def make_df(directory: str) -> pd.DataFrame:
             df.sort_values(by=['gwas','specificity_id','annotation'], inplace=True)
             df_list_2.append(df)
         df_list_1.extend(df_list_2)
-    
+
     df_all = pd.concat(df_list_1, ignore_index=True)
     # count the number of methods used (MAGMA/H-MAGMA/LDSC) though this is not really used at the moment
     df_all = df_all.merge(df_all.groupby(['gwas','specificity_id','annotation']).size()\
@@ -64,10 +64,10 @@ def make_df(directory: str) -> pd.DataFrame:
     # count the number of annotations/celltypes
     df_all.sort_values(by=['gwas','method'], inplace=True)
     df_all.reset_index(inplace=True, drop=True)
-    
+
     return df_all
 
- 
+
 def pvalue_correction(
     dataframe: pd.DataFrame,
     method: str = 'bonferroni'
@@ -75,7 +75,7 @@ def pvalue_correction(
     '''
     Corrects the pvalues in the input pandas dataframe for the multiple testing problem.
     The resulting output dataframe is the input dataframe with an additional corrected pvalues column.
-    
+
     Parameters
     ----------
     dataframe : pd.DataFrame
@@ -85,7 +85,7 @@ def pvalue_correction(
         The pvalue correction method (default bonferroni).
         Other available methods are documented in
         https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html
-               
+
     Returns
     -------
     dataframe : pd.DataFrame
@@ -100,8 +100,9 @@ def pvalue_correction(
                   ).apply(pd.Series).stack().reset_index().drop('level_3', axis=1)\
     .rename(columns={0:f"pvalue_{method}"})
     df_p['annotation'] = dataframe['annotation']
-    
+
     return pd.merge(dataframe, df_p, on=['gwas','specificity_id','annotation','method'])
+
 
 
 if __name__ == "__main__":

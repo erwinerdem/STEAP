@@ -2,7 +2,7 @@
 import os,sys,inspect
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
-sys.path.insert(0,parentdir) 
+sys.path.insert(0,parentdir)
 
 import constants
 import pandas as pd
@@ -14,13 +14,13 @@ from typing import Union
 def create_group(gwas: str, gwas_group_dict: dict[str, list[str]]) -> str:
     """
     Finds the input string in the gwas_group_dict values and returns the key if found.
-    """ 
+    """
     reverse_dict = {v:k for k,v_list in gwas_group_dict.items() for v in v_list}
     for k,v in reverse_dict.items():
         if bool(re.search(k,gwas)):
             return v
 
-        
+
 def add_count_to_group_dict(
     df: pd.DataFrame,
     gwas_group_dict: dict[str, list[str]]
@@ -35,17 +35,17 @@ def add_count_to_group_dict(
         for k,v in reverse_dict.items():
             if bool(re.search(k,gwas)):
                 gwas_count[k] +=1
-    
+
     gwas_group_dict_copy = {}
     for k, v_list in gwas_group_dict.items():
         tot_count = (sum([gwas_count[v] for v in v_list]))
         gwas_group_dict_copy[f'{k} (N={tot_count})'] = v_list
-   
+
     return gwas_group_dict_copy
 
 
 def make_df_sliced(
-    df: pd.DataFrame, 
+    df: pd.DataFrame,
     gwas_group_dict: dict[str, list[str]],
     sign_threshold: int
 ) -> pd.DataFrame:
@@ -61,12 +61,12 @@ def make_df_sliced(
 
     df_sliced['group'] = df_sliced.apply(lambda x : create_group(x['gwas'],gwas_group_dict),
                                         axis=1)
-    
+
     return df_sliced
 
 
 def make_df_upset(
-    df: pd.DataFrame, 
+    df: pd.DataFrame,
     gwas_group_dict: dict[str, list[str]],
     sign_threshold: int,
     sort_categories_by: Union[str, None]
@@ -82,44 +82,44 @@ def make_df_upset(
     groups = list(gwas_group_dict.keys())[::-1]
     for g in groups:
         df_sliced_upset[g] = df_sliced_upset['index'].apply(lambda x: g in x)
-    
+
     df_sliced_upset.drop(columns='index', inplace=True)
     if sort_categories_by is None:
         new_column = groups.copy()
         new_column.append('group')
         df_sliced_upset = df_sliced_upset.reindex(columns=new_column)
-    
+
     df_sliced_upset.set_index(groups, inplace=True)
-    
-    return df_sliced_upset 
+
+    return df_sliced_upset
 
 
 def get_shared_celltypes(
-    df: pd.DataFrame, 
+    df: pd.DataFrame,
     gwas_group_dict: dict[str, list[str]],
-    sign_threshold: int,
+    sign_threshold: int = len(constants.METHODS)-1,
     save_to_excel: bool = False,
     filename: str = 'upsetplot.xlsx'
 ) -> pd.DataFrame:
     """
     Returns a pandas dataframe showing whihc cell types are shared in which gwas phenotype group.
-    
+
     Parameters
     ----------
     df : pd.DataFrame
         The input pandas dataframe contains information about the phenotype,
-        celltypes, method and enrichment (beta) values with corresponding p-values. 
+        celltypes, method and enrichment (beta) values with corresponding p-values.
     gwas_group_dict : dict[str, list[str]]
         Dictionary with the phenotype group name as key and (regex) keywords
         of the phenotypes in a list as values.
     sign_threshold : int
-        Only use celltypes significant in `sign_threshold` methods 
+        Only use celltypes significant in 'sign_threshold' methods
         (by default number of methods - 1).
     save_to_excel : bool
         Whether to save to an excel file (default False).
     filename : str
         Filename (and path) of the saved upsetplot.
-        
+
     Returns
     -------
     dataframe : pd.DataFrame
@@ -133,14 +133,14 @@ def get_shared_celltypes(
     df_sliced['group'] = df_sliced['group'].apply(lambda x : ', '.join(list(x)))
     df_sliced.sort_values(['N_groups','group'], ascending=[False,True], inplace=True)
     df_sliced.drop(columns='N_groups', inplace=True)
-    if save_to_excel:         
+    if save_to_excel:
         df_sliced.to_excel(filename, index=False)
-    
+
     return df_sliced
 
 
 def plot_upset(
-    df: pd.DataFrame, 
+    df: pd.DataFrame,
     gwas_group_dict: dict[str, list[str]],
     sign_threshold: int = len(constants.METHODS)-1,
     save: bool = False,
@@ -155,17 +155,17 @@ def plot_upset(
     """
     Plots an upsetplot showing the shared number of celltypes between the different
     gwas phenotype groups.
-    
+
     Parameters
     ----------
     df : pd.DataFrame
         The input pandas dataframe contains information about the phenotype,
-        celltypes, method and enrichment (beta) values with corresponding p-values. 
+        celltypes, method and enrichment (beta) values with corresponding p-values.
     gwas_group_dict : dict[str, list[str]]
         Dictionary with the phenotype group name as key and (regex) keywords
         of the phenotypes in a list as values.
     sign_threshold : int
-        Only use celltypes significant in `sign_threshold` methods 
+        Only use celltypes significant in 'sign_threshold' methods
         (by default number of methods - 1).
     save : bool
         Whether to save plot (default False).
@@ -184,7 +184,7 @@ def plot_upset(
         categories being intersected.
     element_size : float or None
         Side length in pt. If None, size is estimated to fit figure
-    show_counts : bool or str, 
+    show_counts : bool or str,
         Whether to label the intersection size bars with the cardinality
         of the intersection. When a string, this formats the number.
         For example, '%d' is equivalent to True.
@@ -196,21 +196,21 @@ def plot_upset(
     gwas_group_dict_copy = add_count_to_group_dict(df, gwas_group_dict)
     df_sliced_upset = make_df_upset(df, gwas_group_dict_copy, sign_threshold, sort_categories_by)
     plt.style.use('default')
-    upsetplot.plot(df_sliced_upset['group'], show_percentages=show_percentages,
-                   sort_by=sort_by, with_lines=with_lines, #cardinality, degree
-                   element_size=element_size, 
-                   show_counts=show_counts,
-                   sort_categories_by=sort_categories_by #cardinality, None
-                  )
+    axes_dict = upsetplot.plot(df_sliced_upset['group'], show_percentages=show_percentages,
+                               sort_by=sort_by, with_lines=with_lines, #cardinality, degree
+                               element_size=element_size,
+                               show_counts=show_counts,
+                               sort_categories_by=sort_categories_by #cardinality, None
+                              )
     if save:
         plt.savefig(filename, dpi=200, bbox_inches='tight')
-    
+
     plt.show()
 
-    
+
 if __name__ == "__main__":
     df_all = pd.read_hdf('data/data.h5', 'df_all')
-    plot_upset(df_all, constants.GWAS_GROUP_DICT, save=True, 
+    plot_upset(df_all, constants.GWAS_GROUP_DICT, save=True,
                filename='figures_and_tables/upsetplot.png')
-    get_shared_celltypes(df_all, constants.GWAS_GROUP_DICT, save_to_excel=True, 
+    get_shared_celltypes(df_all, constants.GWAS_GROUP_DICT, save_to_excel=True,
                          filename='figures_and_tables/upsetplot.xslx')
