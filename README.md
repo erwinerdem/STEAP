@@ -105,3 +105,5 @@ qsub SGE_cluster_magma.sh
 ### **Running the post-processing notebook**
 
 To use the post-processing scripts just use the [notebook](https://github.com/erwinerdem/STEAP/blob/master/notebooks/depression_example.ipynb) after running the pipeline.
+
+Another option is to use the [STEAP post-processing appyter](https://appyters.maayanlab.cloud/#/STEAP_post_processing_analysis), where you can upload your `prioritization.csv` files which you get as output of the enrichment analysis.

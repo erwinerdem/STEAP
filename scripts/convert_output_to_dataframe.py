@@ -2,6 +2,7 @@
 import os
 import sys
 import inspect
+
 filepath = os.path.abspath(inspect.getfile(inspect.currentframe()))
 currentdir = os.path.dirname(filepath)
 parentdir = os.path.dirname(currentdir)
@@ -21,7 +22,7 @@ def find_csv_file(directory: str) -> dict[str, dict[str, str]]:
     {phenotype : {method : path/to/file}}
     """
     file_dict = {}
-    for path in Path(directory).rglob('prioritization.csv'):
+    for path in Path(directory).rglob("prioritization.csv"):
         full_path = str(path)
         (name, method, __, __) = path.parts[-4:]
         name = name[8:]  # 'CELLECT-' is 8 long
@@ -58,31 +59,30 @@ def make_df(directory: str) -> pd.DataFrame:
         df_list_2 = []
         for method, file_path in d.items():
             df = pd.read_csv(file_path)
-            df['method'] = method
-            df.sort_values(
-                by=['gwas', 'specificity_id', 'annotation'],
-                inplace=True)
+            df["method"] = method
+            df.sort_values(by=["gwas", "specificity_id", "annotation"], inplace=True)
             df_list_2.append(df)
         df_list_1.extend(df_list_2)
 
     df_all = pd.concat(df_list_1, ignore_index=True)
     # count the number of methods (not used atm)
     df_all = df_all.merge(
-        df_all.groupby(
-            ['gwas', 'specificity_id', 'annotation']
-        ).size().to_frame('n_methods'),
-        on=['gwas', 'specificity_id', 'annotation'], how='left')
+        df_all.groupby(["gwas", "specificity_id", "annotation"])
+        .size()
+        .to_frame("n_methods"),
+        on=["gwas", "specificity_id", "annotation"],
+        how="left",
+    )
     # count the number of annotations/celltypes
-    df_all.sort_values(by=['gwas', 'method'], inplace=True)
+    df_all.sort_values(by=["gwas", "method"], inplace=True)
     df_all.reset_index(inplace=True, drop=True)
     return df_all
 
 
 def pvalue_correction(
-    dataframe: pd.DataFrame,
-    method: str = 'bonferroni'
+    dataframe: pd.DataFrame, method: str = "bonferroni"
 ) -> pd.DataFrame:
-    '''
+    """
     Corrects the pvalues in the input pandas dataframe for the
     multiple testing problem. The resulting output dataframe is
     the input dataframe with an additional corrected pvalues column.
@@ -103,23 +103,27 @@ def pvalue_correction(
     dataframe : pd.DataFrame
         The output pandas dataframe equals the input dataframe with an
         additional column containing the corrected pvalues.
-    '''
+    """
     df_p = dataframe.pivot_table(
-        values='pvalue',
-        index=['method', 'gwas', 'specificity_id'],
-        columns=['annotation']
+        values="pvalue",
+        index=["method", "gwas", "specificity_id"],
+        columns=["annotation"],
     )
-    df_p = df_p.apply(
-        lambda row: multipletests(row.dropna(), method=method)[1],
-        axis=1,
-        result_type='reduce'
-    ).apply(pd.Series).stack().reset_index().drop('level_3', axis=1)
+    df_p = (
+        df_p.apply(
+            lambda row: multipletests(row.dropna(), method=method)[1],
+            axis=1,
+            result_type="reduce",
+        )
+        .apply(pd.Series)
+        .stack()
+        .reset_index()
+        .drop("level_3", axis=1)
+    )
     df_p.rename(columns={0: f"pvalue_{method}"}, inplace=True)
-    df_p['annotation'] = dataframe['annotation']
+    df_p["annotation"] = dataframe["annotation"]
     corrected_df = pd.merge(
-        dataframe,
-        df_p,
-        on=['gwas', 'specificity_id', 'annotation', 'method']
+        dataframe, df_p, on=["gwas", "specificity_id", "annotation", "method"]
     )
     return corrected_df
 
@@ -127,4 +131,4 @@ def pvalue_correction(
 if __name__ == "__main__":
     df_all = make_df(constants.CELLECT_OUTDIR)
     df_all = pvalue_correction(df_all, method=constants.PVAL_CORRECTION)
-    df_all.to_hdf('data/data.h5', key='df_all', mode='w')
+    df_all.to_hdf("data/data.h5", key="df_all", mode="w")

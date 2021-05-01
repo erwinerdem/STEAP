@@ -2,6 +2,7 @@
 import os
 import sys
 import inspect
+
 filepath = os.path.abspath(inspect.getfile(inspect.currentframe()))
 currentdir = os.path.dirname(filepath)
 parentdir = os.path.dirname(currentdir)
@@ -24,18 +25,20 @@ def get_annot_list(
     """
     Returns a list of celltypes to be analyzed.
     """
-    param = '|'.join(param_list)
-    param_df = df[(df['gwas'].str.contains(param))]
-    sign_enrichment = (param_df[f'pvalue_{constants.PVAL_CORRECTION}'] <= 0.05)
+    param = "|".join(param_list)
+    param_df = df[(df["gwas"].str.contains(param))]
+    sign_enrichment = param_df[f"pvalue_{constants.PVAL_CORRECTION}"] <= 0.05
     sign_enrichment = sign_enrichment.astype(int)
-    df_gsea = pd.concat(
-        [
-            param_df[['gwas', 'specificity_id', 'annotation']],
-            sign_enrichment
-        ], axis=1).rename(
-        columns={f'pvalue_{constants.PVAL_CORRECTION}': 'count'}
-    ).groupby(['gwas', 'specificity_id', 'annotation']).sum()
-    n_gwas = df_gsea.index.unique(level='gwas').shape[0]
+    df_gsea = (
+        pd.concat(
+            [param_df[["gwas", "specificity_id", "annotation"]], sign_enrichment],
+            axis=1,
+        )
+        .rename(columns={f"pvalue_{constants.PVAL_CORRECTION}": "count"})
+        .groupby(["gwas", "specificity_id", "annotation"])
+        .sum()
+    )
+    n_gwas = df_gsea.index.unique(level="gwas").shape[0]
     # only use count==1 if multiple gwases are used in analysis
     if n_gwas == 1:
         # if only one gwas then include all celltypes
@@ -43,34 +46,25 @@ def get_annot_list(
     else:
         # if multiple gwas then only cell types enriched in at least 2
         min_count = 1
-#         min_count = 0
+    #         min_count = 0
 
-    df_gsea = df_gsea[df_gsea['count'] >= 2]  # only get if sign in >= methods
-    df_gsea['count'] = 1  # reset count to 1
-    df_gsea = df_gsea.groupby(
-        ['specificity_id', 'annotation']
-    ).sum().reset_index()
-    N_total = df[(df['gwas'].str.contains(param))]['gwas'].unique().shape[0]
-    df_gsea['freq'] = df_gsea['count'] / N_total
-    df_gsea.sort_values('freq', ascending=False, inplace=True)
-    df_gsea['rank'] = df_gsea['count'].rank(
-        ascending=False,
-        method='dense'
-    ).astype(int)
+    df_gsea = df_gsea[df_gsea["count"] >= 2]  # only get if sign in >= methods
+    df_gsea["count"] = 1  # reset count to 1
+    df_gsea = df_gsea.groupby(["specificity_id", "annotation"]).sum().reset_index()
+    N_total = df[(df["gwas"].str.contains(param))]["gwas"].unique().shape[0]
+    df_gsea["freq"] = df_gsea["count"] / N_total
+    df_gsea.sort_values("freq", ascending=False, inplace=True)
+    df_gsea["rank"] = df_gsea["count"].rank(ascending=False, method="dense").astype(int)
     if rank is None:
-        df_gsea = df_gsea[(df_gsea['count'] > min_count)]
+        df_gsea = df_gsea[(df_gsea["count"] > min_count)]
     else:
-        df_gsea = df_gsea[(df_gsea['rank'] <= rank)
-                          &
-                          (df_gsea['count'] > min_count)]
+        df_gsea = df_gsea[(df_gsea["rank"] <= rank) & (df_gsea["count"] > min_count)]
 
-    annot_list = df_gsea[['specificity_id', 'annotation']].values.tolist()
-    print(
-        f"Top {rank} ranked cell-types (N={len(annot_list)}) in {name} GWAS:"
-    )
+    annot_list = df_gsea[["specificity_id", "annotation"]].values.tolist()
+    print(f"Top {rank} ranked cell-types (N={len(annot_list)}) in {name} GWAS:")
     for row in df_gsea.iterrows():
         a = row[1]
-#         print(f"{a[4]}. {a[0]}: {a[1]} (N={a[2]}, freq={a[3]:.2})")
+        #         print(f"{a[4]}. {a[0]}: {a[1]} (N={a[2]}, freq={a[3]:.2})")
         print(f"{a[4]}. {a[0]}: {a[1]} (N={a[2]})")
 
     print()
@@ -84,46 +78,41 @@ def get_top_genes(annot_list: list[list[str]]) -> dict[str, list[str]]:
     """
     celltype_genes_dict = {}
     for dataset, celltype in annot_list:
-        cellex_file = f'esmu/{dataset}.mu.csv'
+        cellex_file = f"esmu/{dataset}.mu.csv"
         # change esmu to mu if file not found
         if Path(cellex_file).is_file():
             df_esmu = pd.read_csv(cellex_file, index_col=0)
-        elif Path(cellex_file.replace('.mu', '.esmu')).is_file():
-            df_esmu = pd.read_csv(
-                cellex_file.replace('.mu', '.esmu'),
-                index_col=0
-            )
+        elif Path(cellex_file.replace(".mu", ".esmu")).is_file():
+            df_esmu = pd.read_csv(cellex_file.replace(".mu", ".esmu"), index_col=0)
         else:
-            print('file not found')
+            print("file not found")
         df = df_esmu[celltype]
-        df = df.sort_values(ascending=False).head(
-            round(constants.TOP_FREQ*len(df))
-        )
+        df = df.sort_values(ascending=False).head(round(constants.TOP_FREQ * len(df)))
         # https://www.gsea-msigdb.org/gsea/doc/GSEAUserGuideFrame.html
         if df.shape[0] > 500 or df.shape[0] < 15:
             print(
-                f'\033[93m{df.shape[0]} genes in {dataset}, {celltype} \
-                which is outside the recommended range (15<G<500)\033[0m'
+                f"\033[93m{df.shape[0]} genes in {dataset}, {celltype} \
+                which is outside the recommended range (15<G<500)\033[0m"
             )
-        celltype_genes_dict[f'{dataset}, {celltype}'] = df.index.to_list()
+        celltype_genes_dict[f"{dataset}, {celltype}"] = df.index.to_list()
 
-    print('\nConverting Ensembl ID to Gene Symbol...')
+    print("\nConverting Ensembl ID to Gene Symbol...")
     for i, (celltype, genes) in enumerate(celltype_genes_dict.items(), 1):
         out_file = f"gsea/gsea_{celltype.replace(', ','-')}.xlsx"
         if Path(out_file).is_file() and not constants.OVERWRITE_GSEA_ANALYSIS:
             print(
-                f'\n({i}/{len(celltype_genes_dict)}) \
-                Converting {celltype} ({len(genes)} genes)'
+                f"\n({i}/{len(celltype_genes_dict)}) \
+                Converting {celltype} ({len(genes)} genes)"
             )
-            print('Cell-type already analyzed. Skipping conversion...')
+            print("Cell-type already analyzed. Skipping conversion...")
         else:
             print(
-                f'\n({i}/{len(celltype_genes_dict)}) \
-                Converting {celltype} ({len(genes)} genes)'
+                f"\n({i}/{len(celltype_genes_dict)}) \
+                Converting {celltype} ({len(genes)} genes)"
             )
             mg = mygene.MyGeneInfo()
-            ginfo = mg.querymany(genes, scopes='ensembl.gene')
-            gene_list = [g['symbol'] for g in ginfo if 'symbol' in g]
+            ginfo = mg.querymany(genes, scopes="ensembl.gene")
+            gene_list = [g["symbol"] for g in ginfo if "symbol" in g]
             celltype_genes_dict[celltype] = gene_list
     return celltype_genes_dict
 
@@ -133,7 +122,7 @@ def summarize_gsea(
     correct_pval: bool = True,
     min_count: int = 0,
     save_to_excel: bool = False,
-    filename: str = 'summarize_gsea.xlsx'
+    filename: str = "summarize_gsea.xlsx",
 ) -> pd.DataFrame:
     """
     Summarizes the gsea analysis by counting which term occurs
@@ -165,24 +154,22 @@ def summarize_gsea(
     df_list = []
     for k, v in gsea_dict.items():
         df = v.copy()
-        df['Celltype'] = k
+        df["Celltype"] = k
         df_list.append(df)
 
     gsea_df = pd.concat(df_list)
     if correct_pval:
         # Bonferroni correction
-        gsea_df = gsea_df[(gsea_df['Adjusted P-value'] <= 0.05/total)]
+        gsea_df = gsea_df[(gsea_df["Adjusted P-value"] <= 0.05 / total)]
 
-    gsea_grouped_df = gsea_df.groupby(
-        ['Gene_set', 'Term']
-    )['Celltype'].agg(list).reset_index()
-    col_name = f'Celltype_count (total={total})'
-    gsea_grouped_df[col_name] = gsea_grouped_df['Celltype'].apply(
-        lambda x: len(x)
+    gsea_grouped_df = (
+        gsea_df.groupby(["Gene_set", "Term"])["Celltype"].agg(list).reset_index()
     )
+    col_name = f"Celltype_count (total={total})"
+    gsea_grouped_df[col_name] = gsea_grouped_df["Celltype"].apply(lambda x: len(x))
     gsea_grouped_df.sort_values(col_name, ascending=False, inplace=True)
-    gsea_grouped_df['Celltype'] = gsea_grouped_df['Celltype'].apply(
-        lambda x: '; '.join(x)
+    gsea_grouped_df["Celltype"] = gsea_grouped_df["Celltype"].apply(
+        lambda x: "; ".join(x)
     )
     gsea_grouped_df = gsea_grouped_df[gsea_grouped_df[col_name] > min_count]
     if save_to_excel:
@@ -193,9 +180,9 @@ def summarize_gsea(
 def gsea(
     df: pd.DataFrame,
     gwas_group_dict: dict[str, list[str]],
-    rank: Union[int, None] = constants.TOP_ANNOT
+    rank: Union[int, None] = constants.TOP_ANNOT,
 ) -> dict[str, pd.DataFrame]:
-    '''
+    """
     Performs gene-set enrichment analysis (GSEA) on enriched cell types.
 
     Parameters
@@ -219,24 +206,26 @@ def gsea(
         Dictionary where the keys are the analysed cell types and
         the values are a pandas dataframe containing significant
         gene-sets (terms) associated to the genes specific for the celltype.
-    '''
+    """
     print("Performing GSEA...\n")
     overwrite = constants.OVERWRITE_GSEA_ANALYSIS
     for name, param_list in gwas_group_dict.items():
         annot_list = get_annot_list(df, name, param_list, rank)
         celltype_genes_dict = get_top_genes(annot_list)
 
-        print('\nRunning Enrichr...')
+        print("\nRunning Enrichr...")
         gsea_dict = {}
-        gsea_dir = 'gsea'
-        for i, (celltype, genes) in enumerate(celltype_genes_dict.items(), ):
+        gsea_dir = "gsea"
+        for i, (celltype, genes) in enumerate(
+            celltype_genes_dict.items(),
+        ):
             out_file = f"{gsea_dir}/gsea_{celltype.replace(', ','-')}.xlsx"
             print(
-                f'\n({i}/{len(celltype_genes_dict)}) \
-                Analyzing {celltype} ({len(genes)} genes)...'
+                f"\n({i}/{len(celltype_genes_dict)}) \
+                Analyzing {celltype} ({len(genes)} genes)..."
             )
             if Path(out_file).is_file() and not overwrite:
-                print('Cell-type already analyzed. Skipping analysis...')
+                print("Cell-type already analyzed. Skipping analysis...")
                 gsea_dict[celltype] = pd.read_excel(out_file)
             else:
                 df_list = []
@@ -246,11 +235,9 @@ def gsea(
                             gene_list=genes,
                             gene_sets=gene_set,
                             outdir=None,
-                            organism='Human'
+                            organism="Human",
                         )
-                        df = enr.results[
-                            enr.results['Adjusted P-value'] <= 0.05
-                        ]
+                        df = enr.results[enr.results["Adjusted P-value"] <= 0.05]
                         df_list.append(df)
                     except Exception as e:
                         print(e)
@@ -258,12 +245,12 @@ def gsea(
                 try:
                     gsea_dict[celltype] = pd.concat(df_list)
                     gsea_dict[celltype].to_excel(out_file, index=False)
-                    print('Writing to file...')
+                    print("Writing to file...")
                 except ValueError:
                     continue
     return gsea_dict
 
 
 if __name__ == "__main__":
-    df_all = pd.read_hdf('data/data.h5', 'df_all')
+    df_all = pd.read_hdf("data/data.h5", "df_all")
     gsea(df_all, constants.GWAS_GROUP_DICT)
